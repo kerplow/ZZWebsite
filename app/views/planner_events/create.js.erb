@@ -1,0 +1,17 @@
+function refreshForm(innerHTML) {
+    const newEventForm = $('.new_planner_event');
+    newEventForm.HTML(innerHTML);
+}
+
+function addEvent(eventHTML) {
+    const events = $('.events');
+    events.append(eventHTML);
+    $(".event").last().css("background-color", "none");
+}
+
+<% if @event.errors.any? %>
+  refreshForm('<%= j render "planner_events/form", event: @event %>');
+<% else %>
+  addEvent('<div class="event #{event.type} style="background-color:green;"">/n<%= j @event.name %>/n</div>');
+  $('.new_planner_event').hide()
+<% end %>

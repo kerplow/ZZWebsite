@@ -1,0 +1,7 @@
+<%= simple_form_for(event, remote: true, authenticity_token: true) do |f| %>
+  <%= f.input "name" %>
+  <%= f.input "description" %>
+  <%= f.input "start_time" %>
+  <%= f.input "end_time" %>
+  <%= f.button "submit" %>
+<% end %>

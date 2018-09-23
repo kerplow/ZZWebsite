@@ -1,0 +1,15 @@
+function refreshForm(innerHTML) {
+    const newNoteForm = $('.new-note-form');
+    newNoteForm.replaceWith(innerHTML);
+}
+
+function addNote(noteHTML) {
+    const notes = $('.notes');
+    notes.append(noteHTML);
+}
+
+<% if @note.errors.any? %>
+  refreshForm('<%= j render partial: "notes/form", note: @note %>');
+<% else %>
+  addNote('<%= j render partial: "notes/show", locals: {note: @note} %>');
+<% end %>
