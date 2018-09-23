@@ -1,4 +1,4 @@
-<h1 class="text-center">ZZW</h1>
+<h1 class="text-center" id="title">ZZW</h1>
 <p class="text-center">You'll never snot alone</p>
 <% if @user %>
   <%= @user %>
@@ -33,15 +33,17 @@
       </div>
     </div>
     <div class="row">
-      <%= month_calendar(events: @events, html: { class: "events" }) do |date, events| %>
-        <%= date.day %>
+      <div class="center">
+        <%= month_calendar(events: @events, html: { class: "events" }) do |date, events| %>
+          <%= date.day %>
 
-        <% events.each do |event| %>
-          <div class="event #{event.type}">
-            <%= event.name %>
-          </div>
+          <% events.each do |event| %>
+            <div class="event #{event.type}">
+              <%= event.name %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
     <div class="row" id="new-event-form">
       <%= button_tag( "new event", id: "new-event-button", type: "button", class:"btn" ) %>

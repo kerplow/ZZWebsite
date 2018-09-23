@@ -4,4 +4,15 @@
 
 .noteboard-header {
   background-image: image_url('wood-board.jpg');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.note {
+  background-image: image_url('paper-note.jpg');
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
 }
