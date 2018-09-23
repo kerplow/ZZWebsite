@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ec3a6c5-252c-46ca-8627-db9867ae9b77" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/note.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/note.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -84,7 +84,7 @@
         <counts>
           <entry key="Gemfile" value="12" />
           <entry key="erb" value="94" />
-          <entry key="rb" value="85" />
+          <entry key="rb" value="109" />
           <entry key="scss" value="317" />
           <entry key="yml" value="10" />
         </counts>
@@ -92,7 +92,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="RHTML" value="94" />
-          <entry key="Ruby" value="97" />
+          <entry key="Ruby" value="121" />
           <entry key="SCSS" value="317" />
           <entry key="YAML" value="10" />
         </counts>
@@ -101,7 +101,7 @@
         <counts>
           <entry key="Gemfile" value="1" />
           <entry key="erb" value="4" />
-          <entry key="rb" value="1" />
+          <entry key="rb" value="2" />
           <entry key="scss" value="2" />
           <entry key="yml" value="1" />
         </counts>
@@ -109,7 +109,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="RHTML" value="4" />
-          <entry key="Ruby" value="2" />
+          <entry key="Ruby" value="3" />
           <entry key="SCSS" value="2" />
           <entry key="YAML" value="1" />
         </counts>
@@ -166,7 +166,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
@@ -178,8 +178,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+            <state relative-caret-position="30">
+              <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/note.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -198,15 +207,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/noteboard/noteboard.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -238,7 +238,6 @@
         <option value="$PROJECT_DIR$/app/controllers/events_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/calendar_event.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
-        <option value="$PROJECT_DIR$/app/models/note.rb" />
         <option value="$PROJECT_DIR$/app/controllers/calendar_events_controller.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/models/planner_event.rb" />
@@ -267,8 +266,9 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/pages.scss" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb" />
         <option value="$PROJECT_DIR$/config/database.yml" />
+        <option value="$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb" />
+        <option value="$PROJECT_DIR$/app/models/note.rb" />
       </list>
     </option>
   </component>
@@ -562,12 +562,12 @@
       <workItem from="1536613658575" duration="594000" />
       <workItem from="1536883565451" duration="598000" />
       <workItem from="1536938941311" duration="685000" />
-      <workItem from="1537719871673" duration="4624000" />
+      <workItem from="1537719871673" duration="5116000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54179000" />
+    <option name="totallyTimeSpent" value="54671000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -722,13 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/note.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/planner_event.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -863,13 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -881,6 +867,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/note.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
         </state>
       </provider>
     </entry>

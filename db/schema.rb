@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20180831155035) do
   create_table "notes", force: :cascade do |t|
     t.string   "name"
     t.text     "contents"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "parent_id_id"
-    t.index ["parent_id_id"], name: "index_notes_on_parent_id_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "parent_id"
+    t.index ["parent_id"], name: "index_notes_on_parent_id", using: :btree
   end
 
   create_table "planner_events", force: :cascade do |t|
