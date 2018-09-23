@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ec3a6c5-252c-46ca-8627-db9867ae9b77" name="Default Changelist" comment="" />
+    <list default="true" id="4ec3a6c5-252c-46ca-8627-db9867ae9b77" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -81,13 +83,14 @@
         <counts>
           <entry key="Gemfile" value="12" />
           <entry key="erb" value="94" />
+          <entry key="rb" value="46" />
           <entry key="scss" value="317" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="RHTML" value="94" />
-          <entry key="Ruby" value="12" />
+          <entry key="Ruby" value="58" />
           <entry key="SCSS" value="317" />
         </counts>
       </usages-collector>
@@ -95,13 +98,14 @@
         <counts>
           <entry key="Gemfile" value="1" />
           <entry key="erb" value="4" />
+          <entry key="rb" value="1" />
           <entry key="scss" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="RHTML" value="4" />
-          <entry key="Ruby" value="1" />
+          <entry key="Ruby" value="2" />
           <entry key="SCSS" value="2" />
         </counts>
       </usages-collector>
@@ -148,11 +152,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="236">
               <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="65" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -189,15 +202,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="5" column="214" selection-start-line="5" selection-start-column="214" selection-end-line="5" selection-end-column="214" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/calendar/header.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -258,6 +262,7 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/pages.scss" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb" />
       </list>
     </option>
   </component>
@@ -551,12 +556,12 @@
       <workItem from="1536613658575" duration="594000" />
       <workItem from="1536883565451" duration="598000" />
       <workItem from="1536938941311" duration="685000" />
-      <workItem from="1537719871673" duration="3188000" />
+      <workItem from="1537719871673" duration="3832000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52743000" />
+    <option name="totallyTimeSpent" value="53387000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -627,13 +632,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20180831154945_add_parent_to_note.rb" />
-    <entry file="file://$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="55" lean-forward="true" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/user.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -870,6 +868,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180831155035_add_parent_to_note.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="65" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
         </state>
       </provider>
     </entry>
