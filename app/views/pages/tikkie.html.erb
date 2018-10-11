@@ -1,2 +1,24 @@
 <h1>Pages#tikkie</h1>
 <p>Find me in app/views/pages/tikkie.html.erb</p>
+<div class="row">
+  <div class="col-xs-12">
+    <ul>
+    <% @users.innings.each do |inning|  %>
+      <h3>Van:</h3>
+
+        <li><%= inning.amount %>euro van: <%= inning.inner.name %></li>
+
+    <% end %>
+    </ul>
+  </div>
+  <div class="col-xs-6">
+    <ul>
+      <% @users.debts.each do |debt|  %>
+        <h3>aan:</h3>
+
+        <li><%= debt.amount %>euro van: <%= debt.debtor.name %></li>
+
+      <% end %>
+    </ul>
+  </div>
+</div>

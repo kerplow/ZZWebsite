@@ -1,10 +1,33 @@
-<h1 class="text-center" id="title">ZZW</h1>
+<div class="title text-center">
+  <h1 class="text-center" id="title">ZZW</h1>
+</div>
 <p class="text-center">You'll never snot alone</p>
 <% if @user %>
   <%= @user %>
 <% else %>
   <p>not signed in yet</p>
 <% end %>
+<div class="row">
+  <div id="cleaning-week">
+    <h2>This week's cleaning roster:</h2>
+    <div id="cleaning-roster">
+      <table>
+        <tr>
+          <th>Kitchen</th>
+          <th>Trash</th>
+          <th>Hallway downstairs</th>
+          <th>Hallway upstairs</th>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 <div class="row">
 
   <div class="noteboard col-md-4">
@@ -23,7 +46,7 @@
 
   <div class="planner col-md-8">
     <div class="row">
-      <div class="text-center"><h4 class="text-center">
+      <div class="text-center" id="calendar-title"><h4 class="text-center">
         What's up this <select class="text-center" name="calendar-mode" id="calendar-mode">
         <option value="month">Month</option>
         <option value="week">Week</option>
@@ -33,7 +56,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="center">
+      <div class="center" id="calendar-div">
         <%= month_calendar(events: @events, html: { class: "events" }) do |date, events| %>
           <%= date.day %>
 
@@ -50,15 +73,34 @@
     </div>
 
   </div>
-  <% content_for :document_ready do %>
-    console.log("ready");
-    $('#new-event-button').click( function(event) {
-      event.preventDefault();
-      $('#new-event-form').replaceWith('<%= j render partial: "planner_events/form", locals: {event: PlannerEvent.new} %>');
-    });
-    $('#new-note-button').click( function(event) {
-      event.preventDefault();
-      $('#new-note-form').replaceWith('<%= j render partial: "notes/form", locals: {note: Note.new} %>');
-    });
-  <% end %>
 </div>
+<div class="row">
+  <div id="eetlijst-frame">
+    <object id='eetlijst-object' type="text/html" data="http://www.eetlijst.nl" height="600px" style="overflow:auto;border:5px ridge blue">
+    </object>
+  </div>
+</div>
+<% content_for :document_ready do %>
+  console.log("ready");
+  $('#new-event-button').click( function(event) {
+  event.preventDefault();
+  $('#new-event-form').replaceWith('<%= j render partial: "planner_events/form", locals: {event: PlannerEvent.new} %>');
+  });
+  $('#new-note-button').click( function(event) {
+  event.preventDefault();
+  $('#new-note-form').replaceWith('<%= j render partial: "notes/form", locals: {note: Note.new} %>');
+  });
+  $('#eetlijst-frame').load("http://www.eetlijst.nl body")
+  function autoFill() {
+    document.getElementById('input1').value = "My Text Input";
+    document.getElementById('input2').value = "Dropdown2";
+
+    var radioElements = document.getElementsByName("input3");
+
+    for (var i=0; i<radioElements.length; i++) {
+    if (radioElements[i].getAttribute('value') == 'Radio3') {
+        radioElements[i].checked = true;
+      }
+    }
+  }
+<% end %>

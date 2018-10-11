@@ -4,5 +4,8 @@
 #title {
   background-image: image_url('crooked-board.png');
   background-size: contain;
-
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 100%;
+  display: inline-block;
 }

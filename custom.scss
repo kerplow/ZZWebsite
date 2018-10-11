@@ -1,0 +1,927 @@
+/* === VARIABLES ===
+---------------------------------------------------- */
+$head_red: #990000;
+$head_grey: #8b8c90;
+$max_width: 1037px;
+$darker_red: #760000;
+$black: #333;
+$light_grey: #F7F7F7;
+
+/* === MEDIA QUERIES ===
+---------------------------------------------------- */
+@mixin tiny_screens() {@media only screen and (max-width: 360px) {@content;}}
+
+@mixin min_tiny_screens() {@media only screen and (min-width: 360px) {@content;}}
+
+@mixin small_screens() {@media only screen and (max-width: 480px) {@content;}}
+
+@mixin min_small_screens() {@media only screen and (min-width: 480px) {@content;}}
+
+@mixin medium_screens() {@media only screen and (max-width: 768px) {@content;}}
+
+@mixin min_medium_screens() {@media only screen and (min-width: 768px) {@content;}}
+
+@mixin medium_large_screens() {@media only screen and (max-width: 1012px) {@content;}}
+
+@mixin min_medium_large_screens() {@media only screen and (min-width: 1012px) {@content;}}
+
+@mixin large_screens() {@media only screen and (max-width: 1180px) {@content;}}
+
+@mixin min_large_screens() {@media only screen and (min-width: 1180px) {@content;}}
+
+@mixin extra_large_screens() {@media only screen and (max-width: 1360px) {@content;}}
+
+@mixin min_extra_large_screens() {@media only screen and (min-width: 1360px) {@content;}}
+
+/* === CSS ===
+---------------------------------------------------- */
+
+.red_filled_button {
+  text-decoration: none;
+  background: linear-gradient(to right, $darker_red, $head_red, $head_red);
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 22px;
+  display: block;
+
+  &:hover {
+    color: #fff;
+    background: linear-gradient(to right, $head_red, $head_red, $head_red);
+  }
+}
+
+.site-container {
+  .site-header {
+    background: $head_red;
+    z-index: 1;
+    position: relative;
+
+    .wrap {
+      margin: 0 auto;
+      width: 100%;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+
+      @include min_medium_large_screens() {
+        width: $max_width;
+      }
+
+      .title-area {
+        width: 70%;
+
+        .site-title {
+          a {
+            color: #fff;
+            text-decoration: none;
+            padding-left: 12px;
+          }// ./a
+        }// ./h1.site-title
+      }// ./title-area
+
+      .header-widget-area {
+        width: 30%;
+
+        .custom-html-widget {
+          div {
+            color: #fff;
+            position: relative;
+            top: 5px;
+          }// ./div
+        }// ./custom-html-widget
+      }// ./header-widget-area
+    }// ./wrap
+  }// ./site-header
+
+  .nav-primary {
+    background: $head_grey;
+    border-top: 1px solid #bdbdbd;
+    padding: 0 0 0 0;
+    min-height: 22px;
+
+    .wrap {
+      margin: 0 auto;
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 1047px;
+      }
+
+      ul.genesis-nav-menu {
+        li {
+          &:hover {
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+
+            @media screen and (min-width: 960px) {
+              background: #fff;
+            }
+
+            a {
+              span {
+                @media screen and (min-width: 960px) {
+                  color: $head_grey;
+                }
+              }
+            }
+          }
+          a {
+            span {
+              color: #fff;
+              font-weight: 600;
+            }// ./span
+          }// ./a
+
+          // &:hover {
+          //   background: $head_red;
+          // }
+          // a {
+          //   span {
+          //     color: #fff;
+          //   }// ./span
+          // }// ./a
+        }// ./li
+
+        li {
+          &.nav_social_icon_twitter {
+            background: $head_red;
+            height: 21px;
+            width: 21px;
+            border-radius: 3px;
+            position: relative;
+            top: 6px;
+
+            @media screen and (min-width: 960px) {
+              top: -3px;
+            }
+
+            a {
+              padding: 0;
+              position: relative;
+              left: 5px;
+              top: 2px;
+
+              i {
+                font-size: 12px;
+              }// ./i
+            }// ./a
+          }// ./nav_social_icon_twitter
+
+          &.nav_social_icon_facebook {
+            background: $head_red;
+            height: 21px;
+            width: 21px;
+            border-radius: 3px;
+            position: relative;
+            top: -15px;
+            left: 28px;
+
+            @media screen and (min-width: 960px) {
+              top: -3px;
+              left: auto;
+            }
+
+            a {
+              padding: 0;
+              position: relative;
+              left: 7.5px;
+              top: 2.5px;
+
+              i {
+                font-size: 13px;
+              }// ./i
+            }// ./a
+          }// ./nav_social_icon_facebook
+        }// .li
+      }// ./ul.genesis-nav-menu
+    }// ./wrap
+  }// ./nav-primary
+}// ./site-container
+
+#footerCredits {
+  margin: 0 auto;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  -webkit-justify-content: center;
+
+  div {
+    font-size: 14px;
+    color: $head_red;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    a {
+      color: $head_red;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @include min_medium_large_screens() {
+    width: $max_width;
+  }
+}
+
+.home {
+  .site-inner {
+    max-width: 100%;
+  }// ./site-inner
+
+  .home_header {
+    margin: 0 auto;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+
+    div {
+      width: 100%;
+
+      @include min_medium_screens() {
+        width: 50%;
+      }
+    }
+
+    .home_head_first_half {
+      p {
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+    }// ./home_head_first_half
+
+    .home_head_second_half {
+
+      .red_filled_button {
+        width: 299px;
+        margin-bottom: 20px;
+
+        @include min_medium_screens() {
+          margin: 0 auto;
+        }
+      }
+    }//./home_head_second_half
+  }// ./home_header
+
+  .home_intro {
+    margin: 0 auto;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+
+    div {
+      width: 100%;
+
+      @include min_medium_screens() {
+        width: 48%;
+      }
+    }// ./div
+
+    .home_intro_second_half {
+      h2 {
+        margin-bottom: 9px;
+      }
+    }// ./home_intro_second_half
+  }// ./home_intro
+
+  .home_kantoren {
+    background: $light_grey;
+
+    .home_kantoren_list_p {
+      margin: 20px auto;
+      width: 100%;
+      padding-top: 50px;
+
+      @include min_medium_large_screens() {
+        width: $max_width;
+      }
+    }
+
+    .home_kantoren_list_wrap {
+      margin: 0 auto;
+      padding-bottom: 20px;
+      width: 100%;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+
+      @include min_medium_large_screens() {
+        width: $max_width;
+      }
+
+      .home_kantoren_map {
+        width: 100%;
+        margin-bottom: 30px;
+
+        @include min_medium_screens() {
+          width: 302px;
+          margin-right: 30px;
+        }
+      }// ./home_kantoren_map
+
+      .home_kantoren_list {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        height: 835px;
+        width: 100%;
+
+        @include min_small_screens() {
+          height: 550px;
+        }
+
+        @include min_medium_large_screens() {
+          height: 445px;
+          width: 60%;
+        }
+
+        > div {
+          flex: 0 30px;
+          margin-right: 75px;
+        }
+      }// ./home_kantoren_list
+    }// ./home_katoren_list_wrap
+  }// ./home_kantoren
+
+  .home_voordelen_wrap {
+    margin: 50px auto 0;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+  }// ./home_voordelen_wrap
+}// ./home
+
+.deelnemende_kantoren {
+  h2 {
+    color: $black;
+  }
+
+  td {
+    vertical-align: top;
+    width: 20%;
+  }
+
+  .deelnemende_kantoren_desktop {
+    display: none;
+
+    @include min_medium_screens() {
+      display: block;
+    }
+  }// ./deelnemende_kantoren_desktop
+
+  .deelnemende_kantoren_mobiel {
+    display: none;
+
+    @include medium_screens() {
+      display: block;
+    }
+  }// ./deelnemende_kantoren_mobiel
+}// ./deelnemende_kantoren
+
+.provinciale_kantoren_wrap {
+
+  #content {
+    margin: 0 auto;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+
+    img {
+      width: 380px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    > div {
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 48%;
+      }
+    }// ./div
+  }// ./content
+}// ./provinciale_kantoren_wrap
+
+.contact {
+  #content {
+    margin: 0 auto;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+
+    > div {
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 48%;
+      }
+
+      &:first-of-type {
+        h2 {
+          font-size: 16px;
+          color: #333;
+        }
+      }
+    }// ./div
+  }// ./content
+}// ./contact
+
+.gratis_advocaat {
+  .flex_wrap {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+
+    > div {
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 48%;
+
+        &:first-of-type {
+          margin-right: 40px;
+        }
+      }
+    }// ./div
+  }// ./flex_wrap
+}// ./gratis_advocaat
+
+.kortingsbon {
+  #content {
+    h2 {
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: 15px;
+    }
+  }// ./content
+}// ./kortingsbon
+
+.advocaat-in-de-buurt {
+  float:right;
+
+  @include small_screens() {
+    display: inline-block;
+    float: none;
+    margin-bottom: 20px;
+  }
+}
+
+.home_voordelen {
+  position: relative;
+  left: 24px;
+
+  h2 {
+    font-weight: 700;
+    font-size: 25px;
+  }
+
+  h3 {
+    font-weight: 600;
+    margin-bottom: 3px;
+
+    &:before {
+      content: "\f00c";
+      font-family: "FontAwesome";
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      /*--adjust as necessary--*/
+      color: $head_red;
+      font-size: 18px;
+      position: absolute;
+      left: -24px;
+      padding-top: 3px;
+    }// ./before
+  }// ./h3
+}// ./home_voordelen
+
+.english {
+  .flex_wrap {
+    margin: 0 auto;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+
+    > div {
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 48%;
+      }
+    }// ./div
+  }// ./flex_wrap
+}// ./english
+
+.advocaat_kantoor {
+  #content {
+    .flex_wrap {
+      margin: 0 auto;
+      width: 100%;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+
+      @include min_medium_large_screens() {
+        width: $max_width;
+      }
+
+      > div {
+        width: 100%;
+
+        @include min_medium_large_screens() {
+          width: 48%;
+        }
+      }// ./div
+    }// ./flex_wrap
+  }// ./content
+}// ./advocaat_kantoor
+
+.sitemap_inloopspreekuuradvocaat {
+  #content {
+    p {
+      margin-bottom: 0;
+    }
+  }// ./content
+}// ./sitemap_inloopspreekuuradvocaat
+
+.blog {
+  .content-sidebar-wrap {
+    margin: 0 auto;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+
+    main.content {
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 70%;
+      }
+    }// ./main.content
+
+    aside.sidebar {
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 25%;
+      }
+
+      .widget-title {
+        margin-bottom: 10px;
+      }// ./widget-title
+    }// ./aside.sidebar
+  }// ./content-sidebar-wrap
+
+  .entry-content {
+    border-bottom: 1px solid #e3e3e3;
+  }// ./entry-content
+}// ./blog
+
+.archive {
+  .entry-content {
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: 20px;
+  }
+}
+
+.single-post {
+  .content-sidebar-wrap {
+    margin: 0 auto;
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+
+    main.content {
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 70%;
+      }
+    }// ./main.content
+
+    aside.sidebar {
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 25%;
+      }
+
+      .widget-title {
+        margin-bottom: 10px;
+      }// ./widget-title
+    }// ./aside.sidebar
+  }// ./content-sidebar-wrap
+}// ./single-post
+
+.menu-toggle {
+  background: transparent;
+  margin-right: 3%;
+  color: #333 !important;
+}
+
+.nav-primary {
+  @media screen and (max-width: 959px) {
+    padding: 0 3% 3px !important;
+    position: relative;
+    top: -72px;
+    z-index: 0;
+  }
+}
+
+div.asp_m.ajaxsearchpro .probox .promagnifier .innericon svg {
+  width: 19px !important;
+}
+
+.rechtsgebieden {
+  #content {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+    .rechtsgebieden_flex {
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: 48%;
+      }
+    }// ./rechtsgebieden_flex
+  }// ./content
+}// ./rechtsgebieden
+
+.visie {
+  .site-inner {
+    max-width: 100%;
+  }// ./site-inner
+
+  #content {
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 10px;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+
+    p:nth-of-type(1) {
+     display: none;
+    }// ./p
+  }// ./content
+
+  .grey_wrap {
+    background: $light_grey;
+    padding: 40px 0 20px;
+
+    .inner_wrapper {
+      margin: 0 auto;
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: $max_width;
+      }
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  }// ./grey_wrap
+}// ./visie
+
+.red_bullets {
+  margin-left: 0 !important;
+  padding-left: 0;
+  list-style-type: none;
+
+  li {
+    position: relative;
+    margin-left: 22px;
+
+    &:before {
+      position: absolute;
+      left: -22px;
+      top: 9px;
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: linear-gradient(to right, $darker_red, $head_red, $head_red);
+    }
+  }// ./li
+}// ./red_bullets
+
+.juridisch_loket {
+  .site-inner {
+    max-width: 100%;
+  }// ./site-inner
+
+  .inner_content {
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 10px;
+
+    @include min_medium_large_screens() {
+      width: $max_width;
+    }
+
+    &:nth-of-type(1) {
+      p:nth-of-type(1) {
+        display: none;
+      }
+    }// ./p
+  }// ./content
+
+  .grey_wrap {
+    background: $light_grey;
+    padding: 40px 0 20px;
+    margin-bottom: 40px;
+
+    .inner_wrap {
+      margin: 0 auto;
+      width: 100%;
+
+      @include min_medium_large_screens() {
+        width: $max_width;
+      }
+    }
+  }// ./grey_wrap
+
+  .home_voordelen {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+
+    h3 {
+      position: relative;
+    }
+
+    .left_half {
+      margin-right: 40px;
+      width: 100%;
+
+      @include min_medium_screens() {
+        width: 40%;
+      }
+    }
+
+    .right_half {
+      width: 100%;
+
+      @include min_medium_screens() {
+        width: 40%;
+      }
+    }
+  }
+}// ./juridisch_loket
+
+.gform_wrapper .gfield_radio li label {
+  margin: 9px 0 0 8px !important;
+}
+
+#field_106_12 .gfield_required {
+  display: none;
+}
+
+.highlight_urgent {
+  color: $head_red;
+}
+
+#field_2_6 {
+  .ginput_container {
+    @media screen and (min-width: 641px) {
+      margin-top: 44px;
+    }
+
+    @media screen and (min-width: 831px) {
+      margin-top: 25px;
+    }
+  }
+}
+
+#field_2_10 {
+  .ginput_container {
+    @media screen and (min-width: 641px) {
+      margin-top: 25px;
+    }
+  }
+}

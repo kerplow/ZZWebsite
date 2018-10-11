@@ -1,0 +1,16 @@
+#eetlijst-frame {
+  overflow: hidden;
+  width: 1200px;
+  position: relative;
+  height: 500px;
+  left: -1px;
+}
+
+#eetlijst-object {
+  overflow: auto;
+  border: 5px ridge blue;
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
