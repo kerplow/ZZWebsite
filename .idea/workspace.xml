@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ec3a6c5-252c-46ca-8627-db9867ae9b77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/eetlijst_loader.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ZZW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ZZW.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/eetlijst.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/eetlijst.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/noteboard/note.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/noteboard/note.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/pages_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/pages_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/notes/_show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/notes/_show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/pages/home.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/pages/home.html.erb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -99,16 +88,16 @@
         <counts>
           <entry key="Gemfile" value="30" />
           <entry key="erb" value="1520" />
-          <entry key="rb" value="1647" />
-          <entry key="scss" value="520" />
+          <entry key="rb" value="1650" />
+          <entry key="scss" value="539" />
           <entry key="yml" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="RHTML" value="1520" />
-          <entry key="Ruby" value="1677" />
-          <entry key="SCSS" value="520" />
+          <entry key="Ruby" value="1680" />
+          <entry key="SCSS" value="539" />
           <entry key="YAML" value="10" />
         </counts>
       </usages-collector>
@@ -117,7 +106,7 @@
           <entry key="Gemfile" value="3" />
           <entry key="erb" value="23" />
           <entry key="lock" value="1" />
-          <entry key="rb" value="19" />
+          <entry key="rb" value="22" />
           <entry key="scss" value="15" />
           <entry key="yml" value="1" />
         </counts>
@@ -126,7 +115,7 @@
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="RHTML" value="23" />
-          <entry key="Ruby" value="22" />
+          <entry key="Ruby" value="25" />
           <entry key="SCSS" value="15" />
           <entry key="YAML" value="1" />
         </counts>
@@ -168,15 +157,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lib/eetlijst_loader.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="645">
-                  <caret line="43" column="7" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/pages_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="150">
@@ -206,31 +186,26 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/noteboard/note.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="15">
-                  <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+                <state relative-caret-position="30">
+                  <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/custom.scss">
+            <entry file="file://$PROJECT_DIR$/app/models/planner_event.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="12285">
-                  <caret line="837" column="41" selection-start-line="837" selection-start-column="41" selection-end-line="837" selection-end-column="41" />
-                  <folding>
-                    <element signature="e#14445#14477#0" />
-                    <element signature="e#14496#14595#0" />
-                    <element signature="e#14632#14808#0" />
-                  </folding>
+                <state>
+                  <caret column="6" selection-start-column="6" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
+            <entry file="file://$PROJECT_DIR$/db/migrate/20180831133305_create_planner_events.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+                <state relative-caret-position="75">
+                  <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
@@ -266,8 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/user_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/events_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/calendar_event.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/controllers/calendar_events_controller.rb" />
@@ -316,6 +289,8 @@
         <option value="$PROJECT_DIR$/app/views/pages/home.html.erb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/views/notes/_show.html.erb" />
+        <option value="$PROJECT_DIR$/db/migrate/20180831133305_create_planner_events.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20181024203503_add_url_to_plannerevent.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/noteboard/note.scss" />
       </list>
     </option>
@@ -353,27 +328,6 @@
               <item name="ZZW" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZZW" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZZW" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZZW" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZZW" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZZW" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
-              <item name="noteboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZZW" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZZW" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -401,6 +355,24 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="notes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ZZW" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZZW" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="planner_events" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ZZW" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZZW" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ZZW" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZZW" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="migrate" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ZZW" type="b2602c69:ProjectViewProjectNode" />
@@ -571,12 +543,12 @@
       <workItem from="1538074036512" duration="11586000" />
       <workItem from="1539287043987" duration="1631000" />
       <workItem from="1540064136897" duration="2697000" />
-      <workItem from="1540408590039" duration="2562000" />
+      <workItem from="1540408590039" duration="3745000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83276000" />
+    <option name="totallyTimeSpent" value="84459000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -633,27 +605,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/calendar/index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/planner_event.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/notes_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/planner_events_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -948,10 +899,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/planner_event.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20181024203503_add_url_to_plannerevent.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="45" lean-forward="true" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180831133305_create_planner_events.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/noteboard/note.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        <state relative-caret-position="30">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
         </state>
       </provider>
     </entry>
