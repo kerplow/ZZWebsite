@@ -10,15 +10,32 @@
 <div class="row">
   <div id="cleaning-week">
     <h2>This week's cleaning roster:</h2>
-    <div id="cleaning-roster">
-      <table>
+    <div id="cleaning-roster" class="align-content-center">
+      <table class="table">
         <tr>
-          <th>Kitchen</th>
-          <th>Trash</th>
-          <th>Hallway downstairs</th>
-          <th>Hallway upstairs</th>
+          <th scope="col">week</th>
+          <th scope="col">Kitchen</th>
+          <th scope="col">Trash</th>
+          <th scope="col">Hallway downstairs</th>
+          <th scope="col">Hallway upstairs</th>
+        </tr>
+        <% day = Date.today.cwday %>
+        <tr>
+          <th scope="row"><%= "  #{(7+day).days.ago.strftime('%m/%d')}-#{(7-day).days.ago.strftime('%m/%d')}  " %></th>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
         </tr>
         <tr>
+          <th scope="row"><%= "--#{day.days.ago.strftime('%m/%d')}-#{(7-day).days.from_now.strftime('%m/%d')}--" %></th>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+        <tr>
+          <th scope="row"><%= "  #{(7-day).days.from_now.strftime('%m/%d')}-#{(7+day).days.from_now.strftime('%m/%d')}  " %></th>
           <td>test</td>
           <td>test</td>
           <td>test</td>
@@ -75,9 +92,10 @@
   </div>
 </div>
 <div class="row">
+  <%#= @agent.content %>
   <div id="eetlijst-frame">
-    <object id='eetlijst-object' type="text/html" data="http://www.eetlijst.nl" height="600px" style="overflow:auto;border:5px ridge blue">
-    </object>
+    <iframe id='eetlijst-object' src="http://www.eetlijst.nl" >
+    </iframe>
   </div>
 </div>
 <% content_for :document_ready do %>
@@ -90,17 +108,8 @@
   event.preventDefault();
   $('#new-note-form').replaceWith('<%= j render partial: "notes/form", locals: {note: Note.new} %>');
   });
-  $('#eetlijst-frame').load("http://www.eetlijst.nl body")
-  function autoFill() {
-    document.getElementById('input1').value = "My Text Input";
-    document.getElementById('input2').value = "Dropdown2";
-
-    var radioElements = document.getElementsByName("input3");
-
-    for (var i=0; i<radioElements.length; i++) {
-    if (radioElements[i].getAttribute('value') == 'Radio3') {
-        radioElements[i].checked = true;
-      }
-    }
-  }
+  $( "input[name*='login']" ).val( "zzweten" );
+  $( "input[name*='pass']" ).val( "ikbenjan" );
+  $( "input[name*='dologin']" ).trigger("click");
+  console.log("ok")
 <% end %>

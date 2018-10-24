@@ -1,3 +1,5 @@
+require 'eetlijst_loader'
+
 class PagesController < ApplicationController
   before_action :authenticate_user!, except: [:home]
 
@@ -6,6 +8,7 @@ class PagesController < ApplicationController
     @events = PlannerEvent.all
     @notes = Note.all
     @event = PlannerEvent.new
+    @agent = EetlijstLoader::Page.get_agent
   end
 
   def tikkie
