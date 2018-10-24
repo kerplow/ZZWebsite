@@ -94,8 +94,8 @@
 <div class="row">
   <%#= @agent.content %>
   <div id="eetlijst-frame">
-    <iframe id='eetlijst-object' src="http://www.eetlijst.nl" >
-    </iframe>
+    <object type='text/html' id='eetlijst-object' data="https://www.eetlijst.nl" >
+    </object>
   </div>
 </div>
 <% content_for :document_ready do %>
