@@ -3,7 +3,7 @@
 </div>
 <p class="text-center">You'll never snot alone</p>
 <% if @user %>
-  <%= @user %>
+  <%= @user.inspect %>
 <% else %>
   <p>not signed in yet</p>
 <% end %>
@@ -74,7 +74,7 @@
     </div>
     <div class="row">
       <div class="center" id="calendar-div">
-        <%= month_calendar(events: @events, html: { class: "events" }) do |date, events| %>
+        <%= month_calendar(events: @events, html: { class: "events noteable" }) do |date, events| %>
           <%= date.day %>
 
           <% events.each do |event| %>

@@ -1,23 +1,63 @@
-<h1>Pages#tikkie</h1>
 <p>Find me in app/views/pages/tikkie.html.erb</p>
 <div class="row">
-  <div class="col-xs-12">
-    <ul>
-    <% @users.innings.each do |inning|  %>
-      <h3>Van:</h3>
+  <div class="col-xs-12 col-md-10 offset-md-1">
+    <table class="table table-hover">
+      <thead>
+      <h4>Innings</h4>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">From</th>
+        <th scope="col">Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% current_user.innings.each do |debt| %>
+          <tr>
+            <th scope="row">1</th>
+            <td><%= debt.inner %></td>
+            <td><%= debt.amount %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-        <li><%= inning.amount %>euro van: <%= inning.inner.name %></li>
+    <table class="table table-hover">
+      <thead>
+      <h4>Debts</h4>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">To</th>
+        <th scope="col">Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <% current_user.innings.each do |debt| %>
+          <tr>
+            <th scope="row">1</th>
+            <td><%= debt.debtor %></td>
+            <td><%= debt.amount %></td>
+          </tr>
+        <% end %>
+      </tr>
+      </tbody>
+    </table>
+      <% @users.each do |user| %>
+          <% user.innings.each do |inning| %>
+            <h3>Van:</h3>
 
-    <% end %>
-    </ul>
+            <li><%= inning.amount %>euro van: <%= inning.inner.name %></li>
+        <% end %>
+      <% end %>
   </div>
   <div class="col-xs-6">
     <ul>
-      <% @users.debts.each do |debt|  %>
+      <% @users.each do |user| %>
+        <% user.debts.each do |debt| %>
         <h3>aan:</h3>
 
         <li><%= debt.amount %>euro van: <%= debt.debtor.name %></li>
-
+        <% end %>
       <% end %>
     </ul>
   </div>

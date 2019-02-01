@@ -14,6 +14,14 @@ class NotesController < ApplicationController
     end
   end
 
+  def new
+    @not = Note.new
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def note_params

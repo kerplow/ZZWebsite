@@ -1,4 +1,9 @@
 .note {
+  background-image: image_url('paper-note.jpg');
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
   padding: 10px;
   margin: 10px 0px;
 }

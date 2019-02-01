@@ -1,4 +1,4 @@
-<div class="note">
+<div class="note noteable" id="<%= "note_#{note.id}" %>>">
   <div class="note-head">
     <H4 class="note-title">
       <%= note.name %>
@@ -8,5 +8,14 @@
     <p class="note-contents">
       <%= note.contents %>
     </p>
+    <% if note&.user == current_user %>
+      <div class="edit-options">
+        <%= link_to "edit note", method: :put, remote: true, id: "new-note-button-#{note.id}", class:"edit-btn", type: "button" %>
+        <%= link_to "delete note", method: :put, remote: true, id: "delete-note-button-#{note.id}", class:"delete-btn", type: "button" %>
+        <% if note&.casheable? %>
+          <%= link_to "accept offer?", method: :post, remote: true, id: '', class: "casheable-accept" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

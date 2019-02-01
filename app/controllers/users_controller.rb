@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.save!
+
+    redirect_to root_path
   end
 
   def edit
@@ -34,6 +36,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:email, :password).permit(:first_name, :last_name, :nickname, :bio, :room, :phone_number, :email)
+    params.require(:user).permit(:first_name, :last_name, :nickname, :bio, :room, :phone_number, :email)
   end
 end
