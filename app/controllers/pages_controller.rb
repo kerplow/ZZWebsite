@@ -2,14 +2,13 @@ require 'eetlijst_loader'
 
 class PagesController < ApplicationController
   before_action :authenticate_user!, except: [:home]
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:home]
 
   def home
     @user = current_user
     @events = PlannerEvent.all
     @notes = Note.all
-    @event = PlannerEvent.new
-    @agent = EetlijstLoader::Page.get_agent
+    # @agent = EetlijstLoader::Page.get_agent
   end
 
   def tikkie
@@ -21,4 +20,5 @@ class PagesController < ApplicationController
     @user = current_user
     @lists = policy_scope(List)
   end
+
 end

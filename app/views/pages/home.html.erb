@@ -100,16 +100,21 @@
 <!--</div>-->
 <% content_for :document_ready do %>
   console.log("ready");
+
   $('#new-event-button').click( function(event) {
   event.preventDefault();
   $('#new-event-form').replaceWith('<%= j render partial: "planner_events/form", locals: {event: PlannerEvent.new} %>');
   });
+
   $('#new-note-button').click( function(event) {
   event.preventDefault();
   $('#new-note-form').replaceWith('<%= j render partial: "notes/form", locals: {note: Note.new} %>');
   });
-  $( "input[name*='login']" ).val( "zzweten" );
-  $( "input[name*='pass']" ).val( "ikbenjan" );
-  $( "input[name*='dologin']" ).trigger("click");
+
+  $('#add-pricetag-note').click( function(event) {
+  event.preventDefault();
+  $('#new-note-form').replaceWith('<%= j render partial: "notes/form", locals: {note: Note.new} %>');
+  });
+
   console.log("ok")
 <% end %>

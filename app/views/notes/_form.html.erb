@@ -1,5 +1,19 @@
 <%= simple_form_for(note, remote: true, authenticity_token: true) do |f| %>
   <%= f.input "name" %>
   <%= f.input "contents" %>
+  <%= f.input :has_pricetag %>
+  <%= render partial: 'pricetags/form', locals: { f: f } %>
   <%= f.button :submit %>
 <% end %>
+<script type="text/javascript">
+  $('#note_has_pricetag').change(function(){
+    if(this.checked) {
+          $('#pricetag-form').show();
+        console.log('on')
+      } else {
+          $('#pricetag-form').hide('slow');
+        console.log('off')
+      };
+  });
+  console.log('test')
+</script>

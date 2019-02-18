@@ -1,0 +1,15 @@
+function refreshForm(id, innerHTML) {
+    const newPricetagForm = $('.pricetag-form');
+    newPricetagForm.replaceWith(innerHTML);
+}
+
+function addPricetag(id, pricetagHTML) {
+    const listing = $('#<%= record.class.name  %>-id');
+    listing.append(pricetagHTML);
+}
+
+<% if record.errors.any? %>
+  refreshForm(<%= record.id %>,'<%= j render partial: "pricetags/form", pricetag: record.pricetag %>');
+<% else %>
+  addTag(<%= record.id %>, '<%= j render partial: "pricetags/show", locals: {pricetag: record.pricetag} %>');
+<% end %>

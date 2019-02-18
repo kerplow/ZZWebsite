@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190201204634) do
+ActiveRecord::Schema.define(version: 20190218155128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,17 +38,19 @@ ActiveRecord::Schema.define(version: 20190201204634) do
     t.datetime "updated_at",                       null: false
     t.boolean  "private",          default: false
     t.string   "allowed_voters"
+    t.boolean  "has_pricetag",     default: false
     t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
   end
 
   create_table "notes", force: :cascade do |t|
     t.string   "name"
     t.text     "contents"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "parent_type"
     t.integer  "parent_id"
     t.integer  "user_id"
+    t.boolean  "has_pricetag", default: false
     t.index ["parent_type", "parent_id"], name: "index_notes_on_parent_type_and_parent_id", using: :btree
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
@@ -58,9 +60,10 @@ ActiveRecord::Schema.define(version: 20190201204634) do
     t.integer  "user_id"
     t.integer  "list_id"
     t.integer  "votes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "voters"
+    t.boolean  "has_pricetag", default: false
     t.index ["list_id"], name: "index_options_on_list_id", using: :btree
     t.index ["user_id"], name: "index_options_on_user_id", using: :btree
   end
@@ -70,9 +73,25 @@ ActiveRecord::Schema.define(version: 20190201204634) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "url"
+    t.boolean  "has_pricetag", default: false
+  end
+
+  create_table "pricetags", force: :cascade do |t|
+    t.float    "price"
+    t.integer  "user_id"
+    t.integer  "operation"
+    t.integer  "state",        default: 0
+    t.integer  "type",         default: 0
+    t.string   "listing_type"
+    t.integer  "listing_id"
+    t.text     "description"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["listing_type", "listing_id"], name: "index_pricetags_on_listing_type_and_listing_id", using: :btree
+    t.index ["user_id"], name: "index_pricetags_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,4 +129,5 @@ ActiveRecord::Schema.define(version: 20190201204634) do
   add_foreign_key "notes", "users"
   add_foreign_key "options", "lists"
   add_foreign_key "options", "users"
+  add_foreign_key "pricetags", "users"
 end

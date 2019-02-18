@@ -5,14 +5,4 @@ class List < ApplicationRecord
   validates :title, presence: true
 
   serialize :allowed_voters, Array
-
-  def initialize(params)
-    if @casheable
-      include 'casheable'
-
-      has_one :debt
-    end
-
-    super params
-  end
 end

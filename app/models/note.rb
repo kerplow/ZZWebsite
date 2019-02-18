@@ -3,7 +3,5 @@ class Note < ApplicationRecord
   has_many :comments, class_name: "Note", foreign_key: 'parent_id'
   belongs_to :user, optional: true
 
-  def casheable?
-    false
-  end
+  include Tradeable
 end
