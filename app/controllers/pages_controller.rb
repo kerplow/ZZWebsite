@@ -2,7 +2,6 @@ require 'eetlijst_loader'
 
 class PagesController < ApplicationController
   before_action :authenticate_user!, except: [:home]
-  before_filter :authenticate_user!, except: [:home]
 
   def home
     @user = current_user

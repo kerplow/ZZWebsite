@@ -83,13 +83,13 @@ ActiveRecord::Schema.define(version: 20190218155128) do
     t.float    "price"
     t.integer  "user_id"
     t.integer  "operation"
-    t.integer  "state",        default: 0
-    t.integer  "type",         default: 0
+    t.integer  "state",            default: 0
+    t.integer  "transaction_type", default: 0
     t.string   "listing_type"
     t.integer  "listing_id"
     t.text     "description"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["listing_type", "listing_id"], name: "index_pricetags_on_listing_type_and_listing_id", using: :btree
     t.index ["user_id"], name: "index_pricetags_on_user_id", using: :btree
   end

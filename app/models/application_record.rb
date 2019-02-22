@@ -5,19 +5,21 @@ class ApplicationRecord < ActiveRecord::Base
     false
   end
 
-  # after_initialize do
-  #   if self&.tradeable?
-  #     self.extend Tradeable
-  #   end
-  # end
+  after_initialize do
+    if self.attributes.include?('has_pricetag') and self.has_pricetag?
+      self.extend Tradeable
+    end
+    self
+  end
 
-  # def self.tradeable(args)
-  #   byebug
-  #   if self.column_names.include? 'has_pricetag'
-  #     pricetag = Pricetag.new(args[:pricetag])
-  #     self.send('include', Tradeable).new(args.merge({pricetag: pricetag}))
-  #   else
-  #     raise StandardError.new('this model is not tradeable')
-  #   end
-  # end
+  def self.with_pricetag(args = {})
+    if self.column_names.include? 'has_pricetag'
+      pricetag = Pricetag.new(args.delete(:pricetag) || args.delete(:pricetag_attributes))
+      record = self.new(args.merge({ has_pricetag: true }))
+      record.pricetag = pricetag
+      record
+    else
+      raise StandardError.new('this model is not tradeable')
+    end
+  end
 end

@@ -4,14 +4,4 @@ class Debt < ApplicationRecord
   belongs_to :cause, polymorphic: true, optional: true
 
   validates :amount, presence: true, numericality: true
-
-  def propose
-
-  end
-
-  def collect
-    if @accepted
-
-    end
-  end
 end

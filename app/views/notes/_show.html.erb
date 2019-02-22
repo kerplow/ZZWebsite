@@ -13,8 +13,10 @@
     <% end %>
     <% if note&.user == current_user %>
       <div class="edit-options">
-        <%= link_to "edit note", method: :put, remote: true, id: "new-note-button-#{note.id}", class:"edit-btn", type: "button" %>
-        <%= link_to "delete note", method: :put, remote: true, id: "delete-note-button-#{note.id}", class:"delete-btn", type: "button" %>
+        <%= link_to 'Destroy', note_path(note), method: :delete, :remote => true, :class => 'delete_note' %>
+        <%= link_to 'Destroy v2', { controller: "notes", action: "destroy", id: note }, :remote => true, :class => 'delete_note' %>
+        <%= link_to "edit note", method: :put, remote: true, id: "new-note-button-#{note.id}", class:"edit-btn" %>
+        <%= link_to "delete note", method: :delete, remote: true, id: "delete-note-button-#{note.id}", class:"delete-btn", type: "button" %>
       </div>
     <% end %>
   </div>
