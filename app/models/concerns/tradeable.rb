@@ -9,5 +9,7 @@ module Tradeable
     def tradeable?
       true
     end
+
+
   end
 end
