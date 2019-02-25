@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'votes_controller/create'
 
-  resources :planner_events, only: [:create, :update, :destroy]
+  resources :planner_events
 
-  resources :notes, only: [:create, :update, :destroy]
+  resources :notes
 
   resources :user, only: [:show, :edit, :update, :destroy]
 

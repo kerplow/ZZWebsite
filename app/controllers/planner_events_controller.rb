@@ -1,17 +1,16 @@
 class PlannerEventsController < ApplicationController
+  before_action :load_and_authorize_event, only: [:show, :edit, :update, :destroy]
   def new
 
   end
 
   def create
     @event = PlannerEvent.new(event_params)
-    if @event.save
-      respond_to do |format|
+    respond_to do |format|
+      if @event.save
         format.html { redirect_to root_path }
         format.js  # <-- will render `app/views/reviews/create.js.erb`
-      end
-    else
-      respond_to do |format|
+      else
         format.html { render 'pages/home' }
         format.js  # <-- idem
       end
@@ -19,6 +18,15 @@ class PlannerEventsController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @event.update(event_params)
+        format.html { redirect_to root_path }
+        format.js
+      else
+        format.html { redirect_to root_path }
+        format.js
+      end
+    end
   end
 
   def edit
@@ -27,13 +35,24 @@ class PlannerEventsController < ApplicationController
   def show
   end
 
-  def index
-  end
-
   def destroy
+    respond_to do |format|
+      if @event.destroy
+        format.html { redirect_to root_path }
+        format.js
+      else
+        format.html { redirect_to root_path }
+        format.js
+      end
+    end
   end
 
   private
+
+  def load_and_authorize_event
+    @event = PlannerEvent.find(params[:id])
+    authorize @event
+  end
 
   def event_params
     params.require(:planner_event).permit(:name, :description, :start_time, :end_time)

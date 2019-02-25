@@ -1,6 +1,6 @@
 class PricetagsController < ApplicationController
   def accept
-    load_pricetag
+    load_and_authorize_pricetag
 
     case pricetag.transaction_type
     when :direct_sale
@@ -24,7 +24,7 @@ class PricetagsController < ApplicationController
   end
 
   def offer
-    load_pricetag
+    load_and_authorize_pricetag
 
     raise StandardError.new("You can't accept your own offers") if pricetag.user == current_user
     raise StandardError.new("Offer no longer accessible") unless pricetag.listed?
@@ -47,8 +47,9 @@ class PricetagsController < ApplicationController
   end
 
   def destroy
-    load_pricetag
-    pricetag.destroy unless pricetag.completed?
+    load_and_authorize_pricetag
+
+    pricetag.destroy
     respond_to do |format|
       format.html { redirect_to :back }
       format.js
@@ -57,7 +58,7 @@ class PricetagsController < ApplicationController
 
   private
 
-  attr_accessor :pricetag, :offer
+  attr_accessor :pricetag, :offer, :offers
 
   def accept_direct_sale
     offer = pricetag.offers.find(offer_params[:id])
@@ -75,19 +76,23 @@ class PricetagsController < ApplicationController
   end
 
   def accept_group_offer
-
+    offers = pricetag.offers
+    amount = pricetag.price / offers.count
+    ActiveRecord::Base.transaction do
+      offers.each do |offer|
+        create_debt(amount)
+      end
+    end
   end
 
-  def create_debt
-    trade_params = pricetag.sell? ? { from: offer.user, to: pricetag.user, amount: offer.price } : { to: offer.user, from: pricetag.user, amount: offer.price }
+  def create_debt(amount = offer.price)
+    trade_params = pricetag.sell? ? { from: offer.user, to: pricetag.user, amount: amount } : { to: offer.user, from: pricetag.user, amount: amount }
     debt = Debt.new(trade_params)
     if debt.save
       pricetag.state = :completed
       pricetag.save
-      offer.sate = :completed
+      offer.state = :completed
       offer.save
-    else
-      false
     end
   end
 
@@ -96,8 +101,9 @@ class PricetagsController < ApplicationController
     offers.update_all(status: :cancelled)
   end
 
-  def load_pricetag
+  def load_and_authorize_pricetag
     @pricetag = Pricetag.find(params[:id])
+    authorize @pricetag
   end
 
   def offer_params
@@ -107,5 +113,4 @@ class PricetagsController < ApplicationController
   def pricetag_params
     params.require(:pricetag).permit(:id, :amount)
   end
-
 end

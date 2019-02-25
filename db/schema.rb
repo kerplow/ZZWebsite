@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190218155128) do
+ActiveRecord::Schema.define(version: 20190225180713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20190218155128) do
     t.boolean  "accepted",       default: false
     t.string   "casheable_type"
     t.integer  "casheable_id"
+    t.boolean  "collected"
     t.index ["casheable_type", "casheable_id"], name: "index_debts_on_casheable_type_and_casheable_id", using: :btree
   end
 
@@ -31,20 +32,21 @@ ActiveRecord::Schema.define(version: 20190218155128) do
     t.string   "title"
     t.integer  "user_id"
     t.text     "description"
-    t.boolean  "is_poll?"
-    t.boolean  "is_public?"
-    t.boolean  "allow_anonymous?"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.boolean  "private",          default: false
+    t.boolean  "poll"
+    t.boolean  "is_public",       default: true
+    t.boolean  "allow_anonymous"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "private",         default: false
     t.string   "allowed_voters"
-    t.boolean  "has_pricetag",     default: false
+    t.boolean  "has_pricetag",    default: false
     t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
   end
 
   create_table "notes", force: :cascade do |t|
     t.string   "name"
     t.text     "contents"
+    t.boolean  "is_public",    default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "parent_type"
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(version: 20190218155128) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.text     "description"
+    t.boolean  "is_public",    default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "url"

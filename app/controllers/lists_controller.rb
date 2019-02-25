@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_and_authorize_list, only: [:create, :update, :destroy]
+  before_action :set_and_authorize_list, only: [:show, :create, :update, :destroy]
 
   # POST /lists
   # POST /lists.json

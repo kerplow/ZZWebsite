@@ -5,6 +5,7 @@ class CreatePlannerEvents < ActiveRecord::Migration[5.0]
       t.datetime :start_time
       t.datetime :end_time
       t.text :description
+      t.boolean :is_public, default: true
 
       t.timestamps
     end

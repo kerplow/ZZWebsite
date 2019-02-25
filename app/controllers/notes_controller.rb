@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:destroy, :update]
+  include Trader
+  before_action :load_and_authorize_note, only: [:show, :destroy, :update]
 
   def new
     @note = Note.new
@@ -9,21 +10,25 @@ class NotesController < ApplicationController
     end
   end
 
+  def show
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     if params[:note][:has_pricetag] == '1'
-      @note = Note.with_pricetag(note_params)
+      @note = Note.with_pricetag(note_params.merge(pricetag_params))
     else
       @note = Note.new(note_params)
     end
 
-    if @note.save
-      respond_to do |format|
+    respond_to do |format|
+      if @note.save
         format.html { redirect_to root_path }
         format.json
         format.js { flash[:success] = "new note made" }
-      end
-    else
-      respond_to do |format|
+      else
         format.html { redirect_to root_path }
         format.json
         format.js
@@ -32,14 +37,12 @@ class NotesController < ApplicationController
   end
 
   def update
-    if (!note.user or @note&.user == current_user) and @note.update(note_params)
-      respond_to do |format|
+    respond_to do |format|
+      if @note.update(note_params)
         format.html { redirect_to root_path }
         format.json
         format.js { flash[:success] = "note updated" }
-      end
-    else
-      respond_to do |format|
+      else
         format.html { redirect_to root_path }
         format.json
         format.js
@@ -49,8 +52,7 @@ class NotesController < ApplicationController
 
   def destroy
     respond_to do |format|
-      byebug
-      if (current_user.admin? or @note&.user == current_user) and !!@note.destroy
+      if @note.destroy
         format.html { redirect_to root_path }
         format.js
       else
@@ -62,16 +64,12 @@ class NotesController < ApplicationController
 
   private
 
-  def set_note
-      @note = Note.find(params[:id])
-    end
+  def load_and_authorize_note
+    @note = Note.find(params[:id])
+    authorize @note
+  end
 
   def note_params
-    if  params[:note][:has_pricetag] == '1'
-      # params.fetch(:note, {}).permit!
-      params.require(:note).permit(:id, :name, :contents, :has_pricetag, pricetag: [:operation, :price, :type])
-    else
-      params.require(:note).permit(:id, :name, :contents, :has_pricetag)
-    end
+    params.require(:note).permit(:id, :name, :contents, :has_pricetag)
   end
 end

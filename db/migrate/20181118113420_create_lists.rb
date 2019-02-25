@@ -4,9 +4,9 @@ class CreateLists < ActiveRecord::Migration[5.0]
       t.string :title
       t.references :user, foreign_key: true
       t.text :description
-      t.boolean :is_poll?
-      t.boolean :is_public?
-      t.boolean :allow_anonymous?
+      t.boolean :poll
+      t.boolean :is_public, default: true
+      t.boolean :allow_anonymous
 
       t.timestamps
     end

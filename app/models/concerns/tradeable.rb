@@ -10,6 +10,5 @@ module Tradeable
       true
     end
 
-
   end
 end
