@@ -1,13 +1,14 @@
-class Tradeable < Module
-  def initialize
-    byebug
-    base.class.has_one :pricetag, as: :listing, inverse_of: 'listing'
-    base.class.accepts_nested_attributes_for :pricetag
-    base.class.validates_presence_of :pricetag
-  end
+module Tradeable
+  extend ActiveSupport::Concern
+
+  included do
+    base.class_eval do
+      has_one :pricetag, dependent: :destroy
+      has_many :offers, through: :pricetag, class_name: 'Pricetag'
+    end
 
     def tradeable?
       true
     end
-
+  end
 end

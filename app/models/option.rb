@@ -1,4 +1,6 @@
 class Option < ApplicationRecord
+  include 'Tradeable'
+
   belongs_to :user
   belongs_to :list
 
