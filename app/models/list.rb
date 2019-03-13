@@ -4,5 +4,9 @@ class List < ApplicationRecord
 
   validates :title, presence: true
 
+  def winner
+   options.order(votes: :desc).first
+  end
+
   serialize :allowed_voters, Array
 end

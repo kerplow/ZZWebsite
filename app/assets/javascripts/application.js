@@ -11,7 +11,12 @@
 // about supported directives.
 //
 //= require jquery3
+//= require jquery
+//= require jquery_ujs
 //= require popper
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= stub 'pages/home'
+//= stub 'pages/tikkie'
+//= stub 'pages/lists'

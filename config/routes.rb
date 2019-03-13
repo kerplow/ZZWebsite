@@ -7,6 +7,13 @@ Rails.application.routes.draw do
 
   resources :user, only: [:show, :edit, :update, :destroy]
 
+  resources :pricetags, only: [:destroy] do
+    member do
+      put 'offer'
+      put 'accept'
+    end
+  end
+
   get '/tikkie', to: "pages#tikkie"
 
   get '/about', to: 'pages#about'

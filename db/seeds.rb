@@ -44,6 +44,7 @@ end
 
 # default lists:
 list = List.first_or_create(title: 'Subtitle', user: chuck)
+list.options << Option.new("It's a pirates life for me", votes: 1)
 list.save
 
 list = List.first_or_create(title: 'Suggestions', user: chuck)

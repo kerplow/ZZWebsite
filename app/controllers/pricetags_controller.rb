@@ -107,10 +107,9 @@ class PricetagsController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:id, :price)
-  end
+    params.require(:offer).permit(:id)
 
   def pricetag_params
-    params.require(:pricetag).permit(:id, :amount)
+    params.require(:pricetag).permit(:price)
   end
 end

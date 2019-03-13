@@ -5,16 +5,17 @@ class ApplicationRecord < ActiveRecord::Base
     false
   end
 
-  after_initialize do
-    if self.attributes.include?('has_pricetag') and self.has_pricetag?
-      self.extend Tradeable
+  after_initialize do |record|
+    if record.attributes.include?('has_pricetag') and record.has_pricetag?
+      record.extend Tradeable
     end
-    self
+    record
   end
 
   def self.with_pricetag(args = {})
     if self.column_names.include? 'has_pricetag'
       pricetag = Pricetag.new(args.delete(:pricetag) || args.delete(:pricetag_attributes))
+      pricetag.user = args[:user]
       record = self.new(args.merge({ has_pricetag: true }))
       record.pricetag = pricetag
       record
