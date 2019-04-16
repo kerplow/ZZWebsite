@@ -2,7 +2,7 @@
 <div class="title text-center">
   <h1 class="text-center" id="title">ZZW</h1>
 </div>
-<p class="text-center"><%= List.find_by(title: 'Subtitle').winner %></p>
+<p class="text-center"><%= List.find_by(title: 'Subtitle')&.poll&.winner || "it's the pirate's life for me" %></p>
 <% if @user %>
   <%= @user.inspect %>
 <% else %>

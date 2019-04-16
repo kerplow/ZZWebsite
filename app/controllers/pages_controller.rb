@@ -2,6 +2,7 @@ require 'eetlijst_loader'
 
 class PagesController < ApplicationController
   before_action :authenticate_user!, except: [:home]
+  after_action :verify_policy_scoped
 
   def home
     require 'csv'

@@ -3,3 +3,9 @@ development:
   encoding: unicode
   database: db/development
   pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: db/test
+  pool: 5
