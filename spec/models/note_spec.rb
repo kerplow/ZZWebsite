@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-Rspec.describe Note type: :model do
+Rspec.describe Note, type: :model do
 
   context 'Notes' do
 

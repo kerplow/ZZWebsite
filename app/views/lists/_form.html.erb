@@ -10,3 +10,14 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+
+<div class="row" id="new_note">
+  <%= simple_form_for(@note, remote: true, authenticity_token: true) do |f| %>
+    <%= f.input "name" %>
+    <%= f.input "contents" %>
+    <%= f.label 'pricetag?' %>
+    <%= f.input :has_pricetag, as: :boolean, html: { onclick: 'togglePricetag()' } %>
+    <%= render partial: 'pricetags/form', locals: { f: f } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

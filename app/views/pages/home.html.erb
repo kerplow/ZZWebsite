@@ -1,120 +1,18 @@
+<%= javascript_include_tag "pages/home.js" %>
 <div class="title text-center">
   <h1 class="text-center" id="title">ZZW</h1>
 </div>
-<p class="text-center">You'll never snot alone</p>
+<p class="text-center"><%= List.find_by(title: 'Subtitle')&.poll&.winner || "it's the pirate's life for me" %></p>
 <% if @user %>
   <%= @user.inspect %>
 <% else %>
   <p>not signed in yet</p>
 <% end %>
+<%= render partial: 'pages/home/opruimlijst', locals: { cleaning_week: @cleaning_week } %>
 <div class="row">
-  <div id="cleaning-week">
-    <h2>This week's cleaning roster:</h2>
-    <div id="cleaning-roster" class="align-content-center">
-      <table class="table">
-        <tr>
-          <th scope="col">week</th>
-          <th scope="col">Kitchen</th>
-          <th scope="col">Trash</th>
-          <th scope="col">Hallway downstairs</th>
-          <th scope="col">Hallway upstairs</th>
-        </tr>
-        <% day = Date.today.cwday %>
-        <tr>
-          <th scope="row"><%= "  #{(7+day).days.ago.strftime('%m/%d')}-#{(7-day).days.ago.strftime('%m/%d')}  " %></th>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-        <tr>
-          <th scope="row"><%= "--#{day.days.ago.strftime('%m/%d')}-#{(7-day).days.from_now.strftime('%m/%d')}--" %></th>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-        <tr>
-          <th scope="row"><%= "  #{(7-day).days.from_now.strftime('%m/%d')}-#{(7+day).days.from_now.strftime('%m/%d')}  " %></th>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-      </table>
-    </div>
-  </div>
+  <%= render partial: 'pages/home/notitiebord' %>
+  <%= render partial: 'pages/home/planner' %>
 </div>
-<div class="row">
-
-  <div class="noteboard col-md-4">
-    <h3 class="text-center noteboard-header">
-      Notifications
-    </h3>
-    <div class="well">
-      <% @notes.each do |note| %>
-        <%= render partial: "notes/show", locals: {note: note} %>
-      <% end %>
-      <div class="row" id="new-note-form">
-        <%= button_tag "new note", id: "new-note-button", class:"btn", type: "button" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="planner col-md-8">
-    <div class="row">
-      <div class="text-center" id="calendar-title"><h4 class="text-center">
-        What's up this <select class="text-center" name="calendar-mode" id="calendar-mode">
-        <option value="month">Month</option>
-        <option value="week">Week</option>
-        <option value="day">Day</option>
-        </select>
-      </h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="center" id="calendar-div">
-        <%= month_calendar(events: @events, html: { class: "events noteable" }) do |date, events| %>
-          <%= date.day %>
-
-          <% events.each do |event| %>
-            <div class="event #{event.type}">
-              <%= event.name %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-    <div class="row" id="new-event-form">
-      <%= button_tag( "new event", id: "new-event-button", type: "button", class:"btn" ) %>
-    </div>
-
-  </div>
-</div>
-<!--<div class="row">-->
-  <%#= @agent.content %>
-<!--  <div id="eetlijst-frame">-->
-<!--    <object type='text/html' id='eetlijst-object' data="http://www.eetlijst.nl" >-->
-<!--    </object>-->
-<!--  </div>-->
-<!--</div>-->
+<!-- <%#= render partial: 'pages/home/eetlijst' %> -->
 <% content_for :document_ready do %>
-  console.log("ready");
-
-  $('#new-event-button').click( function(event) {
-  event.preventDefault();
-  $('#new-event-form').replaceWith('<%= j render partial: "planner_events/form", locals: {event: PlannerEvent.new} %>');
-  });
-
-  $('#new-note-button').click( function(event) {
-  event.preventDefault();
-  $('#new-note-form').replaceWith('<%= j render partial: "notes/form", locals: {note: Note.new} %>');
-  });
-
-  $('#add-pricetag-note').click( function(event) {
-  event.preventDefault();
-  $('#new-note-form').replaceWith('<%= j render partial: "notes/form", locals: {note: Note.new} %>');
-  });
-
-  console.log("ok")
 <% end %>

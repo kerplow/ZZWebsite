@@ -1,8 +1,10 @@
-<%= simple_form_for(event, remote: true, authenticity_token: true) do |f| %>
-  <%= f.input "name" %>
-  <%= f.input "description" %>
-  <%= f.input "start_time" %>
-  <%= f.input "end_time" %>
-  <%= f.input 'url' %>
-  <%= f.button "submit" %>
-<% end %>
+<div class="row" id="new-event-form">
+  <%= simple_form_for(event, remote: true, authenticity_token: true) do |f| %>
+    <%= f.input "name" %>
+    <%= f.input "description" %>
+    <%= f.input "start_time" %>
+    <%= f.input "end_time" %>
+    <%= f.input 'url' %>
+    <%= f.button "submit" %>
+  <% end %>
+</div>

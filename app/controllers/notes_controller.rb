@@ -1,26 +1,17 @@
 class NotesController < ApplicationController
-  include Trader
-  before_action :load_and_authorize_note, only: [:show, :destroy, :update]
+  include voteable_concern
+  before_action :load_and_authorize_note, only: [:edit, :destroy, :update]
 
   def new
-    @note = Note.new
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def show
-    respond_to do |format|
-      format.js
-    end
+    @note = Note.with_pricetag
   end
 
   def create
-    if params[:note][:has_pricetag] == '1'
-      @note = Note.with_pricetag(note_params.merge(pricetag_params))
+    byebug
+    if with_pricetag?
+      @note = Note.with_pricetag(note_params.merge({user: current_user}))
     else
-      @note = Note.new(note_params)
+      @note = Note.new(note_params.merge({user: current_user, has_pricetag: false}))
     end
 
     respond_to do |format|
@@ -33,6 +24,12 @@ class NotesController < ApplicationController
         format.json
         format.js
       end
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -69,7 +66,15 @@ class NotesController < ApplicationController
     authorize @note
   end
 
+  def with_pricetag?
+    params[:note][:has_pricetag] == "1"
+  end
+
   def note_params
-    params.require(:note).permit(:id, :name, :contents, :has_pricetag)
+    if with_pricetag?
+      params.require(:note).permit(:name, :contents, :has_pricetag, pricetag_attributes: [:price, :operation, :transaction_type])
+    else
+      params.require(:note).permit(:name, :contents)
+    end
   end
 end

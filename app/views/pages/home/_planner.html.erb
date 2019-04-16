@@ -1,0 +1,26 @@
+<div class="planner col-md-8">
+  <div class="row">
+    <div class="text-center" id="calendar-title"><h4 class="text-center">
+      What's up this <select class="text-center" name="calendar-mode" id="calendar-mode">
+      <option value="month">Month</option>
+      <option value="week">Week</option>
+      <option value="day">Day</option>
+      </select>
+    </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="center" id="calendar-div">
+      <%= month_calendar(events: @events, html: { class: "events noteable" }) do |date, events| %>
+        <%= date.day %>
+
+        <% events.each do |event| %>
+          <div class="event #{event.type}">
+            <%= event.name %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "new event", new_planner_event_path , id: 'new-event-button', remote: true %>
+</div>

@@ -1,3 +1,12 @@
 <div class='row'>
-  <p>tradeable! £</p>
+  <p>tradeable! <%= pricetag.price %>£</p>
+  <% if policy(pricetag).offer? %>
+    <%= link_to "make offer", offer_pricetag_path(pricetag.id), remote: true, method: :put, class: 'pricetag-offer-button inline', id: "pricetag-offer-#{pricetag.id}" %>
+  <% end %>
+  <% if policy(pricetag).accept? %>
+    <%= link_to "accept", accept_pricetag_path(pricetag.id), remote: true, method: :put, class: 'pricetag-accept-button inline', id: "pricetag-accept-#{pricetag.id}" %>
+  <% end %>
+  <% if policy(pricetag).destroy? %>
+    <%= link_to "destroy", pricetag_path(pricetag.id), remote: true, method: :delete, class: 'pricetag-destroy-button inline', id: "pricetag-destroy-#{pricetag.id}" %>
+  <% end %>
 </div>

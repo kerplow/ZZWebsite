@@ -1,7 +1,11 @@
+<%= javascript_include_tag "pages/lists.js" %>
+<%= "list your bullshit, poll your house" %>
+<%= link_to "new list", new_list_path, id: "new-list-button", remote: true %>
 <div class="row">
   <div class="col-xs-12 col-sm-10 offset-sm-1">
     <div class="row">
       <%= render @lists %>
+      <div class="new-list"></div>
     </div>
   </div>
 </div>

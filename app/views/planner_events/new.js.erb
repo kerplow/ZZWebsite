@@ -1,0 +1,2 @@
+console.log('new planner event')
+$('#new-event-button').hide().after('<%= j render "planner_events/form", event: PlannerEvent.new %>');

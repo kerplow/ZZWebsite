@@ -9,6 +9,5 @@ class Pricetag < ApplicationRecord
   enum transaction_type: { direct_sale: 0, auction: 1 }
 
   validates :user, presence: true
-  validates :listing, presence: true
   validates :operation, presence: true
 end

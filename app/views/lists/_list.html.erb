@@ -1,6 +1,10 @@
 <div id="list-<%= list.id %>" class="list col-sm-12 col-md-6 col-lg-4 col-xl-3">
-  <h3><%= list.title %></h3>
-  <ul>
-    <%= render list.options unless list.private? && current_user.id.in?(list.allowed_voters) %>
-  </ul>
+
+  <h3 class="text-center list-title"><%= list.title %></h3>
+  <div class="list-items">
+    <ul>
+      <%= render list.options  %>
+    </ul>
+  </div>
+  <%= p list if Rails.env.development? %>
 </div>

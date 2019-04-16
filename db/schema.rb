@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190225180713) do
+ActiveRecord::Schema.define(version: 20190415183710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,10 +62,17 @@ ActiveRecord::Schema.define(version: 20190225180713) do
     t.integer  "user_id"
     t.integer  "list_id"
     t.integer  "votes"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "voters"
-    t.boolean  "has_pricetag", default: false
+    t.boolean  "has_pricetag",            default: false
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
     t.index ["list_id"], name: "index_options_on_list_id", using: :btree
     t.index ["user_id"], name: "index_options_on_user_id", using: :btree
   end
@@ -80,6 +87,17 @@ ActiveRecord::Schema.define(version: 20190225180713) do
     t.datetime "updated_at",                   null: false
     t.string   "url"
     t.boolean  "has_pricetag", default: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_planner_events_on_user_id", using: :btree
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "list_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["list_id"], name: "index_polls_on_list_id", using: :btree
   end
 
   create_table "pricetags", force: :cascade do |t|
@@ -116,14 +134,26 @@ ActiveRecord::Schema.define(version: 20190225180713) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "voteables", force: :cascade do |t|
+    t.integer "poll_id"
+    t.string  "choice_type"
+    t.integer "choice_id"
+    t.index ["choice_type", "choice_id"], name: "index_voteables_on_choice_type_and_choice_id", using: :btree
+    t.index ["poll_id"], name: "index_voteables_on_poll_id", using: :btree
+  end
+
   create_table "votes", force: :cascade do |t|
-    t.string   "positive_votes"
-    t.string   "negative_votes"
-    t.string   "voteable_type"
-    t.integer  "voteable_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["voteable_type", "voteable_id"], name: "index_votes_on_voteable_type_and_voteable_id", using: :btree
+    t.string   "votable_type"
+    t.integer  "votable_id"
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
 
   add_foreign_key "debts", "users", column: "from_id"
@@ -132,5 +162,6 @@ ActiveRecord::Schema.define(version: 20190225180713) do
   add_foreign_key "notes", "users"
   add_foreign_key "options", "lists"
   add_foreign_key "options", "users"
+  add_foreign_key "planner_events", "users"
   add_foreign_key "pricetags", "users"
 end

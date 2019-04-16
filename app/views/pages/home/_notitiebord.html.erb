@@ -1,0 +1,11 @@
+<div class="noteboard col-md-4">
+  <h3 class="text-center noteboard-header">
+    Notifications
+  </h3>
+  <div class="well">
+    <div class="notes">
+      <% render @notes %>
+    </div>
+    <%= link_to "new note", new_note_path, id: "new-note-button", remote: true %>
+  </div>
+</div>

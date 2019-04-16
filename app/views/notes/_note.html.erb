@@ -1,0 +1,25 @@
+<div class="note noteable" id="<%= "note_#{note.id}" %>">
+  <div class="note-head">
+    <H4 class="note-title">
+      <%= note.name %>
+    </H4>
+  </div>
+  <div class="note-body">
+    <p class="note-contents">
+      <%= note.contents %>
+    </p>
+    <% if note.has_pricetag? %>
+      <%= render partial: 'pricetags/show', locals: { pricetag: note.pricetag } %>
+    <% end %>
+    <% if current_user %>
+      <div class="note-links">
+        <% if policy(note).update? %>
+          <%= link_to "edit note", note, remote: true, method: :put, class: 'note-update-button' %>
+        <% end %>
+        <% if policy(note).destroy? %>
+          <%= link_to "delete note", note, remote: true, method: :delete, class: 'note-delete-button' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

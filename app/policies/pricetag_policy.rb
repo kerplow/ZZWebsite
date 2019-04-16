@@ -10,14 +10,14 @@ class PricetagPolicy < ApplicationPolicy
   end
 
   def offer?
-    record.user != user
+    record.user != user and record.listed?
   end
 
   def accept?
-    record.user == user
+    record.user == user and record.listed?
   end
 
   def destroy?
-    record.user == user and not record.completed?
+    record.user == user and record.listed?
   end
 end

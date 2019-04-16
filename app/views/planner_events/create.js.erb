@@ -4,8 +4,9 @@ function refreshForm(innerHTML) {
 }
 
 function addEvent(eventHTML) {
-    const events = $('.events');
-    events.append(eventHTML);
+    $('#new-event-form').remove()
+    $('#new-event-button').show()
+    $('.events').append(eventHTML);
     $(".event").last().css("background-color", "none");
 }
 

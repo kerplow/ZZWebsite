@@ -1,7 +1,7 @@
-<div id='pricetag-form' style='display:none'>
-<%= f.simple_fields_for :pricetag do |pt| %>
-  <%= pt.input :operation, :as => :select, :collection => Pricetag.operations.keys.to_a %>
-  <%= pt.input :price %>
-  <%= pt.input :transaction_type, :as => :select, :collection => Pricetag.transaction_types.keys.to_a %>
-<% end %>
+<div id="pricetag-form">
+  <%= f.simple_fields_for :pricetag do |pt| %>
+    <%= pt.input :operation, :as => :select, :collection => Pricetag.operations.keys.to_a, selected: 'sell' %>
+    <%= pt.input :price %>
+    <%= pt.input :transaction_type, :as => :select, :collection => Pricetag.transaction_types.keys.to_a %>
+  <% end %>
 </div>

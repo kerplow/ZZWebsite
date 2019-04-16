@@ -1,6 +1,10 @@
 class ListsController < ApplicationController
   before_action :set_and_authorize_list, only: [:show, :create, :update, :destroy]
 
+  def new
+    @list = List.new
+  end
+
   # POST /lists
   # POST /lists.json
   def create

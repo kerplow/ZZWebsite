@@ -39,10 +39,11 @@ The relevant ones are:
 1) ``/app``: This is where **all** of the frontend and most of the backend code resides
 2) ``/lib/assets`` for documents and relevant info (ex: opruimlijst)
 3) ``/db``: this contains all database files and has 2 main parts:
-* ``/migrations``: this folder contains the migration files that are run in sequence to create, setup and incrementally adjust the database, the end result of this will be: 
+* ``/migrations``: this folder contains the migration files that are run in sequence to create, setup and incrementally adjust the database, the end result of this will be:
 * ``schema.rb`` Here you can see an overview of the database tables and columns
 4) ``/config``  contains a whole bunch of configuration files (whodathunk!) of which ``routes.rb`` is the most interesting one. Here you can define urls and where they point to.
 
 # Frontend in RoR:
 
 Inside of the ``/app`` folder are (again) a whole bunch of folders
+2 of them (``/views`` and ``/assets``) are important contain the frontend code, the others are backend related, but could be informative for ``erb`` commands ( more on this later )
