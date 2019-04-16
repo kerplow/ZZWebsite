@@ -1,12 +1,12 @@
 class List < ApplicationRecord
+  include Tradeable
+  acts_as_votable
+
   belongs_to :user
+  belongs_to :list
   has_many :options
 
   validates :title, presence: true
-
-  def winner
-   options.order(votes: :desc).first
-  end
 
   serialize :allowed_voters, Array
 end

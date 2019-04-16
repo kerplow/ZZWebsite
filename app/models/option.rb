@@ -1,5 +1,6 @@
 class Option < ApplicationRecord
-  include 'Tradeable'
+  include Tradeable
+  acts_as_votable
 
   belongs_to :user
   belongs_to :list

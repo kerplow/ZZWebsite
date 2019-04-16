@@ -1,7 +1,12 @@
 class PlannerEventsController < ApplicationController
   before_action :load_and_authorize_event, only: [:show, :edit, :update, :destroy]
   def new
-
+    @event = PlannerEvent.new
+    respond_to do |format|
+      format.html
+      format.json
+      format.js
+    end
   end
 
   def create

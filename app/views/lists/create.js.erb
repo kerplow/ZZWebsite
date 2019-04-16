@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+    const newlistForm = $('.new_list');
+    newlistForm.replaceWith(innerHTML);
+};
+
+function addlist(listHTML) {
+    $('#new_list').remove()
+    $('.lists').append(listHTML);
+    $('#new-list-button').show()
+};
+
+<% if @list.errors.any? %>
+  refreshForm('<%= j render partial: "lists/form", list: @list %>');
+<% else %>
+  addlist('<%= j render partial: "lists/list", locals: {list: @list} %>');
+<% end %>

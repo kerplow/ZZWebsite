@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  include voteable_concern
   before_action :load_and_authorize_note, only: [:edit, :destroy, :update]
 
   def new
