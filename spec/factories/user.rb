@@ -13,6 +13,7 @@ FactoryBot.define do
 
     trait :housemate do
       housemate { true }
+      room
     end
 
     factory :admin_user do
