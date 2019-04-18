@@ -7,7 +7,9 @@ class User < ApplicationRecord
   validates :nickname, uniqueness: { scope: [:first_name, :last_name] }
   validates :email, uniqueness: true
   validates_uniqueness_of :phone_number
-  validates_uniqueness_of :room
+
+  enum house_status: [:guest, :housemate, :subrenter, :old_mate]
+
   validates_presence_of :first_name
 
   has_many :debtors, through: :debts, source: :debtor
@@ -17,4 +19,19 @@ class User < ApplicationRecord
   has_many :innings, foreign_key: 'to_id', class_name: 'Debt'
 
   has_many :notes
+
+  belongs_to :room, optional: true
+
+  validate :room_check
+
+  def room_check
+    case house_status
+    when :housemate
+      validates_presence_of :room
+    when :subrenter
+      validates_presence_of :room
+    else
+      errors.add(:guest, "guests have no room") if !room.blank?
+    end
+  end
 end
