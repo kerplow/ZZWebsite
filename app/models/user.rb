@@ -8,10 +8,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates_uniqueness_of :phone_number
 
-  #validate presence, uniqueness and inclusion in (0-32) of room, unless it's a guest
-  with_options unless: 'guest' do |housemate|
-    housemate.validates :room, presence: true, uniqueness: true, inclusion: 1..32
-  end
+  enum house_status: [:guest, :housemate, :subrenter, :old_mate]
 
   validates_presence_of :first_name
 
@@ -23,9 +20,18 @@ class User < ApplicationRecord
 
   has_many :notes
 
-  def room_check
-    unless guest
+  belongs_to :room, optional: true
 
+  validate :room_check
+
+  def room_check
+    case house_status
+    when :housemate
+      validates_presence_of :room
+    when :subrenter
+      validates_presence_of :room
+    else
+      errors.add(:guest, "guests have no room") if !room.blank?
     end
   end
 end

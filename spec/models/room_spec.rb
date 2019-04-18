@@ -11,6 +11,7 @@ RSpec.describe Room, type: :model do
       before { create :room, number: 2 }
       subject { create :room, number: 2 }
       it{ expect{ subject }.to raise_error(ActiveRecord::RecordInvalid) }
+      it{ expect(subject.errors.messages.keys).to eq([:room]) }
     end
 
     context 'invalid room' do

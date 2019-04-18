@@ -8,11 +8,14 @@ FactoryBot.define do
     admin { false }
 
     trait :guest do
-      housemate { false }
+      house_status { :guest }
     end
 
     trait :housemate do
-      housemate { true }
+      house_status { :housemate }
+    end
+
+    trait :with_room do
       room
     end
 
