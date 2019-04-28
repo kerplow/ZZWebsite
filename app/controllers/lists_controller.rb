@@ -1,10 +1,14 @@
 class ListsController < ApplicationController
-  before_action :set_and_authorize_list, only: [:show, :create, :update, :destroy]
+  before_action :set_and_authorize_list, only: [:show, :update, :destroy]
+
 
   def new
     @list = List.new
-  end
 
+    respond_to do |format|
+      format.js
+    end
+  end
   # POST /lists
   # POST /lists.json
   def create
@@ -14,9 +18,11 @@ class ListsController < ApplicationController
       if @list.save
         format.html { redirect_to @list, notice: 'List was successfully created.' }
         format.json { render :show, status: :created, location: @list }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @list.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -54,6 +60,6 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.fetch(:list, {})
+      params.require(:list).permit(:title, :description).merge({ user: current_user })
     end
 end

@@ -14,9 +14,9 @@ class ListPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.admin?
-        scope.all
+        scope.includes(:options)
       else
-        scope.includes(:options).where(options: { list: { allowed_voters: user } })
+        scope.includes(:options)
       end
     end
   end

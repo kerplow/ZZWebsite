@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+  def act_as
+    @user = current_user
+    @user.act_as = params[:act_as]
+    @user.save
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @user = User.new
   end

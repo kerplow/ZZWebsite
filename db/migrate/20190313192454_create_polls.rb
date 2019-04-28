@@ -9,8 +9,8 @@ class CreatePolls < ActiveRecord::Migration[5.0]
     end
 
     create_table :voteables do |t|
-      t.references :poll
-      t.references :choice, polymorphic: true
+      t.references :poll, foreign_key: true
+      t.references :choice, polymorphic: true, foreign_key: true
     end
   end
 end

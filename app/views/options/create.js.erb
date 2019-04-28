@@ -1,0 +1,16 @@
+function refreshOptionForm(innerHTML) {
+    const newoptionForm = $('#new-option-<%= @list.id %>');
+    newoptionForm.replaceWith(innerHTML);
+};
+
+function addOption(optionHTML) {
+    $('#new-option-form-<%= @list.id %>').remove()
+    $('#list-options-<%= @list.id %> ').append(optionHTML);
+    $('#new-option-button-<%= @list.id %>').show()
+};
+
+<% if @option.errors.any? %>
+  refreshOptionForm('<%= j render partial: "options/form", list: @list, option: @option %>');
+<% else %>
+  addOption('<%= j render partial: "options/option", locals: {option: @option} %>');
+<% end %>

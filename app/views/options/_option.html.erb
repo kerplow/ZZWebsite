@@ -1,1 +1,8 @@
-<li class="list-item" id="option-<%= option.id %> "><%= option.name %></li>
+<li class="list-item" id="list-<%= option.list.id %>-option-<%= option.id %>" >
+  <%= option.name %>
+  <%= link_to '-',
+        list_option_path(option.list, option),
+          method: :delete,
+          remote: true,
+          data: {confirm: 'Sure?'} %>
+</li>

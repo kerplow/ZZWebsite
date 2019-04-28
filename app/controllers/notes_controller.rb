@@ -9,9 +9,9 @@ class NotesController < ApplicationController
   def create
     byebug
     if with_pricetag?
-      @note = Note.with_pricetag(note_params.merge({user: current_user}))
+      @note = Note.with_pricetag(note_params)
     else
-      @note = Note.new(note_params.merge({user: current_user, has_pricetag: false}))
+      @note = Note.new(note_params)
     end
 
     respond_to do |format|
@@ -72,9 +72,9 @@ class NotesController < ApplicationController
 
   def note_params
     if with_pricetag?
-      params.require(:note).permit(:name, :contents, :has_pricetag, pricetag_attributes: [:price, :operation, :transaction_type])
+      params.require(:note).permit(:name, :contents, :has_pricetag, pricetag_attributes: [:price, :operation, :transaction_type]).merge( { user: current_user})
     else
-      params.require(:note).permit(:name, :contents)
+      params.require(:note).permit(:name, :contents).merge( { user: current_user})
     end
   end
 end

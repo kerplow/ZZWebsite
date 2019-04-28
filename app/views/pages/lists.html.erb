@@ -3,9 +3,9 @@
 <%= link_to "new list", new_list_path, id: "new-list-button", remote: true %>
 <div class="row">
   <div class="col-xs-12 col-sm-10 offset-sm-1">
-    <div class="row">
+    <div class="row lists">
       <%= render @lists %>
-      <div class="new-list"></div>
+      <div id="new-list"></div>
     </div>
   </div>
 </div>

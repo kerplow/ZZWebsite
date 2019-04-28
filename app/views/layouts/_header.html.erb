@@ -21,6 +21,11 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <% if user_signed_in? %>
+          <% if current_user.is_admin %>
+            <li><%= simple_form_for "act as", act_as_status_user_path(current_user), method: :put, remote: true do |f| %>
+              <%= f.input :act_as %>
+            <% end %></li>
+          <% end %>
           <li><%= link_to "edit profile", edit_user_registration_path(current_user), method: :get, class: "navbar-wagon-item navbar-wagon-link" %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %></li>
         <% else %>

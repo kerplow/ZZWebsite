@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :user, only: [:show, :edit, :update, :destroy]
+  resources :users, only: [:show, :edit, :update, :destroy] do
+    member do
+      put 'act_as/:act_as', to: "users#act_as", as: 'act_as_status'
+    end
+  end
 
 
   get '/tikkie', to: "pages#tikkie"
@@ -24,7 +28,9 @@ Rails.application.routes.draw do
 
   get '/lists', to: 'pages#lists'
 
-  resources :lists,  defaults: {format: :json}
+  resources :lists, only: [:new, :create, :update, :destroy],  defaults: { format: :js } do
+    resources :options, defaults: { format: :js }
+  end
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
