@@ -12,11 +12,7 @@ class User < ApplicationRecord
 
   enum house_status: [ :pet, :housemate, :subrenter, :old_mate ]
 
-  if self.is_admin
-    enum act_as: { guest: 0, user: 1, admin: 2 }
-  else
-    enum act_as: { guest: 0, user: 1 }
-  end
+  enum act_as: { guest: 0, user: 1, admin: 2 }
 
   validates_presence_of :first_name
 
