@@ -19,11 +19,11 @@ FactoryBot.define do
       room
     end
 
-    factory :admin_user do
-      first_name { "Ad" }
-      sequence(:last_name) { |n| "Min#{n}" }
-      sequence(:email) { |n| "admin#{n}@email.com" }
-      admin { true }
-    end
+    # factory :admin_user do
+    #   first_name { "Ad" }
+    #   sequence(:last_name) { |n| "Min#{n}" }
+    #   sequence(:email) { |n| "admin#{n}@email.com" }
+    #   admin { true }
+    # end
   end
 end

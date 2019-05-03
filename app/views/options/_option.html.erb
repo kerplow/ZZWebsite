@@ -1,8 +1,22 @@
-<li class="list-item" id="list-<%= option.list.id %>-option-<%= option.id %>" >
-  <%= option.name %>
-  <%= link_to '-',
-        list_option_path(option.list, option),
-          method: :delete,
-          remote: true,
-          data: {confirm: 'Sure?'} %>
-</li>
+<div class="option voting-container" id="list-<%= option.list.id %>-option-<%= option.id %>" >
+  <%= render 'shared/votes', record: option %>
+  <div class="voteable list-item">
+    <div class="name">
+      <h6><%= option.name %></h6>
+    </div>
+    <div class="delete-button">
+      <%=
+        link_to '-',
+          {
+            url: list_option_path(option.list, option),
+            method: :delete,
+            remote: true,
+            data: {confirm: 'Sure?'}
+          },
+          class: 'delete-button' do
+      %>
+        <%= icon 'far', "trash-alt" %>
+      <% end %>
+    </div>
+  </div>
+</div>

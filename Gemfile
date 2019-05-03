@@ -5,8 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'activeadmin'
+
 # Use bootstrap for basic layout:
 gem 'bootstrap'
+# use font-awesome for awesome fonts:
+gem 'font-awesome-sass'
 # Use simple form for form generation:
 gem 'simple_form'
 # Generate calenders for planner:

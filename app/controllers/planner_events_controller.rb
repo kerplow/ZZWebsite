@@ -4,7 +4,6 @@ class PlannerEventsController < ApplicationController
     @event = PlannerEvent.new
     respond_to do |format|
       format.html
-      format.json
       format.js
     end
   end

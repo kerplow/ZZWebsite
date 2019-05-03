@@ -11,7 +11,9 @@
  * It is generally better to create a new file per style scope.
  */
 
+
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "flexbox";
 @import "bootstrap";
 @import "pages";
 @import "user";
@@ -21,3 +23,10 @@
 @import 'partials/index';
 @import 'eetlijst';
 @import 'list';
+@import 'voteable';
+@import 'options';
+@import "font-awesome-sprockets";
+@import "font-awesome";
+* {
+  outline: dotted red;
+}

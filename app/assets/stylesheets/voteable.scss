@@ -1,0 +1,23 @@
+// Place all the styles related to the votes_controller controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.voting-container {
+  @include flex-row-start;
+
+  .voteable {
+
+  };
+
+  .votes {
+    @include flex-col-in;
+    heigth: 100%;
+
+    .upvote {
+      color: green;
+    };
+
+    .downvote {
+      color: red;
+    };
+  };
+};

@@ -1,21 +1,28 @@
 Rails.application.routes.draw do
 
-  post '/upvote', to: "votes#upvote", defaults: { format: :json }
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
-  post '/downvote', to: "votes#downvote", defaults: { format: :json }
+  resource :polls, only: [:create, :update], defaults: { format: :js}
 
-  resources :planner_events,  defaults: {format: :json}
+  post ':model_name/:id/upvote', to: "votes#upvote", defaults: { format: :js }, as: :upvote
 
-  resources :notes,  defaults: {format: :json}
+  post ':model_name/:id/downvote', to: "votes#downvote", defaults: { format: :js }, as: :downvote
 
-  resources :pricetags,  defaults: {format: :json}, only: [:destroy] do
+  resources :planner_events,  defaults: {format: :js}
+
+  resources :notes,  defaults: {format: :js}
+
+  resources :pricetags,  defaults: {format: :js}, only: [:destroy] do
     member do
       put 'offer'
       put 'accept'
     end
   end
 
-  resources :users, only: [:show, :edit, :update, :destroy] do
+  devise_for :users
+
+  resources :user, only: [:show, :edit, :update, :destroy] do
     member do
       put 'act_as/:act_as', to: "users#act_as", as: 'act_as_status'
     end
@@ -32,7 +39,6 @@ Rails.application.routes.draw do
     resources :options, defaults: { format: :js }
   end
 
-  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: "pages#home"

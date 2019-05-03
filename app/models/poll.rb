@@ -1,4 +1,6 @@
 class Poll < ApplicationRecord
+  attr_accessor :active
+
   has_many :voteables
   has_many :choices, through: :voteables, source: :choice, source_type: 'Option'
   has_many :choices, through: :voteables, source: :choice, source_type: 'PlannerEvent'

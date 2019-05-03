@@ -66,3 +66,4 @@ list.save!
 poll = Poll.first_or_create
 
 p 'seed done'
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

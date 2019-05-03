@@ -1,0 +1,12 @@
+<div class="votes">
+  <div class="upvote">
+    <%= link_to upvote_path(record, record.id), { class: record.class.name, id: record.id, remote: true, method: :post } do %>
+      <%= icon 'fas', "arrow-circle-up" %>
+    <% end %>
+  </div>
+  <div class="downvote">
+    <%= link_to downvote_path(record, record.id), { class: record.class.name, id: record.id, remote: true, method: :post } do %>
+      <%= icon 'fas', "arrow-circle-down" %>
+    <% end %>
+  </div>
+</div>

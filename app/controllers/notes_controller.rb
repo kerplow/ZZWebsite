@@ -1,9 +1,9 @@
 class NotesController < ApplicationController
-  include voteable_concern
   before_action :load_and_authorize_note, only: [:edit, :destroy, :update]
+  before_action :check_pricetag, only: [:create, :update]
 
   def new
-    @note = Note.with_pricetag
+    @note = Note.new
   end
 
   def create
@@ -17,11 +17,9 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.save
         format.html { redirect_to root_path }
-        format.json
         format.js { flash[:success] = "new note made" }
       else
         format.html { redirect_to root_path }
-        format.json
         format.js
       end
     end
@@ -37,11 +35,9 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to root_path }
-        format.json
         format.js { flash[:success] = "note updated" }
       else
         format.html { redirect_to root_path }
-        format.json
         format.js
       end
     end

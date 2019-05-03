@@ -26,6 +26,7 @@ class PagesController < ApplicationController
   def lists
     @user = current_user
     @lists = policy_scope(List)
+    @poll = Poll.new
   end
 
 end

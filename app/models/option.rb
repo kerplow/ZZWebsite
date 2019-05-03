@@ -4,8 +4,10 @@ class Option < ApplicationRecord
   belongs_to :user
   belongs_to :list
 
-  validates :name, presence: true, uniqueness: { scope: :list }
+  validates :name, presence: true, uniqueness: { scope: :list, message: "already on the list" }
   serialize :voters, Array
+
+  belongs_to :polleable, polymorphic: true
 
   def allow_anonymous?
     list.allow_anonymous?

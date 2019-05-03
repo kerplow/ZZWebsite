@@ -1,5 +1,5 @@
 function refreshOptionForm(innerHTML) {
-    const newoptionForm = $('#new-option-<%= @list.id %>');
+    const newoptionForm = $('#new-option-form-<%= @list.id %>');
     newoptionForm.replaceWith(innerHTML);
 };
 
@@ -10,7 +10,7 @@ function addOption(optionHTML) {
 };
 
 <% if @option.errors.any? %>
-  refreshOptionForm('<%= j render partial: "options/form", list: @list, option: @option %>');
+  refreshOptionForm('<%= j render partial: "options/form", locals: {list: @list, option: @option} %>');
 <% else %>
   addOption('<%= j render partial: "options/option", locals: {option: @option} %>');
 <% end %>
