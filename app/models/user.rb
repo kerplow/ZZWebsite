@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :nickname, uniqueness: { scope: [:first_name, :last_name] }
   validates :email, uniqueness: true
   validate :act_as_legal
-  validates_uniqueness_of :phone_number
+  # validates_uniqueness_of :phone_number
 
   enum house_status: [ :pet, :housemate, :subrenter, :old_mate ]
 

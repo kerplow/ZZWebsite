@@ -20,6 +20,7 @@ class PricetagsController < ApplicationController
       else
         format.html { redirect_to :back}
         format.js
+      end
     end
   end
 
@@ -108,6 +109,7 @@ class PricetagsController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:id)
+  end
 
   def pricetag_params
     params.require(:pricetag).permit(:price)

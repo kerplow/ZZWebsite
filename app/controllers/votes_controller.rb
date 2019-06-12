@@ -3,7 +3,7 @@ class VotesController < ApplicationController
 
   def upvote
     respond_to do |format|
-      if @model.liked_by User
+      if @model.liked_by current_users
         format.js
       else
         format.js { flash[:notice] = 'vote not registered' }
@@ -13,7 +13,7 @@ class VotesController < ApplicationController
 
   def downvote
     respond_to do |format|
-      if @model.downvote_from User
+      if @model.downvote_from current_users
         format.js
       else
         format.js { flash[:notice] = 'vote not registered' }

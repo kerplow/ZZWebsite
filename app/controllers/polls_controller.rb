@@ -26,9 +26,9 @@ class PollsController < ApplicationController
   # DELETE /polls/1.json
   def archive
     @poll.archived = true
-    @poll.save
 
     respond_to do |format|
+      @poll.save
       format.json { head :no_content }
       format.js
     end

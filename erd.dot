@@ -1,0 +1,209 @@
+digraph ZZW {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial BoldMT";
+splines = "spline";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "ArialMT" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "ArialMT" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+rankdir = "TB";
+label = "ZZW domain model\n\n";
+"m_ActiveAdmin::Comment" [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ActiveAdmin::Comment</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="author_id">author_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="author_type">author_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="body">body <font face="Arial ItalicMT" color="grey60">text ∗</font></td></tr>
+  <tr><td align="left" width="130" port="namespace">namespace <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="resource_id">resource_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="resource_type">resource_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+"m_ActsAsVotable::Vote" [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ActsAsVotable::Vote</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="votable_type">votable_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="vote_flag">vote_flag <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="vote_scope">vote_scope <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="vote_weight">vote_weight <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="voter_id">voter_id <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="voter_type">voter_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_AdminUser [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">AdminUser</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="email">email <font face="Arial ItalicMT" color="grey60">string ∗ U</font></td></tr>
+  <tr><td align="left" width="130" port="encrypted_password">encrypted_password <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="remember_created_at">remember_created_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_sent_at">reset_password_sent_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_token">reset_password_token <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_Debt [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Debt</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="accepted">accepted <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="amount">amount <font face="Arial ItalicMT" color="grey60">float ∗</font></td></tr>
+  <tr><td align="left" width="130" port="casheable_id">casheable_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="casheable_type">casheable_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="collected">collected <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+</table>
+}>];
+m_List [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">List</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="allow_anonymous">allow_anonymous <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="allowed_voters">allowed_voters <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="description">description <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="has_pricetag">has_pricetag <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="is_public">is_public <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="options_policy">options_policy <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="poll">poll <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="private">private <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="title">title <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+</table>
+}>];
+m_Note [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Note</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="contents">contents <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="has_pricetag">has_pricetag <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="is_public">is_public <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="parent_type">parent_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_Option [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Option</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="cached_votes_down">cached_votes_down <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="cached_votes_score">cached_votes_score <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="cached_votes_total">cached_votes_total <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="cached_votes_up">cached_votes_up <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="cached_weighted_average">cached_weighted_average <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="cached_weighted_score">cached_weighted_score <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="cached_weighted_total">cached_weighted_total <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="has_pricetag">has_pricetag <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string ∗ U</font></td></tr>
+  <tr><td align="left" width="130" port="polleable_id">polleable_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="polleable_type">polleable_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="voters">voters <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="votes">votes <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}>];
+m_PlannerEvent [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">PlannerEvent</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="description">description <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="end_time">end_time <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="has_pricetag">has_pricetag <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="is_public">is_public <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="start_time">start_time <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="url">url <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_Poll [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Poll</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="archived">archived <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="description">description <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_Pricetag [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Pricetag</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="description">description <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="listing_id">listing_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="listing_type">listing_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="operation">operation <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="price">price <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="state">state <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="transaction_type">transaction_type <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}>];
+m_Room [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Room</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="description">description <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="door">door <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="location">location <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="number">number <font face="Arial ItalicMT" color="grey60">integer ∗ U</font></td></tr>
+  <tr><td align="left" width="130" port="owner_id">owner_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="subrenter_id">subrenter_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}>];
+m_User [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="act_as">act_as <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="bio">bio <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial ItalicMT" color="grey60">string ∗ U</font></td></tr>
+  <tr><td align="left" width="130" port="encrypted_password">encrypted_password <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="first_name">first_name <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="house_status">house_status <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="is_admin">is_admin <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="last_name">last_name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="nickname">nickname <font face="Arial ItalicMT" color="grey60">string U</font></td></tr>
+  <tr><td align="left" width="130" port="phone_number">phone_number <font face="Arial ItalicMT" color="grey60">string U</font></td></tr>
+  <tr><td align="left" width="130" port="remember_created_at">remember_created_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_sent_at">reset_password_sent_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_token">reset_password_token <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+  m_List -> "m_ActsAsVotable::Vote" [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Note -> "m_ActsAsVotable::Vote" [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Option -> "m_ActsAsVotable::Vote" [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_PlannerEvent -> "m_ActsAsVotable::Vote" [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_User -> m_AdminUser [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_User -> m_Debt [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Debt [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Note [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Room -> m_User [arrowhead = "none", arrowtail = "none", weight = "3"];
+  m_List -> m_Pricetag [arrowhead = "none", arrowtail = "none", weight = "1"];
+  m_List -> m_Pricetag [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_User -> m_List [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_List -> m_List [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_List -> m_Option [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Note -> m_Pricetag [arrowhead = "none", arrowtail = "none", weight = "1"];
+  m_Note -> m_Pricetag [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_Note -> m_Note [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Option [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_PlannerEvent -> m_Pricetag [arrowhead = "none", arrowtail = "none", weight = "1"];
+  m_PlannerEvent -> m_Pricetag [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_User -> m_PlannerEvent [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_List -> m_Poll [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_User -> m_Pricetag [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Pricetag -> m_Pricetag [arrowhead = "normal", arrowtail = "none", weight = "1"];
+}

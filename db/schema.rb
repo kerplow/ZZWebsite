@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 20190501184210) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "ability_scores", force: :cascade do |t|
+    t.string   "name"
+    t.string   "full_name"
+    t.text     "desc"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
@@ -43,6 +52,96 @@ ActiveRecord::Schema.define(version: 20190501184210) do
     t.index ["user_id"], name: "index_admin_users_on_user_id", using: :btree
   end
 
+  create_table "armor_details", id: false, force: :cascade do |t|
+    t.integer  "id",                   default: -> { "nextval('equipment_id_seq'::regclass)" }, null: false
+    t.string   "name"
+    t.string   "equipment_category"
+    t.string   "url"
+    t.text     "desc"
+    t.integer  "price"
+    t.integer  "weight"
+    t.datetime "created_at",                                                                    null: false
+    t.datetime "updated_at",                                                                    null: false
+    t.boolean  "stealth_disadvantage", default: false
+    t.string   "category_name",        default: "Armor"
+    t.string   "armor_category"
+    t.integer  "str_minimum"
+    t.integer  "base_armor_class"
+    t.boolean  "dex_bonus"
+    t.integer  "max_bonus"
+  end
+
+  create_table "base_class_proficiencies", force: :cascade do |t|
+    t.integer "character_class_id"
+    t.integer "proficiencies_id"
+    t.index ["character_class_id"], name: "index_base_class_proficiencies_on_character_class_id", using: :btree
+    t.index ["proficiencies_id"], name: "index_base_class_proficiencies_on_proficiencies_id", using: :btree
+  end
+
+  create_table "base_starting_equipment", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "character_class_id"
+    t.integer "equipment_id"
+    t.index ["character_class_id"], name: "index_base_starting_equipment_on_character_class_id", using: :btree
+    t.index ["equipment_id"], name: "index_base_starting_equipment_on_equipment_id", using: :btree
+  end
+
+  create_table "character_classes", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "hit_die"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "class_prof_choices", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "character_class_id"
+    t.index ["character_class_id"], name: "index_class_prof_choices_on_character_class_id", using: :btree
+  end
+
+  create_table "class_prof_options", force: :cascade do |t|
+    t.integer "class_prof_choice_id"
+    t.integer "proficiency_id"
+    t.index ["class_prof_choice_id"], name: "index_class_prof_options_on_class_prof_choice_id", using: :btree
+    t.index ["proficiency_id"], name: "index_class_prof_options_on_proficiency_id", using: :btree
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.integer  "amount"
+    t.integer  "pack_id"
+    t.integer  "equipment_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["equipment_id"], name: "index_contents_on_equipment_id", using: :btree
+    t.index ["pack_id"], name: "index_contents_on_pack_id", using: :btree
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "coinage"
+    t.integer  "absolute_value"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "damage_types", force: :cascade do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "damages", force: :cascade do |t|
+    t.integer  "fixed_amount",   default: 0
+    t.integer  "dice_value"
+    t.integer  "dice_count"
+    t.integer  "damage_type_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["damage_type_id"], name: "index_damages_on_damage_type_id", using: :btree
+  end
+
   create_table "debts", force: :cascade do |t|
     t.float    "amount"
     t.integer  "from_id"
@@ -54,6 +153,65 @@ ActiveRecord::Schema.define(version: 20190501184210) do
     t.integer  "casheable_id"
     t.boolean  "collected"
     t.index ["casheable_type", "casheable_id"], name: "index_debts_on_casheable_type_and_casheable_id", using: :btree
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.string   "name"
+    t.string   "equipment_category"
+    t.string   "url"
+    t.text     "desc"
+    t.integer  "price"
+    t.integer  "weight"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "equipment_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "equipment_choices", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "equipment_set_id"
+    t.index ["equipment_set_id"], name: "index_equipment_choices_on_equipment_set_id", using: :btree
+  end
+
+  create_table "equipment_equipment_categories", id: false, force: :cascade do |t|
+    t.integer "equipment_id",          null: false
+    t.integer "equipment_category_id", null: false
+  end
+
+  create_table "equipment_options", force: :cascade do |t|
+    t.integer "equipment_choice_id"
+    t.integer "equipment_id"
+    t.index ["equipment_choice_id"], name: "index_equipment_options_on_equipment_choice_id", using: :btree
+    t.index ["equipment_id"], name: "index_equipment_options_on_equipment_id", using: :btree
+  end
+
+  create_table "equipment_sets", force: :cascade do |t|
+    t.integer "character_class_id"
+    t.index ["character_class_id"], name: "index_equipment_sets_on_character_class_id", using: :btree
+  end
+
+  create_table "equipment_weapon_properties", id: false, force: :cascade do |t|
+    t.integer "equipment_id",       null: false
+    t.integer "weapon_property_id", null: false
+  end
+
+  create_table "gear_details", id: false, force: :cascade do |t|
+    t.integer  "id",                 default: -> { "nextval('equipment_id_seq'::regclass)" }, null: false
+    t.string   "name"
+    t.string   "equipment_category"
+    t.string   "url"
+    t.text     "desc"
+    t.integer  "price"
+    t.integer  "weight"
+    t.datetime "created_at",                                                                  null: false
+    t.datetime "updated_at",                                                                  null: false
+    t.string   "gear_category"
+    t.string   "category_name",      default: "Adventuring Gear"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -148,6 +306,14 @@ ActiveRecord::Schema.define(version: 20190501184210) do
     t.index ["user_id"], name: "index_pricetags_on_user_id", using: :btree
   end
 
+  create_table "proficiencies", force: :cascade do |t|
+    t.string   "prof_type"
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.integer  "number"
     t.text     "description"
@@ -159,6 +325,27 @@ ActiveRecord::Schema.define(version: 20190501184210) do
     t.datetime "updated_at",   null: false
     t.index ["owner_id"], name: "index_rooms_on_owner_id", using: :btree
     t.index ["subrenter_id"], name: "index_rooms_on_subrenter_id", using: :btree
+  end
+
+  create_table "saving_throws", force: :cascade do |t|
+    t.integer "character_class_id"
+    t.integer "ability_scores_id"
+    t.index ["ability_scores_id"], name: "index_saving_throws_on_ability_scores_id", using: :btree
+    t.index ["character_class_id"], name: "index_saving_throws_on_character_class_id", using: :btree
+  end
+
+  create_table "tool_details", id: false, force: :cascade do |t|
+    t.integer  "id",                 default: -> { "nextval('equipment_id_seq'::regclass)" }, null: false
+    t.string   "name"
+    t.string   "equipment_category"
+    t.string   "url"
+    t.text     "desc"
+    t.integer  "price"
+    t.integer  "weight"
+    t.datetime "created_at",                                                                  null: false
+    t.datetime "updated_at",                                                                  null: false
+    t.string   "tool_category"
+    t.string   "category_name",      default: "Tools"
   end
 
   create_table "users", force: :cascade do |t|
@@ -181,12 +368,22 @@ ActiveRecord::Schema.define(version: 20190501184210) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "voteables", force: :cascade do |t|
-    t.integer "poll_id"
-    t.string  "choice_type"
-    t.integer "choice_id"
-    t.index ["choice_type", "choice_id"], name: "index_voteables_on_choice_type_and_choice_id", using: :btree
-    t.index ["poll_id"], name: "index_voteables_on_poll_id", using: :btree
+  create_table "vehicle_details", id: false, force: :cascade do |t|
+    t.integer  "id",                 default: -> { "nextval('equipment_id_seq'::regclass)" }, null: false
+    t.string   "name"
+    t.string   "equipment_category"
+    t.string   "url"
+    t.text     "desc"
+    t.integer  "price"
+    t.integer  "weight"
+    t.datetime "created_at",                                                                  null: false
+    t.datetime "updated_at",                                                                  null: false
+    t.string   "vehicle_category"
+    t.string   "category_name",      default: "Mounts and Vehicles"
+    t.string   "capacity"
+    t.integer  "walking_speed"
+    t.integer  "swimming_speed"
+    t.integer  "flying_speed"
   end
 
   create_table "votes", force: :cascade do |t|
@@ -203,9 +400,54 @@ ActiveRecord::Schema.define(version: 20190501184210) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
 
+  create_table "weapon_details", id: false, force: :cascade do |t|
+    t.integer  "id",                        default: -> { "nextval('equipment_id_seq'::regclass)" }, null: false
+    t.string   "name"
+    t.string   "equipment_category"
+    t.string   "url"
+    t.text     "desc"
+    t.integer  "price"
+    t.integer  "weight"
+    t.datetime "created_at",                                                                         null: false
+    t.datetime "updated_at",                                                                         null: false
+    t.string   "weapon_category"
+    t.string   "category_name",             default: "Weapon"
+    t.string   "weapon_range"
+    t.string   "category_range"
+    t.integer  "normal_range"
+    t.integer  "long_range"
+    t.integer  "throw_range"
+    t.integer  "long_throw_range"
+    t.integer  "damage_roll_id"
+    t.integer  "dual_wield_damage_roll_id"
+    t.index ["damage_roll_id"], name: "index_weapon_details_on_damage_roll_id", using: :btree
+    t.index ["dual_wield_damage_roll_id"], name: "index_weapon_details_on_dual_wield_damage_roll_id", using: :btree
+  end
+
+  create_table "weapon_properties", force: :cascade do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "admin_users", "users"
+  add_foreign_key "base_class_proficiencies", "character_classes"
+  add_foreign_key "base_class_proficiencies", "proficiencies", column: "proficiencies_id"
+  add_foreign_key "base_starting_equipment", "character_classes"
+  add_foreign_key "base_starting_equipment", "equipment"
+  add_foreign_key "class_prof_choices", "character_classes"
+  add_foreign_key "class_prof_options", "class_prof_choices"
+  add_foreign_key "class_prof_options", "proficiencies"
+  add_foreign_key "contents", "equipment"
+  add_foreign_key "contents", "equipment", column: "pack_id"
   add_foreign_key "debts", "users", column: "from_id"
   add_foreign_key "debts", "users", column: "to_id"
+  add_foreign_key "equipment_choices", "equipment_sets"
+  add_foreign_key "equipment_options", "equipment"
+  add_foreign_key "equipment_options", "equipment_choices"
+  add_foreign_key "equipment_sets", "character_classes"
   add_foreign_key "lists", "users"
   add_foreign_key "notes", "users"
   add_foreign_key "options", "lists"
@@ -214,4 +456,7 @@ ActiveRecord::Schema.define(version: 20190501184210) do
   add_foreign_key "pricetags", "users"
   add_foreign_key "rooms", "users", column: "owner_id"
   add_foreign_key "rooms", "users", column: "subrenter_id"
+  add_foreign_key "saving_throws", "ability_scores", column: "ability_scores_id"
+  add_foreign_key "saving_throws", "character_classes"
+  add_foreign_key "weapon_details", "damages", column: "damage_roll_id"
 end
