@@ -1,0 +1,24 @@
+<div class="col-xs-12 col-md-6 debt-table" id="debt-<%= direction %>-table">
+  <table class="table table-bordered .table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">amount</th>
+      <th scope="col"><%= direction %></th>
+      <th scope="col">accepted?</th>
+      <th scope="col">paid?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% debts.each do |thing| %>
+      <tr>
+        <th scope="row"><%= thing.created_at %></th>
+        <td><%= thing.amount %></td>
+        <td><%= thing.send(direction) %></td>
+        <td><%= boolean_to_icon(thing.accepted?) %></td>
+        <td><%= boolean_to_icon(thing.collected?) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

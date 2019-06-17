@@ -12,13 +12,16 @@ User.delete_all
 chuck = User.first_or_create(email: 'charlesdegh@gmail.com', password: ENV['ADMIN_PASSWORD'], first_name: 'Charles' ,last_name: 'de Gheldere', nickname: 'Evil Overlord', admin: true)
 chuck.save!
 
+test_user = User.first_or_create(email: 'test@gmail.com', password: 'test', first_name: 'test' ,last_name: 'test', nickname: 'Dummy', admin: false)
+test_user.save!
+
 20.times do |n|
   user = User.new
   user.first_name = Faker::Name.first_name
   user.last_name = Faker::Name.unique.last_name
   user.nickname = Faker::JapaneseMedia::DragonBall.unique.character
   user.bio = Faker::Quote.unique.most_interesting_man_in_the_world
-  user.room = n
+  user.room = nil
   user.phone_number = Faker::PhoneNumber.phone_number
   user.email = "#{user.first_name}_#{user.last_name}@zzw.nl"
   user.password = 'password'
@@ -51,9 +54,9 @@ list.options << default
 list.save!
 default.vote_by chuck
 
-poll = Poll.new(name: list.title, list: list)
-poll.choices_from_list
-poll.save!
+# poll = Poll.new(name: list.title, list: list)
+# poll.choices_from_list
+# poll.save!
 
 list = List.first_or_create(title: 'Suggestions', user: chuck)
 list.save!

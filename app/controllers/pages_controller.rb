@@ -18,8 +18,8 @@ class PagesController < ApplicationController
   def tikkie
     @user = current_user
     @users = User.where.not(id: @user.id)
-    @to_me = Debt.to current_user
-    @from_me = Debt.from current_user
+    @to_me = Debt.to_user current_user
+    @from_me = Debt.from_user current_user
     @pricetags = policy_scope Pricetag
   end
 

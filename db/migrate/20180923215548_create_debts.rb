@@ -4,6 +4,7 @@ class CreateDebts < ActiveRecord::Migration[5.0]
       t.float :amount
       t.integer :from_id
       t.integer :to_id
+      t.text :description
 
       t.timestamps
     end

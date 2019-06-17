@@ -14,10 +14,9 @@ class DebtsController < ApplicationController
   # POST /debts.json
   def create
     @debt = Debt.new(debt_params)
-
     respond_to do |format|
       if @debt.save
-        format.html { redirect_to @debt, notice: 'Debt was successfully created.' }
+        format.html { redirect_to @debt, notice: 'tikkie was successfully created.' }
         format.json { render :show, status: :created, location: @debt }
       else
         format.html { render :new }
@@ -31,7 +30,7 @@ class DebtsController < ApplicationController
   def update
     respond_to do |format|
       if @debt.update(debt_params)
-        format.html { redirect_to @debt, notice: 'Debt was successfully updated.' }
+        format.html { redirect_to @debt, notice: 'tikkie was successfully updated.' }
         format.json { render :show, status: :ok, location: @debt }
       else
         format.html { render :edit }
@@ -45,7 +44,7 @@ class DebtsController < ApplicationController
   def destroy
     @debt.destroy
     respond_to do |format|
-      format.html { redirect_to debts_url, notice: 'Debt was successfully destroyed.' }
+      format.html { redirect_to debts_url, notice: 'tikkie was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -58,6 +57,6 @@ class DebtsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def debt_params
-      params.require(:debt).permit(:new, :create, :update, :destroy)
+      params.require(:debt).permit(:to, :from, :amount, :cause, :description)
     end
 end

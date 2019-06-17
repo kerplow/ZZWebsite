@@ -63,3 +63,7 @@
     </ul>
   </div>
 </div>
+<div class="row">
+  <%= render 'debts/table', direction: 'to', debts: @from_me %>
+  <%= render 'debts/table', direction: 'from', debts: @to_me %>
+</div>
