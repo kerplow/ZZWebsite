@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190416140641) do
+ActiveRecord::Schema.define(version: 20190926093808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,16 +102,18 @@ ActiveRecord::Schema.define(version: 20190416140641) do
   end
 
   create_table "pricetags", force: :cascade do |t|
-    t.float    "price"
+    t.decimal  "price",             precision: 5, scale: 2
     t.integer  "user_id"
     t.integer  "operation"
-    t.integer  "state",            default: 0
-    t.integer  "transaction_type", default: 0
+    t.integer  "transaction_state",                         default: 0
+    t.integer  "transaction_type",                          default: 0
     t.string   "listing_type"
     t.integer  "listing_id"
     t.text     "description"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.decimal  "start_price",       precision: 5, scale: 2
+    t.decimal  "buyout_price",      precision: 5, scale: 2
     t.index ["listing_type", "listing_id"], name: "index_pricetags_on_listing_type_and_listing_id", using: :btree
     t.index ["user_id"], name: "index_pricetags_on_user_id", using: :btree
   end
@@ -123,6 +125,21 @@ ActiveRecord::Schema.define(version: 20190416140641) do
     t.string   "door"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "transaction_records", force: :cascade do |t|
+    t.integer  "sale_type"
+    t.string   "bidding_history"
+    t.decimal  "trading_price",   precision: 5, scale: 2
+    t.string   "item_type"
+    t.integer  "item_id"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.index ["buyer_id"], name: "index_transaction_records_on_buyer_id", using: :btree
+    t.index ["item_type", "item_id"], name: "index_transaction_records_on_item_type_and_item_id", using: :btree
+    t.index ["seller_id"], name: "index_transaction_records_on_seller_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -177,4 +194,6 @@ ActiveRecord::Schema.define(version: 20190416140641) do
   add_foreign_key "options", "users"
   add_foreign_key "planner_events", "users"
   add_foreign_key "pricetags", "users"
+  add_foreign_key "transaction_records", "users", column: "buyer_id"
+  add_foreign_key "transaction_records", "users", column: "seller_id"
 end

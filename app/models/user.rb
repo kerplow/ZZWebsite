@@ -31,7 +31,7 @@ class User < ApplicationRecord
     when :subrenter
       validates_presence_of :room
     else
-      errors.add(:guest, "guests have no room") if !room.blank?
+      errors.add(:guest, "guests have no room") unless room.blank?
     end
   end
 end
