@@ -8,7 +8,9 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates_uniqueness_of :phone_number
 
-  enum house_status: [:guest, :housemate, :subrenter, :old_mate]
+  HOUSE_STATUS = {housemate: 0, subrenter: 1, old_housemate: 2, guest: 3}
+
+  enum house_status: HOUSE_STATUS
 
   validates_presence_of :first_name
 
@@ -26,12 +28,20 @@ class User < ApplicationRecord
 
   def room_check
     case house_status
-    when :housemate
-      validates_presence_of :room
-    when :subrenter
-      validates_presence_of :room
-    else
-      errors.add(:guest, "guests have no room") if !room.blank?
+    when "housemate"
+      if room
+        errors.add(:room, 'already has an owner') if room.owner and room.owner != self
+      else
+        errors.add(:room, 'is necessary for housemates')
+      end
+    when "subrenter"
+      if room
+        errors.add(:room, 'is being rented already') if room.owner.exists? and room.owner != self
+      else
+        errors.add(:room, 'is necessary for subrenters')
+      end
+    when "guest"
+      errors.add(:room, "guests have no room") unless room.blank?
     end
   end
 end

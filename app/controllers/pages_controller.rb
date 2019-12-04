@@ -1,8 +1,8 @@
 require 'eetlijst_loader'
 
 class PagesController < ApplicationController
-  before_action :authenticate_user!, except: [:home]
-  after_action :verify_policy_scoped
+  before_action :authenticate_user!, except: [:home, :about]
+  after_action :verify_policy_scoped, except: [:about]
 
   def home
     require 'csv'
@@ -28,4 +28,6 @@ class PagesController < ApplicationController
     @lists = policy_scope(List)
   end
 
+  def about
+  end
 end

@@ -63,4 +63,9 @@ list.save!
 
 poll = Poll.first_or_create
 
+p 'creating rooms'
+for i in 1..32 do
+  Room.create(number: i)
+end
+
 p 'seed done'

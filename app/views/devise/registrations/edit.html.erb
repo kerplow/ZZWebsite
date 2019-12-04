@@ -8,6 +8,16 @@
     <%= f.input :first_name, required: false, autofocus: true %>
     <%= f.input :last_name, required: false, autofocus: true %>
     <%= f.input :nickname, required: false, autofocus: true %>
+    <%= f.input :house_status,
+                label: nil,
+                as: :radio_buttons,
+                item_wrapper_class: 'inline-radio',
+                collection: User::HOUSE_STATUS,
+                required: true,
+                autofocus: true %>
+    <%= f.input :room, as: :select, collection: Room.all, label_method: :number
+                required: false,
+                wrapper_html: { class: 'collapse', id: 'room-collapse'} %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -36,3 +46,17 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+<script>
+  const room_checkboxes = document.querySelector('.user_house_status').querySelectorAll('.form-check-input')
+  const checkbox_array = Array.from(room_checkboxes)
+
+  checkbox_array.slice(0,3).forEach((element) => {
+    element.addEventListener( 'change', function() {
+      $('#room-collapse').collapse('show')
+    });
+  });
+
+  checkbox_array[3].addEventListener( 'change', function() {
+    $('#room-collapse').collapse('hide')
+  });
+</script>

@@ -20,6 +20,16 @@
                 required: true,
                 autofocus: true ,
                 input_html: { autocomplete: "email" }%>
+    <%= f.input :house_status,
+                label: nil,
+                as: :radio_buttons,
+                item_wrapper_class: 'inline-radio',
+                collection: User::HOUSE_STATUS,
+                required: true,
+                autofocus: true %>
+    <%= f.input :room, as: :select, collection: Room.all,
+                required: false,
+                wrapper_html: { class: 'collapse', id: 'room-collapse'} %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -35,3 +45,17 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<script>
+  const room_checkboxes = document.querySelector('.user_house_status').querySelectorAll('.form-check-input')
+  const checkbox_array = Array.from(room_checkboxes)
+
+  checkbox_array.slice(0,3).forEach((element) => {
+    element.addEventListener( 'change', function() {
+      $('#room-collapse').collapse('show')
+    });
+  });
+
+  checkbox_array[3].addEventListener( 'change', function() {
+    $('#room-collapse').collapse('hide')
+  });
+</script>
