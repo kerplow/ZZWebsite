@@ -1,18 +1,12 @@
 class NotesController < ApplicationController
-  include voteable_concern
   before_action :load_and_authorize_note, only: [:edit, :destroy, :update]
 
   def new
-    @note = Note.with_pricetag
+    @note = Note.new
   end
 
   def create
-    byebug
-    if with_pricetag?
-      @note = Note.with_pricetag(note_params.merge({user: current_user}))
-    else
-      @note = Note.new(note_params.merge({user: current_user, has_pricetag: false}))
-    end
+    @note = Note.new(note_params.merge({user: current_user, has_pricetag: false}))
 
     respond_to do |format|
       if @note.save
@@ -66,15 +60,7 @@ class NotesController < ApplicationController
     authorize @note
   end
 
-  def with_pricetag?
-    params[:note][:has_pricetag] == "1"
-  end
-
   def note_params
-    if with_pricetag?
-      params.require(:note).permit(:name, :contents, :has_pricetag, pricetag_attributes: [:price, :operation, :transaction_type])
-    else
-      params.require(:note).permit(:name, :contents)
-    end
+    params.require(:note).permit(:name, :contents)
   end
 end

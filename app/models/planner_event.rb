@@ -1,5 +1,4 @@
 class PlannerEvent < ApplicationRecord
-  include Tradeable
   acts_as_votable
 
   belongs_to :user, optional: true

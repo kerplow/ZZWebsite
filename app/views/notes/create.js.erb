@@ -1,10 +1,10 @@
 function refreshForm(innerHTML) {
-    const newNoteForm = $('.new_note');
+    const newNoteForm = $('.new-note');
     newNoteForm.replaceWith(innerHTML);
 };
 
 function addNote(noteHTML) {
-    $('#new_note').remove()
+    $('#new-note').remove()
     $('.notes').append(noteHTML);
     $('#new-note-button').show()
 };

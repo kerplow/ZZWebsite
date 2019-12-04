@@ -1,4 +1,5 @@
-<div class="note noteable" id="<%= "note_#{note.id}" %>">
+<% container ||= true %>
+<% if container %><div class="note noteable" id="<%= "note-#{note.id}" %>"><% end %>
   <div class="note-head">
     <H4 class="note-title">
       <%= note.name %>
@@ -8,10 +9,10 @@
     <p class="note-contents">
       <%= note.contents %>
     </p>
-    <% if note.has_pricetag? %>
-      <%= render partial: 'pricetags/show', locals: { pricetag: note.pricetag } %>
-    <% end %>
-    <% if current_user %>
+    <%# if note.has_pricetag? %>
+      <%#= render partial: 'pricetags/show', locals: { pricetag: note.pricetag } %>
+    <%# end %>
+    <% if user_signed_in? %>
       <div class="note-links">
         <% if policy(note).update? %>
           <%= link_to "edit note", note, remote: true, method: :put, class: 'note-update-button' %>
@@ -22,4 +23,4 @@
       </div>
     <% end %>
   </div>
-</div>
+<% if container %></div><% end %>

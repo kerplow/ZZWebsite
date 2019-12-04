@@ -1,4 +1,5 @@
-<div class="row" id="new-event-form">
+<% container ||= true %>
+<% if container %><div class id="new-event-form"><% end %>
   <%= simple_form_for(event, remote: true, authenticity_token: true) do |f| %>
     <%= f.input "name" %>
     <%= f.input "description" %>
@@ -7,4 +8,4 @@
     <%= f.input 'url' %>
     <%= f.button "submit" %>
   <% end %>
-</div>
+<% if container %></div><% end %>

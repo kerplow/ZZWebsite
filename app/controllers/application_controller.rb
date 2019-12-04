@@ -15,11 +15,11 @@ class ApplicationController < ActionController::Base
     end
 
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:username, :email, :first_name, :last_name, :nickname, :password, :password_confirmation)
+      user_params.permit(:username, :email, :first_name, :last_name, :nickname, :password, :password_confirmation, :house_status, :room)
     end
 
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
-      user_params.permit(:username, :email, :first_name, :last_name, :nickname, :current_password, :password, :password_confirmation)
+      user_params.permit(:username, :email, :first_name, :last_name, :nickname, :current_password, :password, :password_confirmation, :house_status, :room)
     end
   end
 end

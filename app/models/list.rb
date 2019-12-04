@@ -1,5 +1,4 @@
 class List < ApplicationRecord
-  include Tradeable
   acts_as_votable
 
   belongs_to :user
@@ -9,4 +8,8 @@ class List < ApplicationRecord
   validates :title, presence: true
 
   serialize :allowed_voters, Array
+
+  scope :all_public, -> { where(is_public: true) }
+
+  scope :with_options, -> { includes(:options) }
 end

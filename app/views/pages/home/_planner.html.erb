@@ -22,5 +22,5 @@
       <% end %>
     </div>
   </div>
-  <%= link_to "new event", new_planner_event_path , id: 'new-event-button', remote: true %>
+  <%= button_to "new event", new_planner_event_path , id: 'new-event-button', remote: true, class: 'btn btn-primary', method: :get %>
 </div>

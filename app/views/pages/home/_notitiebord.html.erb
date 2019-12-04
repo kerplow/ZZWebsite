@@ -6,6 +6,6 @@
     <div class="notes">
       <% render @notes %>
     </div>
-    <%= link_to "new note", new_note_path, id: "new-note-button", remote: true %>
+    <%= button_to "new note", new_note_path, id: "new-note-button", remote: true, class: 'btn btn-primary', method: :get %>
   </div>
 </div>

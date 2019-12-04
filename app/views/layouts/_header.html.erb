@@ -4,7 +4,7 @@
   <!-- path names used as url and link name, looks nice and feels logical -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <%= link_to 'Home', root_url, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to 'Finances', tikkie_url, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%#= link_to 'Finances', tikkie_url, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to 'lists', lists_url, class: "navbar-wagon-item navbar-wagon-link" %>
   </div>
   <% if current_user.try(:admin?) %>
