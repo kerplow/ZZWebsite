@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get '/lists', to: 'pages#lists'
 
   devise_for :users
-  resources :planner_events
-  resources :notes
-  resources :lists
+  resources :planner_events, only: [:new, :create, :edit, :update, :destroy]
+  resources :notes, only: [:new, :create, :edit, :update, :destroy]
+  resources :lists, only: [:new, :create, :edit, :update, :destroy] do
+    resources :options, only: [:new, :create, :edit, :update, :destroy]
+  end
 
   post '/upvote', to: "votes#upvote", defaults: { format: :js }
   post '/downvote', to: "votes#downvote", defaults: { format: :js }

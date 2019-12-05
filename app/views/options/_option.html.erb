@@ -1,1 +1,12 @@
-<li class="list-item" id="option-<%= option.id %> "><%= option.name %></li>
+<% container ||= true %>
+<% if container %><div class="option voting-container" id="option-<%= option.id %>" ><% end %>
+  <% if user_signed_in? %>
+    <%= render 'shared/votes', record: option %>
+  <% end %>
+  <div class="voteable option-name">
+    <%= option.name %>
+    <%= link_to url: list_option_path(option.list, option), method: :delete, remote: true, data: {confirm: 'Sure?'} , class: 'delete-button' do %>
+      <%= fa_icon "trash-alt" %>
+    <% end %>
+  </div>
+<% if container %></div><% end %>

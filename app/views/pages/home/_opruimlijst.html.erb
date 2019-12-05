@@ -14,21 +14,21 @@
         <tr>
 
           <th scope="row"><%= "  #{(cleaning_week-7.days).strftime('%m/%d')}-#{(cleaning_week-1.days).strftime('%m/%d')}  " %></th>
-          <% last_week = @opruimlijst[(cleaning_week-7.days).strftime('%Y-%m-%d')] %>
+          <% last_week = @opruimlijst[(cleaning_week-7.days).strftime('%Y-%m-%d')] || ['something went wrong'] %>
           <% last_week.each do |name| %>
             <td><%= name %></td>
           <% end %>
         </tr>
         <tr>
           <th scope="row"><%= "--#{cleaning_week.strftime('%m/%d')}-#{(cleaning_week+7.days).strftime('%m/%d')}--" %></th>
-          <% this_week = @opruimlijst[(cleaning_week).strftime('%Y-%m-%d')] %>
+          <% this_week = @opruimlijst[(cleaning_week).strftime('%Y-%m-%d')] || ['something went wrong'] %>
           <% this_week.each do |name| %>
             <td><%= name %></td>
           <% end %>
         </tr>
         <tr>
           <th scope="row"><%= "  #{(cleaning_week+7.days).strftime('%m/%d')}-#{(cleaning_week+13.days).strftime('%m/%d')}  " %></th>
-          <% next_week = @opruimlijst[(cleaning_week+7.days).strftime('%Y-%m-%d')] %>
+          <% next_week = @opruimlijst[(cleaning_week+7.days).strftime('%Y-%m-%d')] || ['something went wrong'] %>
           <% next_week.each do |name| %>
             <td><%= name %></td>
           <% end %>

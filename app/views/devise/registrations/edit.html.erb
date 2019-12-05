@@ -15,7 +15,10 @@
                 collection: User::HOUSE_STATUS,
                 required: true,
                 autofocus: true %>
-    <%= f.input :room, as: :select, collection: Room.all, label_method: :number
+    <%= f.input :room,
+                as: :select,
+                collection: Room.all,
+                label_method: :location,
                 required: false,
                 wrapper_html: { class: 'collapse', id: 'room-collapse'} %>
 

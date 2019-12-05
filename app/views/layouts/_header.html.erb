@@ -1,21 +1,18 @@
 <div class="navbar-wagon">
 
-  <!-- Right Navigation -->
-  <!-- path names used as url and link name, looks nice and feels logical -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="navbar-wagon-item">
     <%= link_to 'Home', root_url, class: "navbar-wagon-item navbar-wagon-link" %>
     <%#= link_to 'Finances', tikkie_url, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to 'lists', lists_url, class: "navbar-wagon-item navbar-wagon-link" %>
   </div>
-  <% if current_user.try(:admin?) %>
-    <h2>Welcome boss</h2>
-  <% end %>
+  <div class='site-title'>
+    <% if current_user.try(:admin?) %>
+      <h2>Welcome boss</h2>
+    <% end %>
+    <h2><%= List.find_by(title: 'site-title').winner.name %></h2>
+  </div>
 
-
-  <!-- Dropdown appearing on mobile only -->
-  <!-- same as normal navigation, using lewagon navbar -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-
+  <div class="navbar-wagon-item navbar-wagon-right">
     <%= (@user.nickname || @user.first_name) if @user %>
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>

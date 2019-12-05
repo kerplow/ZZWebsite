@@ -1,23 +1,14 @@
-
-<%= simple_form_for(@list) do |f| %>
+<%= simple_form_for(@list, remote: true, authenticity_token: true, html: { id: 'list-form' }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :is_public %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
 <% end %>
-
-<div class="row" id="new_note">
-  <%= simple_form_for(@note, remote: true, authenticity_token: true) do |f| %>
-    <%= f.input "name" %>
-    <%= f.input "contents" %>
-    <%= f.label 'pricetag?' %>
-    <%= f.input :has_pricetag, as: :boolean, html: { onclick: 'togglePricetag()' } %>
-    <%= render partial: 'pricetags/form', locals: { f: f } %>
-    <%= f.button :submit %>
-  <% end %>
-</div>

@@ -1,4 +1,5 @@
-function upVote(model_type, id) {
-  const votes = $("#"+ model + id );
-  votes.
-};
+<% if @unvoted %>
+  unVote('<%= @html_id %>', '<%= @model.cached_votes_score %>')
+<% else %>
+  upVote('<%= @html_id %>', '<%= @model.cached_votes_score %>')
+<% end %>

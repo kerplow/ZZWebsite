@@ -2,21 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .voting-container {
-  @include flex-row-start;
+  display: inline-block;
+  position: relative;
+  width: 100%;
 
-  .voteable {
-
+  .voteable, .vote-total {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
   };
 
   .votes {
-    @include flex-col-in;
-    heigth: 100%;
+    display: inline-block;
+    height: 100%;
 
-    .upvote {
+    i {
+      color: gray;
+    };
+
+    .upvote.voted i {
       color: green;
     };
 
-    .downvote {
+    .downvote.voted i {
       color: red;
     };
   };

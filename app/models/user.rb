@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  acts_as_voter
+
   validates :nickname, uniqueness: { scope: [:first_name, :last_name] }
   validates :email, uniqueness: true
   validates_uniqueness_of :phone_number
