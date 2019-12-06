@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_and_authorize_list, only: [:show, :create, :update, :destroy]
+  before_action :set_and_authorize_list, only: [:show, :update, :edit, :destroy]
 
   def new
     @list = List.new
@@ -19,6 +19,9 @@ class ListsController < ApplicationController
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def edit
   end
 
   # PATCH/PUT /lists/1
@@ -54,6 +57,6 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.fetch(:list, {})
+      params.require(:list).permit(:title, :user_id, :description, :poll, :is_public, :private, options: {})
     end
 end
