@@ -15,7 +15,7 @@ class ListPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      return scope.all_public unless user
+      return scope.only_public unless user
       if user.admin?
         scope.all
       else

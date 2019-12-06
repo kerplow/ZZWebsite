@@ -1,0 +1,4 @@
+<%= simple_form_for @option, url: list_options_path(list), remote: true, html: { id: "new-option-form-#{list.id}" } do |f| %>
+  <%= f.input :name, label: false,  placeholder: "name" %>
+  <%= f.submit :submit, class: 'btn' %>
+<% end -%>

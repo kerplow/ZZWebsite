@@ -9,7 +9,10 @@ class List < ApplicationRecord
 
   serialize :allowed_voters, Array
 
-  scope :all_public, -> { where(is_public: true) }
+  scope :only_public, -> { where(is_public: true) }
+  # scope :with_options, -> { includes(:options) }
 
-  scope :with_options, -> { includes(:options) }
+  def winner
+    options.order(cached_votes_score: :desc).first
+  end
 end

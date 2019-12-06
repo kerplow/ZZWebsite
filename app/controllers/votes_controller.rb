@@ -2,32 +2,27 @@ class VotesController < ApplicationController
   before_action :set_and_authorize_model
 
   def upvote
-    respond_to do |format|
-      if @model.liked_by User
-        format.js
-      else
-        format.js { flash[:notice] = 'vote not registered' }
-      end
+    if current_user.voted_up_on?(@model)
+      @model.unliked_by current_user
+      @unvoted = true
+    else
+      @model.liked_by current_user
     end
   end
 
   def downvote
-    respond_to do |format|
-      if @model.downvote_from User
-        format.js
-      else
-        format.js { flash[:notice] = 'vote not registered' }
-      end
+    if current_user.voted_down_on?(@model)
+      @model.undisliked_by current_user
+      @unvoted = true
+    else
+      @model.disliked_by current_user
     end
   end
 
   private
 
   def set_and_authorize_model
-    @model = vote_params[:model_type].constantize.find(vote_params[:model_id])
-  end
-
-  def vote_params
-    params.require(:vote).permit(:user, :model_type, :model_id)
+    @model = params[:voteable].constantize.find(params[:id])
+    @html_id = "#{params[:voteable].downcase}-#{params[:id]}"
   end
 end

@@ -5,15 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+p 'dropping Notes'
+Note.delete_all
+p 'dropping Options'
 Option.delete_all
+p 'dropping Lists'
 List.delete_all
+p 'dropping Users'
 User.delete_all
+p 'dropping Rooms'
+Room.delete_all
 
 p 'creating rooms'
+rooms = YAML.load_file(Rails.root.join("db/lib/rooms.yml")).deep_symbolize_keys
 for i in 1..32 do
-  Room.create(number: i)
+  Room.create!(number: i, **rooms[i])
 end
 
+p 'creating admin'
 chuck = User.first_or_create(email: 'charlesdegh@gmail.com', password: ENV['ADMIN_PASSWORD'], first_name: 'Charles' ,last_name: 'de Gheldere', nickname: 'Evil Overlord', admin: true, house_status: 3)
 chuck.save!
 
@@ -52,8 +61,8 @@ test_user.save!
 #   note.save!
 # end
 
-# default lists:
-list = List.first_or_create(title: 'Subtitle', user: chuck)
+p 'creating default lists'
+list = List.first_or_create(title: 'site-title', user: chuck)
 default = Option.new(name: "It's a pirates life for me")
 default.list = list
 default.save!

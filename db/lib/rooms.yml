@@ -1,16 +1,64 @@
 1:
-  location: 'downstairs left side first room'
+  location: 'downstairs left side first hallway first room'
 2:
-  location: 'downstairs left side second room'
+  location: 'downstairs left side first hallway second room'
 3:
-  location: 'downstairs left side first room past toilets'
+  location: 'downstairs left side second hallway first door'
 4:
-  location: 'downstairs left side first room'
+  location: 'downstairs left side second hallway second door'
 5:
-  location: 'downstairs left side first room'
+  location: 'downstairs left side second hallway third door'
 6:
-  location: 'downstairs left side first room'
+  location: 'downstairs left side second hallway fourth door'
 7:
-  location: 'downstairs left side first room'
+  location: 'downstairs left side second hallway last door'
 8:
-  location: 'downstairs left side first room'
+  location: 'downstairs left side back hallway'
+9:
+  location: 'downstairs right side back hallway'
+10:
+  location: 'downstairs right side first hallway first door'
+11:
+  location: 'downstairs right side first hallway second door'
+12:
+  location: 'downstairs right side first hallway third door'
+13:
+  location: 'downstairs right side second hallway first door'
+14:
+  location: 'downstairs right side second hallway second door'
+15:
+  location: 'downstairs right side second hallway third door'
+16:
+  location: 'downstairs right side second hallway fourth door'
+17:
+  location: 'downstairs right side second hallway next to last'
+18:
+  location: 'downstairs right side second hallway last before back hallway'
+19:
+  location: 'downstairs right side back hallway'
+20:
+  location: 'upstairs hallway'
+21:
+  location: 'upstairs left side first door'
+22:
+  location: 'upstairs left side second door'
+23:
+  location: 'upstairs left side next to closet'
+24:
+  location: 'upstairs left side past hallway'
+25:
+  location: 'upstairs left side next to terrace'
+26:
+  location: 'upstairs right side first door'
+27:
+  location: 'upstairs right side second door'
+28:
+  location: 'upstairs right side third door'
+29:
+  location: 'upstairs right side fourth door'
+30:
+  location: 'upstairs right side fifth door'
+31:
+  location: 'upstairs right side next to last'
+32:
+  location: 'upstairs right side next to terrace'

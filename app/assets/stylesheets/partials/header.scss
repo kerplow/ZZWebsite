@@ -26,13 +26,19 @@
 .navbar-wagon-right {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+  text-align: center;
+  min-width: 15vw;
+}
+
+.site-title {
+  text-align: center;
 }
 
 /* Navbar link */

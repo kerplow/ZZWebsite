@@ -13,16 +13,21 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "flexbox";
 @import "pages";
 @import "noteboard/index";
 @import "calendar/index";
-@import "navbar";
 @import 'partials/index';
 @import 'eetlijst';
 @import 'list';
 @import "font-awesome";
+@import 'voteable';
 
 .inline-radio {
   display: inline-block;
   margin-left: 25px;
+}
+
+.no-color {
+  color: #212529 !important;
 }
