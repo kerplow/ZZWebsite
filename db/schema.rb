@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190416140641) do
+ActiveRecord::Schema.define(version: 20191206131255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cleaning_tasks", force: :cascade do |t|
+    t.integer  "room_id"
+    t.integer  "task"
+    t.boolean  "done"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_cleaning_tasks_on_room_id", using: :btree
+  end
 
   create_table "debts", force: :cascade do |t|
     t.float    "amount"
@@ -169,6 +178,7 @@ ActiveRecord::Schema.define(version: 20190416140641) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
 
+  add_foreign_key "cleaning_tasks", "rooms"
   add_foreign_key "debts", "users", column: "from_id"
   add_foreign_key "debts", "users", column: "to_id"
   add_foreign_key "lists", "users"

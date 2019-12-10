@@ -1,17 +1,19 @@
 <%= javascript_include_tag "pages/home.js" %>
 <div class="title text-center">
-  <h1 class="text-center" id="title">ZZW</h1>
+  <h1 class="text-center" id="zzw">ZZW</h1>
 </div>
-<p class="text-center"><%= List.find_by(title: 'Subtitle')&.poll&.winner || "it's the pirate's life for me" %></p>
+  <h4 class="text-center" id="site-title"><%= List.find_by(title: 'site-title').winner.name %></h4>
 <% if @user %>
-  <%= @user.inspect %>
+  <% if Rails.env.development? %>
+    <%= @user.inspect %>
+  <% end %>
 <% else %>
   <p>not signed in yet</p>
 <% end %>
-<%= render partial: 'pages/home/opruimlijst', locals: { cleaning_week: @cleaning_week } %>
+<%= render partial: 'components/opruimlijst', locals: { cleaning_week: @cleaning_week } %>
 <div class="row">
-  <%= render partial: 'pages/home/notitiebord' %>
-  <%= render partial: 'pages/home/planner' %>
+  <%= render partial: 'components/notitiebord' %>
+  <%= render partial: 'components/planner' %>
 </div>
 <!-- <%#= render partial: 'pages/home/eetlijst' %> -->
 <% content_for :document_ready do %>
