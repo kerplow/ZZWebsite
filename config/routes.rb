@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :lists, only: [:new, :create, :edit, :update, :destroy] do
     resources :options, only: [:new, :create, :edit, :update, :destroy]
   end
+  resources :lost_and_found, only: [:index, :create, :update, :show, :destroy]
 
   post '/upvote', to: "votes#upvote", defaults: { format: :js }
   post '/downvote', to: "votes#downvote", defaults: { format: :js }

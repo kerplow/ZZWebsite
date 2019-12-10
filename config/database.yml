@@ -1,11 +1,13 @@
 development:
   adapter: postgresql
+  role: postgres
   encoding: unicode
   database: db/zzwebsite_development
   pool: 5
 
 test:
   adapter: postgresql
+  role: postgres
   encoding: unicode
   database: db/zzwebsite_test
   pool: 5

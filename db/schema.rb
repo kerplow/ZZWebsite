@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191206131255) do
+ActiveRecord::Schema.define(version: 20191210135834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,18 @@ ActiveRecord::Schema.define(version: 20191206131255) do
     t.string   "allowed_voters"
     t.boolean  "has_pricetag",    default: false
     t.index ["user_id"], name: "index_lists_on_user_id", using: :btree
+  end
+
+  create_table "lost_items", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "found_by_id"
+    t.integer  "lost_by_id"
+    t.integer  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["found_by_id"], name: "index_lost_items_on_found_by_id", using: :btree
+    t.index ["lost_by_id"], name: "index_lost_items_on_lost_by_id", using: :btree
   end
 
   create_table "notes", force: :cascade do |t|
@@ -182,6 +194,8 @@ ActiveRecord::Schema.define(version: 20191206131255) do
   add_foreign_key "debts", "users", column: "from_id"
   add_foreign_key "debts", "users", column: "to_id"
   add_foreign_key "lists", "users"
+  add_foreign_key "lost_items", "users", column: "found_by_id"
+  add_foreign_key "lost_items", "users", column: "lost_by_id"
   add_foreign_key "notes", "users"
   add_foreign_key "options", "lists"
   add_foreign_key "options", "users"

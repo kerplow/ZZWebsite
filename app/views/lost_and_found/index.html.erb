@@ -1,0 +1,7 @@
+<h1>Lost and Found</h1>
+
+<%= render "form", item: @newitem %>
+
+<% @lafitems.each do |it| %>
+	<%= render "lost_item", lost_item: it %>
+<% end %>
