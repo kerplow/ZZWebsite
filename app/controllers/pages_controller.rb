@@ -30,4 +30,17 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def fuckshitup
+    @roomtask = RoomTask.first
+    if params[:doit]
+      Object.send('remove_const', :RoomTask)
+      CleaningTask.create(name: 'test', active: true)
+      load 'app/models/room_task'
+    end
+    p @roomtask
+    @roomtask.plop
+    @second = RoomTask.last
+    @second.plop
+  end
 end

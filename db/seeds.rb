@@ -75,4 +75,10 @@ default.vote_by chuck
 list = List.first_or_create(title: 'Suggestions', user: chuck)
 list.save!
 
+p 'creating tasks'
+TASKS = { 'Trash upstairs': 0,'Trash downstairs': 1,'Kitchen': 2,'Take out recycling': 3,'Clearing hallways': 4 }
+TASKS.each do |task, id|
+  CleaningTask.find_or_create_by!(name: task, id: id)
+end
+
 p 'seed done'

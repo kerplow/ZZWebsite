@@ -1,18 +1,11 @@
 class CleaningTask < ApplicationRecord
-  belongs_to :room
-  has_one :user, through: :room, association_name: :current_tenant
+  # after_create  :expand_room_task_scope
+  # after_destroy :delete_room_task_scope
+  # after_update  :update_room_task_scope
 
-  validate :full_week
+  has_many :room_tasks
+  has_many :rooms, through: :room_tasks
+  has_many :users, through: :rooms, foreign_key: :user
 
-  scope :bitch, -> {
-    where(task: task).where("week -|– ?::daterange AND week > ?::daterange", week, week).current_tenant
-  }
-
-  TASKS = { 'Trash upstairs': 0,'Trash downstairs': 1,'Kitchen': 2,'Take out recycling': 3,'Clearing hallways': 4 }
-
-  enum task: TASK
-
-  def full_week
-
-  end
+  scope :active, -> { where(active: true) }
 end

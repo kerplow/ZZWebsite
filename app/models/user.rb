@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   has_many :notes
 
-  belongs_to :room, optional: true
+  has_one :room
 
   validate :room_check
 

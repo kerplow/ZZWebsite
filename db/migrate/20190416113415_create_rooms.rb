@@ -5,6 +5,9 @@ class CreateRooms < ActiveRecord::Migration[5.0]
       t.text :description
       t.string :location
       t.string :door
+      t.references :owner, foreign_key: { to_table: :users }, index: true
+      t.references :current_tenant, foreign_key: { to_table: :users }, index: true
+      t.integer :past_tenants, array: true
 
       t.timestamps
     end
