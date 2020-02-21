@@ -2,10 +2,10 @@
   <h3 class="text-center list-title"><%= list.title %></h3>
   <div class="list-description"><%= list.description %></div>
   <div class="list-items">
-    <%= link_to("+", new_list_option_path(list), remote: true, class: "new-option-button", id: "new-option-button-#{list.id}") %>
     <div class="list-options" id="list-options-<%= list.id%>">
       <%= render list.options  %>
     </div>
+    <%= link_to("+", new_list_option_path(list), remote: true, class: "new-option-button", id: "new-option-button-#{list.id}") %>
   </div>
   <%= list if Rails.env.development? %>
 </div>

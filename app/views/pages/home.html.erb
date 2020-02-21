@@ -1,3 +1,5 @@
+<%= render partial: 'layouts/sidebar' %>
+<%= render partial: 'layouts/ridebar' %>
 <%= javascript_include_tag "pages/home.js" %>
 <div class="title text-center">
   <h1 class="text-center" id="zzw">ZZW</h1>
@@ -10,11 +12,20 @@
 <% else %>
   <p>not signed in yet</p>
 <% end %>
-<%= render partial: 'components/opruimlijst', locals: { cleaning_week: @cleaning_week } %>
 <div class="row">
-  <%= render partial: 'components/notitiebord' %>
   <%= render partial: 'components/planner' %>
 </div>
-<!-- <%#= render partial: 'pages/home/eetlijst' %> -->
+<div class="row">
+  <%= render partial: 'components/planner' %>
+</div>
+<div class="row">
+  <%= render partial: 'components/planner' %>
+</div>
+<div class="row">
+  <%= render partial: 'components/planner' %>
+</div>
+<div class="row">
+  <%= render partial: 'components/planner' %>
+</div>
 <% content_for :document_ready do %>
 <% end %>

@@ -1,12 +1,18 @@
 <% container ||= true %>
 <% if container %><div id="new-note"><% end %>
   <%= simple_form_for(@note, remote: true, authenticity_token: true) do |f| %>
-    <%= f.input "name" %>
-    <%= f.input "contents" %>
-    <%= f.input :is_public, label: "public?", label_html: { class: 'no-color' } %>
+    <%= link_to 'x', '#', on_click: 'closeNoteForm()' %>
+    <%= f.input "name", placeholder: 'name', label: false %>
+    <%= f.input "contents", placeholder: 'contents', label: false %>
+    <%= f.input :is_public, label: "public?", label_html: { class: 'no-color' }, wrapper_html: {style: 'display:inline-block'} %>
     <%#= f.label 'pricetag?' %>
     <%#= f.input :has_pricetag, as: :boolean, html: { onclick: 'togglePricetag()' } %>
     <%#= render partial: 'pricetags/form', locals: { f: f } %>
-    <%= f.button :submit %>
+    <%= f.button :submit, style: 'display:inline-block; position:absolute; right:0px' %>
   <% end %>
 <% if container %></div><% end %>
+<script>
+  function closeNoteForm {
+    document.getElementById('new-note-form').innerHTML = ''
+  }
+</script>

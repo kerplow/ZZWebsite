@@ -18,7 +18,7 @@
           <%= link_to "edit note", note, remote: true, method: :put, class: 'note-update-button' %>
         <% end %>
         <% if policy(note).destroy? %>
-          <%= link_to "delete note", note, remote: true, method: :delete, class: 'note-delete-button' %>
+          <%= link_to "X", note, remote: true, method: :delete, class: 'note-delete-button pin' %>
         <% end %>
       </div>
     <% end %>

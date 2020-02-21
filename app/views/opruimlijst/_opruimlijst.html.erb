@@ -1,0 +1,33 @@
+<% @editor = true %>
+<div id="opruimlijst">
+  <h2 class="side-title">CLEANING</h2>
+  <div id="cleaning-roster" class="align-content-center">
+    <table class="table">
+      <tr>
+        <th scope="col">week</th>
+        <% @active_tasks.each do |task| %>
+          <th><button type='button' data-toggle='tooltip' title='<%= task.description %>' ><%= task.name %></button></th>
+        <% end %>
+      </tr>
+      <tr>
+
+        <th scope="row">  <%= @previous_week.date_string %>  </th>
+        <% @previous_week.room_tasks.each do |room_task| %>
+          <td><%= room_task.who %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th scope="row"><%= "--#{@cleaning_week.date_string}--" %></th>
+        <% @cleaning_week.room_tasks.each do |room_task| %>
+          <td><%= room_task.who %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th scope="row"><%= "  #{@next_week.date_string}  " %></th>
+        <% @next_week.room_tasks.each do |room_task| %>
+          <td><%= room_task.who %></td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+</div>

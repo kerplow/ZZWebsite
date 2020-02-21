@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   post '/upvote', to: "votes#upvote", defaults: { format: :js }
   post '/downvote', to: "votes#downvote", defaults: { format: :js }
 
+  resources :opruimlijst, only: [:index, :edit] do
+    member do
+      post '/switch', to: "opruimlijst#switch", as: :switch_task
+    end
+  end
+
   # resources :pricetags,  defaults: {format: :json}, only: [:destroy] do
   #   member do
   #     put 'offer'

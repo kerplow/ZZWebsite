@@ -4,7 +4,7 @@ class RoomTask < ApplicationRecord
   belongs_to :week, class_name: 'CleaningWeek', foreign_key: :cleaning_week_id
   has_one :user, through: :room, source: :current_tenant
 
-  enum cleaning_task: Hash[CleaningTask.active.pluck(:name, :id)], _suffix: :task
+  enum cleaning_task: Hash[CleaningTask.active.pluck(:name, :id).map! { |name, id| [name.underscore.gsub(' ','_'), id] }], _suffix: :task
 
   validates_uniqueness_of :week, scope: :cleaning_task
   validate :active_task
@@ -20,8 +20,24 @@ class RoomTask < ApplicationRecord
   end
 
   def who
-    byebug
-    user.name
+    self.room ? user.name : 'not assigned'
+  end
+
+  def task
+    cleaning_task.name
+  end
+
+  def switch_rooms(task)
+    raise ArgumentError.new('not a room task') unless RoomTask === task
+    query = <<-SQL
+    UPDATE room_tasks AS rt SET room_id = CASE
+      WHEN id = #{task.id.to_i} THEN #{self.room_id.to_i}
+      WHEN id = #{self.id.to_i} THEN #{task.room_id.to_i}
+    END
+    WHERE id IN (#{task.id.to_i}, #{self.id.to_i})
+    SQL
+    ActiveRecord::Base.connection.execute(query)
+    RoomTask.where(id: [self.id, task.id])
   end
 
   def self.generate_week(date)

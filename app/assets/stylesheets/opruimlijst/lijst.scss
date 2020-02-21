@@ -1,0 +1,27 @@
+#opruimlijst {
+  width: 825px;
+  height: 100%;
+  margin: 10px;
+  display: inline-block;
+
+  #cleaning-roster {
+    display: inline-block;
+    width: 800px;
+  }
+
+
+  .side-title {
+    display:inline-block;
+    word-break: break-word;
+    width: 25px;
+    float: left;
+  }
+}
+
+#opruim-edit {
+  position: relative;
+  width: fit-content;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%)
+}
