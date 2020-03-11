@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190416140641) do
+ActiveRecord::Schema.define(version: 20200217123010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cleaning_tasks", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "active",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "cleaning_weeks", force: :cascade do |t|
+    t.integer   "week_number"
+    t.daterange "week_dates"
+    t.index ["week_dates"], name: "index_cleaning_weeks_on_week_dates", using: :btree
+    t.index ["week_number"], name: "index_cleaning_weeks_on_week_number", using: :btree
+  end
 
   create_table "debts", force: :cascade do |t|
     t.float    "amount"
@@ -116,13 +131,30 @@ ActiveRecord::Schema.define(version: 20190416140641) do
     t.index ["user_id"], name: "index_pricetags_on_user_id", using: :btree
   end
 
+  create_table "room_tasks", force: :cascade do |t|
+    t.integer  "room_id"
+    t.boolean  "done",             default: false
+    t.integer  "cleaning_task_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "cleaning_week_id"
+    t.index ["cleaning_task_id"], name: "index_room_tasks_on_cleaning_task_id", using: :btree
+    t.index ["cleaning_week_id"], name: "index_room_tasks_on_cleaning_week_id", using: :btree
+    t.index ["room_id"], name: "index_room_tasks_on_room_id", using: :btree
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.integer  "number"
     t.text     "description"
     t.string   "location"
     t.string   "door"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "owner_id"
+    t.integer  "current_tenant_id"
+    t.integer  "past_tenants",                   array: true
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["current_tenant_id"], name: "index_rooms_on_current_tenant_id", using: :btree
+    t.index ["owner_id"], name: "index_rooms_on_owner_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -136,15 +168,12 @@ ActiveRecord::Schema.define(version: 20190416140641) do
     t.string   "nickname"
     t.text     "bio"
     t.string   "phone_number"
-    t.string   "room"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
     t.integer  "house_status",           default: 0
-    t.integer  "room_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["room_id"], name: "index_users_on_room_id", using: :btree
   end
 
   create_table "voteables", force: :cascade do |t|
@@ -177,4 +206,9 @@ ActiveRecord::Schema.define(version: 20190416140641) do
   add_foreign_key "options", "users"
   add_foreign_key "planner_events", "users"
   add_foreign_key "pricetags", "users"
+  add_foreign_key "room_tasks", "cleaning_tasks"
+  add_foreign_key "room_tasks", "cleaning_weeks"
+  add_foreign_key "room_tasks", "rooms"
+  add_foreign_key "rooms", "users", column: "current_tenant_id"
+  add_foreign_key "rooms", "users", column: "owner_id"
 end

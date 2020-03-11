@@ -1,0 +1,11 @@
+<div class="noteboard">
+  <h3 class="text-center noteboard-header">
+    Notifications
+  </h3>
+  <div id="notes">
+    <div id="new-note-form">
+      <%= link_to "new note", new_note_path, id: "new-note-button", remote: true, class: 'btn btn-primary' %>
+    </div>
+    <%= render @notes, container: true %>
+  </div>
+</div>

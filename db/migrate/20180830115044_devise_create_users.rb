@@ -38,7 +38,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :nickname
       t.text :bio
       t.string :phone_number
-      t.string :room
 
 
       t.timestamps null: false

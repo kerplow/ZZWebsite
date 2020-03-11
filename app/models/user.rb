@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   has_many :notes
 
-  belongs_to :room, optional: true
+  has_one :room, inverse_of: :current_tenant, foreign_key: :current_tenant_id
 
   validate :room_check
 

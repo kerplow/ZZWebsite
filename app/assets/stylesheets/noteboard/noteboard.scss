@@ -1,5 +1,9 @@
-.noteboard {
+ .noteboard {
   background-image: image_url('cork-board.jpg');
+  position: absolute;
+  width: 500px;
+  right: 0px;
+  height: calc(100vh - 70px);
 }
 
 .noteboard-header {
@@ -7,4 +11,42 @@
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
+}
+
+#new-note-form {
+  position: relative;
+  min-height: 40px;
+}
+
+#notes {
+  overflow: scroll;
+  height: calc(100% - 40px);
+}
+
+#sidebar {
+  overflow: hidden;
+  position: fixed;
+  z-index: 100;
+  height: calc(100vh - 70px);
+  width: 100px;
+  left: 0px;
+  top: 70px;
+  transition: all 0.2s ease;
+  margin-right: 20px;
+  cursor: arrow;
+
+
+  #new-note-button {
+    transition: all 0.2s ease;
+    position: absolute;
+    right: 5px;
+  }
+
+  &:hover, &:active, &:focus-within {
+    width: 500px;
+
+    #new-note-button {
+      transform: translate(-397px, 0)
+    }
+  }
 }

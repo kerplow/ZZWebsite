@@ -1,0 +1,18 @@
+#ridebar {
+  overflow: hidden;
+  position: fixed;
+  z-index: 100;
+  // min-height: calc(100vh - 70px);
+  height: fit-content;
+  width: 50px;
+  right: 0px;
+  top: 170px;
+  transition: all 0.5s ease;
+  margin-left: 20px;
+  background-color: white;
+  border: 1px solid black;
+
+  &:hover, &:active, &:focus-within {
+    width: fit-content;
+  }
+}

@@ -18,6 +18,7 @@
 @import "noteboard/index";
 @import "calendar/index";
 @import 'partials/index';
+@import 'opruimlijst/index';
 @import 'eetlijst';
 @import 'list';
 @import "font-awesome";
@@ -30,4 +31,12 @@
 
 .no-color {
   color: #212529 !important;
+}
+
+.alert {
+  width: 25%;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  padding: 10px;
 }

@@ -1,5 +1,3 @@
 console.log('new note');
-$('#new-note-button').hide().after('<%= j render "notes/form", note: @note %>');
-$('#note_has_pricetag').click(function() {
-    $('#pricetag-form').toggle();
-  });
+$('#new-note-button').hide()
+document.getElementById('new-note-form').innerHTML = '<%= j render "notes/form", note: @note %>';

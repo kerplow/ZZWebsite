@@ -1,7 +1,8 @@
-<div id="pricetag-form">
+<% container = true unless defined? container %>
+<% if container %><div id="pricetag-form"><% end %>
   <%= f.simple_fields_for :pricetag do |pt| %>
     <%= pt.input :operation, :as => :select, :collection => Pricetag.operations.keys.to_a, selected: 'sell' %>
     <%= pt.input :price %>
     <%= pt.input :transaction_type, :as => :select, :collection => Pricetag.transaction_types.keys.to_a %>
   <% end %>
-</div>
+<% if container %></div><% end %>

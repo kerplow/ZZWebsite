@@ -23,7 +23,8 @@ for i in 1..32 do
 end
 
 p 'creating admin'
-chuck = User.first_or_create(email: 'charlesdegh@gmail.com', password: ENV['ADMIN_PASSWORD'], first_name: 'Charles' ,last_name: 'de Gheldere', nickname: 'Evil Overlord', admin: true, house_status: 3)
+chuck = User.first_or_create(email: 'charlesdegh@gmail.com', password: ENV['ADMIN_PASSWORD'], first_name: 'Charles' ,last_name: 'de Gheldere', nickname: 'Evil Overlord', admin: true, house_status: 1)
+chuck.room = Room.find_by(number: 24)
 chuck.save!
 
 test_user = User.first_or_create(email: 'test@gmail.com', password: 'test', first_name: 'test' ,last_name: 'test', nickname: 'Dummy', admin: false, house_status: 3)
@@ -74,5 +75,11 @@ default.vote_by chuck
 
 list = List.first_or_create(title: 'Suggestions', user: chuck)
 list.save!
+
+p 'creating tasks'
+TASKS = { 'Trash upstairs': 0,'Trash downstairs': 1,'Kitchen': 2,'Take out recycling': 3,'Clearing hallways': 4 }
+TASKS.each do |task, id|
+  CleaningTask.find_or_create_by!(name: task, id: id, active: true)
+end
 
 p 'seed done'

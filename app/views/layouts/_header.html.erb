@@ -4,12 +4,14 @@
     <%= link_to 'Home', root_url, class: "navbar-wagon-item navbar-wagon-link" %>
     <%#= link_to 'Finances', tikkie_url, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to 'lists', lists_url, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to 'opruimlijst', opruimlijst_index_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%#= link_to 'style', nil %>
+    <%#= link_to 'translate', nil %>
   </div>
   <div class='site-title'>
     <% if current_user.try(:admin?) %>
       <h2>Welcome boss</h2>
     <% end %>
-    <h2><%= List.find_by(title: 'site-title').winner.name %></h2>
   </div>
 
   <div class="navbar-wagon-item navbar-wagon-right">
