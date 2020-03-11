@@ -1,35 +1,42 @@
+<template id="auto-table">
+  <div class="table">
+    <slot name=table_contents></slot>
+  </div>
+</template>
+
+<input type="radio" class="cleaning-toggle" name="edit-cleaning-toggle" value='drag' onChange='changedHandler("drag")'>
+<input type="radio" class="cleaning-toggle" name="edit-cleaning-toggle" value='static' onChange='changedHandler("static")'>
+
+
 <div id="opruimlijst">
   <h2 class="side-title">CLEANING</h2>
   <div id="cleaning-roster" class="align-content-center">
-    <%= simple_form_for @cleaning_roster do |f| %>
-      <table class="table">
-        <tr>
-          <th scope="col">week</th>
-          <% @active_tasks.each do |task| %>
-            <th><button type='button' data-toggle='tooltip' title='<%= task.description %>' ><%= task.name %></button></th>
-          <% end %>
-        </tr>
-        <%= f.fields_for :cleaning_week do |wf| %>
-          <tr>
-            <th scope="row">  <%= @previous_week.date_string %>  </th>
-            <% @previous_week.room_tasks.each do |room_task| %>
-              <td><%= room_task.who %></td>
-            <% end %>
-          </tr>
-        <% end %>
-        <tr>
-          <th scope="row"><%= "--#{@cleaning_week.date_string}--" %></th>
-          <% @cleaning_week.room_tasks.each do |room_task| %>
-            <td><%= room_task.who %></td>
-          <% end %>
-        </tr>
-        <tr>
-          <th scope="row"><%= "  #{@next_week.date_string}  " %></th>
-          <% @next_week.room_tasks.each do |room_task| %>
-            <td><%= room_task.who %></td>
-          <% end %>
-        </tr>
-      </table>
-    <% end %>
+    <div class="cleaning-table">
+      <div class='row-header cell'>week</div>
+      <% @active_tasks.each do |task| %>
+        <div class='cell'><button type='button' data-toggle='tooltip' title='<%= task.description %>' class='col-header' ><%= task.name %></button></div>
+      <% end %>
+      <div class='row-header cell'><%= "  #{@previous_week.date_string}  " %></div>
+      <% @previous_week.room_tasks.each do |room_task| %>
+        <div class='cell'><div class="cell-contents draggable room-task">
+          <div class="task-who"><%= room_task.who %></div>
+          <div class="drag-space task-drag"></div>
+        </div></div>
+      <% end %>
+      <div class='row-header cell'><%= "--#{@cleaning_week.date_string}--" %></div>
+      <% @cleaning_week.room_tasks.each do |room_task| %>
+        <div class='cell'><div class="cell-contents draggable room-task">
+          <div class="task-who"><%= room_task.who %></div>
+          <div class="drag-space task-drag"></div>
+        </div></div>
+      <% end %>
+      <div class='row-header cell'><%= "  #{@next_week.date_string}  " %></div>
+      <% @next_week.room_tasks.each do |room_task| %>
+        <div class='cell'><div class="cell-contents draggable room-task">
+          <div class="task-who"><%= room_task.who %></div>
+          <div class="drag-space task-drag"></div>
+        </div></div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -6,6 +6,6 @@
     <div id="new-note-form">
       <%= link_to "new note", new_note_path, id: "new-note-button", remote: true, class: 'btn btn-primary' %>
     </div>
-    <%= render @notes %>
+    <%= render @notes, container: true %>
   </div>
 </div>

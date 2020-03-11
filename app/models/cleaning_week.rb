@@ -56,7 +56,7 @@ class CleaningWeek < ApplicationRecord
   end
 
   def date_string
-    "#{week_dates.min.strftime('%d %m')} - #{week_dates.max.strftime('%d %m')}"
+    "#{week_dates.min.strftime('%d/%m')}-#{week_dates.max.strftime('%d/%m')}"
   end
 
 

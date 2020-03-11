@@ -1,1 +1,3 @@
+console.log('<%= j render "notes/note", container: false, note: @note %>')
 
+document.getElementById('note-<%= @note.id %>').innerHTML = '<%= j render "notes/note", container: false, note: @note %>'

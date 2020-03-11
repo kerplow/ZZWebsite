@@ -12,5 +12,5 @@ function addOption(optionHTML) {
 <% if @option.errors.any? %>
   refreshOptionForm('<%= j render partial: "options/form", locals: {list: @list, option: @option} %>');
 <% else %>
-  addOption('<%= j render partial: "options/option", locals: {option: @option} %>');
+  addOption('<%= j render partial: "options/option", locals: {option: @option, container: true} %>');
 <% end %>

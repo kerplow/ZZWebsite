@@ -5,12 +5,12 @@ function refreshForm(innerHTML) {
 
 function addNote(noteHTML) {
     $('#new-note').remove()
-    $('.notes').append(noteHTML);
+    $('#notes').append(noteHTML);
     $('#new-note-button').show()
 };
 
 <% if @note.errors.any? %>
   refreshForm('<%= j render partial: "notes/form", note: @note %>');
 <% else %>
-  addNote('<%= j render partial: "notes/note", locals: {note: @note} %>');
+  addNote('<%= j render partial: "notes/note", container: true, locals: {note: @note} %>');
 <% end %>

@@ -1,4 +1,4 @@
-<% container ||= true %>
+<% container = true unless defined? container %>
 <% if container %><div class="option voting-container" id="option-<%= option.id %>" ><% end %>
   <% if user_signed_in? %>
     <%= render 'shared/votes', record: option %>

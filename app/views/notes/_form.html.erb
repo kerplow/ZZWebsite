@@ -1,6 +1,6 @@
-<% container ||= true %>
+<% container = true unless defined? container %>
 <% if container %><div id="new-note"><% end %>
-  <%= simple_form_for(@note, remote: true, authenticity_token: true) do |f| %>
+  <%= simple_form_for(note, remote: true, authenticity_token: true) do |f| %>
     <%= link_to 'x', '#', on_click: 'closeNoteForm()' %>
     <%= f.input "name", placeholder: 'name', label: false %>
     <%= f.input "contents", placeholder: 'contents', label: false %>

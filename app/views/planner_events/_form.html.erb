@@ -1,4 +1,4 @@
-<% container ||= true %>
+<% container = true unless defined? container %>
 <% if container %><div class id="new-event-form"><% end %>
   <%= simple_form_for(event, remote: true, authenticity_token: true) do |f| %>
     <%= f.input "name" %>
