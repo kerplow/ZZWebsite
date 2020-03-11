@@ -20,6 +20,7 @@ class PricetagsController < ApplicationController
       else
         format.html { redirect_to :back}
         format.js
+      end
     end
   end
 
