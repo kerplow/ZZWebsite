@@ -1,4 +1,4 @@
-class AutoTable extends HTMLElement {
+class autoTable extends HTMLElement {
   constructor () {
     super();
     var shadow = this.attachShadow({mode: 'open'});
@@ -42,4 +42,4 @@ class AutoTable extends HTMLElement {
   };
 }
 
-window.customElements.define("auto-table", AutoTable)
+window.customElements.define("auto-table", autoTable)
