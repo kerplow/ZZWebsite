@@ -22,5 +22,7 @@
       <% end %>
     </div>
   </div>
-  <%= button_to "new event", new_planner_event_path , id: 'new-event-button', remote: true, class: 'btn btn-primary', method: :get %>
+  <% if policy(PlannerEvent).create? %>
+    <%= button_to "new event", new_planner_event_path , id: 'new-event-button', remote: true, class: 'btn btn-primary', method: :get %>
+  <% end %>
 </div>

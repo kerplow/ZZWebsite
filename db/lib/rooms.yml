@@ -1,64 +1,93 @@
 1:
   location: 'downstairs left side first hallway first room'
+  tenant_name: "Django"
 2:
   location: 'downstairs left side first hallway second room'
+  tenant_name: "Leoke"
 3:
   location: 'downstairs left side second hallway first door'
+  tenant_name: "Karlijn"
 4:
   location: 'downstairs left side second hallway second door'
+  tenant_name: "Martha"
 5:
   location: 'downstairs left side second hallway third door'
+  tenant_name: "Nadia"
 6:
   location: 'downstairs left side second hallway fourth door'
+  tenant_name: "Steffen"
 7:
   location: 'downstairs left side second hallway last door'
+  tenant_name: "Elena"
 8:
   location: 'downstairs left side back hallway'
+  tenant_name: "Martijn"
 9:
-  location: 'downstairs right side back hallway'
-10:
   location: 'downstairs right side first hallway first door'
-11:
+  tenant_name: "Noa"
+10:
   location: 'downstairs right side first hallway second door'
-12:
+  tenant_name: "Tim"
+11:
   location: 'downstairs right side first hallway third door'
-13:
+  tenant_name: "Mette"
+12:
   location: 'downstairs right side second hallway first door'
-14:
+  tenant_name: "Jesse"
+13:
   location: 'downstairs right side second hallway second door'
-15:
+  tenant_name: "Emiel"
+14:
   location: 'downstairs right side second hallway third door'
-16:
+  tenant_name: "Atul"
+15:
   location: 'downstairs right side second hallway fourth door'
-17:
+  tenant_name: "Joep"
+16:
   location: 'downstairs right side second hallway next to last'
-18:
+  tenant_name: "Lotte"
+17:
   location: 'downstairs right side second hallway last before back hallway'
-19:
+  tenant_name: "Jip"
+18:
   location: 'downstairs right side back hallway'
-20:
+  tenant_name: "Golnar"
+19:
   location: 'upstairs hallway'
-21:
+  tenant_name: "Christian"
+20:
   location: 'upstairs left side first door'
-22:
+  tenant_name: "Florian"
+21:
   location: 'upstairs left side second door'
-23:
+  tenant_name: "Debora"
+22:
   location: 'upstairs left side next to closet'
-24:
+  tenant_name: "Leonie"
+23:
   location: 'upstairs left side past hallway'
-25:
+  tenant_name: "Charles"
+24:
   location: 'upstairs left side next to terrace'
-26:
+  tenant_name: "Marko"
+25:
   location: 'upstairs right side first door'
-27:
+  tenant_name: "Wieger"
+26:
   location: 'upstairs right side second door'
-28:
+  tenant_name: "Ilse"
+27:
   location: 'upstairs right side third door'
-29:
+  tenant_name: "Lucia"
+28:
   location: 'upstairs right side fourth door'
-30:
+  tenant_name: "Frank"
+29:
   location: 'upstairs right side fifth door'
-31:
+  tenant_name: "Niek"
+30:
   location: 'upstairs right side next to last'
-32:
+  tenant_name: "Thomas"
+31:
   location: 'upstairs right side next to terrace'
+  tenant_name: "Olivier"

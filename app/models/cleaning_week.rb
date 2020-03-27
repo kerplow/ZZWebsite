@@ -1,5 +1,5 @@
 class CleaningWeek < ApplicationRecord
-  has_many :room_tasks, inverse_of: :week
+  has_many :room_tasks, inverse_of: :week, dependent: :destroy
   has_many :cleaning_tasks, through: :room_tasks
   has_many :rooms, through: :room_tasks
 

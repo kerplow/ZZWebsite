@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 20200217123010) do
     t.integer  "owner_id"
     t.integer  "current_tenant_id"
     t.integer  "past_tenants",                   array: true
+    t.string   "tenant_name"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["current_tenant_id"], name: "index_rooms_on_current_tenant_id", using: :btree

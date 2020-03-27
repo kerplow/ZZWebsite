@@ -10,7 +10,7 @@ class PlannerEventPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin? or record.user == current_user
+    !!user
   end
 
   def update?
