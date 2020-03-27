@@ -7,7 +7,9 @@
     <div class="list-options" id="list-options-<%= list.id%>">
       <%= render list.options, container: true %>
     </div>
-    <%= link_to("+", new_list_option_path(list), remote: true, class: "new-option-button", id: "new-option-button-#{list.id}") %>
+    <% if policy(list.options.build).create? %>
+      <%= link_to("+", new_list_option_path(list), remote: true, class: "new-option-button", id: "new-option-button-#{list.id}") %>
+    <% end %>
   </div>
   <%= list if Rails.env.development? %>
 </div>

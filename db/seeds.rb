@@ -1,3 +1,4 @@
+require 'csv'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,20 +7,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 p 'dropping Notes'
-Note.delete_all
+Note.destroy_all
 p 'dropping Options'
-Option.delete_all
+Option.destroy_all
 p 'dropping Lists'
-List.delete_all
+List.destroy_all
 p 'dropping Users'
-User.delete_all
-p 'dropping Rooms'
-Room.delete_all
+User.destroy_all
+# p 'dropping Rooms'
+# Room.destroy_all
+p 'dropping Cleaning schedule'
+CleaningWeek.destroy_all
+CleaningTask.destroy_all
+
 
 p 'creating rooms'
 rooms = YAML.load_file(Rails.root.join("db/lib/rooms.yml")).deep_symbolize_keys
-for i in 1..32 do
-  Room.create!(number: i, **rooms[i])
+for i in 1..31 do
+  Room.create(number: i, **rooms[i])
 end
 
 p 'creating admin'
@@ -76,10 +81,31 @@ default.vote_by chuck
 list = List.first_or_create(title: 'Suggestions', user: chuck)
 list.save!
 
+p 'parsing opruimlijst'
+lijst = CSV.read('db/lib/opruimrooster.csv')
+p lijst
 p 'creating tasks'
-TASKS = { 'Trash upstairs': 0,'Trash downstairs': 1,'Kitchen': 2,'Take out recycling': 3,'Clearing hallways': 4 }
-TASKS.each do |task, id|
-  CleaningTask.find_or_create_by!(name: task, id: id, active: true)
+# TASKS = { 'Trash upstairs': 0,'Trash downstairs': 1,'Kitchen': 2,'Take out recycling': 3,'Clearing hallways': 4 }
+tasks = lijst[0][1..-1]
+tasks.each do |task|
+  id, name, description = task.match(/(^\d)\.([^\.]*)\.?(.*)/).captures
+  description = name if description.empty?
+  p CleaningTask.find_or_create_by!(name: name, id: id, active: true, description: description)
 end
+
+lijst[1..-1].each do |row|
+  date = row[0]
+  week = CleaningWeek.for_date(Date.parse(date))
+  p week
+  tasks = week.room_tasks
+  p tasks
+  row[1..-1].each_with_index do |name, id|
+    task = tasks.find_by(cleaning_task_id: (id+1))
+    task.room = Room.find_by(tenant_name: name)
+    task.save!
+    p task
+  end
+end
+
 
 p 'seed done'

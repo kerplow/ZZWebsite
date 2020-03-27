@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   has_many :notes
 
-  has_one :room, inverse_of: :current_tenant, foreign_key: :current_tenant_id
+  has_one :room, inverse_of: :current_tenant, foreign_key: :current_tenant_id, dependent: :nullify
 
   validate :room_check
 
@@ -38,7 +38,7 @@ class User < ApplicationRecord
       end
     when "subrenter"
       if room
-        errors.add(:room, 'is being rented already') if room.owner.exists? and room.owner != self
+        errors.add(:room, 'is being rented already') if room.owner and room.owner != self
       else
         errors.add(:room, 'is necessary for subrenters')
       end

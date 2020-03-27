@@ -20,4 +20,8 @@ class NotePolicy < ApplicationPolicy
   def destroy?
     update?
   end
+
+  def create?
+    !!user
+  end
 end

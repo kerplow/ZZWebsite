@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_and_authorize_note, only: [:edit, :destroy, :update]
 
   def new

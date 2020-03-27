@@ -1,7 +1,7 @@
 require 'eetlijst_loader'
 
 class PagesController < ApplicationController
-  before_action :authenticate_user!, except: [:home, :about, :lists]
+  skip_before_action :authenticate_user!, only: [:home, :about, :lists]
   before_action :set_opruimlijst, only: [:home, :lists]
   after_action :verify_policy_scoped, except: [:about]
 

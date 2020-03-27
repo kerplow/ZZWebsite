@@ -20,7 +20,7 @@ class RoomTask < ApplicationRecord
   end
 
   def who
-    self.room ? user.name : 'not assigned'
+    self.room ? self.room.tenant_name : 'not assigned'
   end
 
   def task
