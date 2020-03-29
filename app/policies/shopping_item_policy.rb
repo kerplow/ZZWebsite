@@ -1,0 +1,3 @@
+class ShoppingItemPolicy < ApplicationPolicy
+
+end

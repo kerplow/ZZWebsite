@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+    const newlistForm = $('.new_shopping_list');
+    newshopping_listForm.replaceWith(innerHTML);
+};
+
+function addShoppingList(shoppinglistHTML) {
+    $('#shopping_list-form').remove()
+    $('.shopping_lists').append(shoppinglistHTML);
+    $('#new-shopping_list-button').show()
+};
+
+<% if @shopping_list.errors.any? %>
+  refreshForm('<%= j render partial: "shopping_lists/form", shopping_list: @shopping_list %>');
+<% else %>
+  addShoppingList('<%= j render partial: "shopping_lists/shopping_list", locals: {shopping_list: @shopping_list} %>');
+<% end %>

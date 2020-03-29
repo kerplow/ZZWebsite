@@ -1,15 +1,17 @@
 require 'eetlijst_loader'
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :about, :lists]
-  before_action :set_opruimlijst, only: [:home, :lists]
+  before_action :authenticate_user!, except: [:home, :about, :lists]
+
+  before_action :set_opruimlijst, only: [:home, :lists, :corona]
+  before_action :scope_noteboard, only: [:home, :lists, :corona]
+
   after_action :verify_policy_scoped, except: [:about]
 
   def home
     require 'csv'
     @user = current_user
     @events = policy_scope PlannerEvent
-    @notes = policy_scope Note
     @opruimlijst = Hash[CSV.read('lib/assets/opruimrooster.csv').collect { |row|  ["#{Date.parse(row[0])}", row[1..-1]] } ]
     # @agent = EetlijstLoader::Page.get_agent
   end
@@ -44,6 +46,11 @@ class PagesController < ApplicationController
     @second.plop
   end
 
+  def corona
+    @shopping_lists = policy_scope ShoppingList.order(planned_time: :desc)
+    @corona_info = Note.corona
+  end
+
   private
 
   def set_opruimlijst
@@ -51,5 +58,9 @@ class PagesController < ApplicationController
     @cleaning_week = params[:cleaning_week] ? CleaningWeek.for_week(params[:cleaning_week]) : CleaningWeek.for_date(Date.today)
     @next_week = @cleaning_week.next_week
     @previous_week = @cleaning_week.previous_week
+  end
+
+  def scope_noteboard
+    @notes = policy_scope Note
   end
 end

@@ -1,0 +1,17 @@
+<% container = true unless defined? container %>
+<% if container %><div id="shopping_list-form"><% end %>
+<%= simple_form_for(@shopping_list, remote: true, authenticity_token: true, html: { id: 'shopping_list-form' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :planned_time %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+<% if container %></div><% end %>

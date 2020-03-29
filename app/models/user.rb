@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_many :notes
 
   has_one :room, inverse_of: :current_tenant, foreign_key: :current_tenant_id, dependent: :nullify
+  after_update -> { self.room&.touch }
 
   validate :room_check
 
@@ -45,5 +46,9 @@ class User < ApplicationRecord
     when "guest"
       errors.add(:room, "guests have no room") unless room.blank?
     end
+  end
+
+  def name
+    self.nickname || self.first_name
   end
 end

@@ -1,0 +1,9 @@
+<% container = true unless defined? container %>
+<% if container %><div id="new-shopping_item"><% end %>
+<%= simple_form_for @shopping_item, url: shopping_list_shopping_items_path(shopping_list), remote: true, html: { id: "new-shopping_item-form-#{shopping_list.id}" } do |f| %>
+  <%= f.input :item, label: false,  placeholder: "item" %>
+  <%= f.input :amount, label: false,  placeholder: "amount(optional)" %>
+  <%= f.input :price, label: false,  placeholder: "price(optional)" %>
+  <%= f.submit :submit, class: 'btn' %>
+<% end %>
+<% if container %></div><% end %>

@@ -3,7 +3,7 @@ class ShoppingList < ApplicationRecord
   belongs_to :user
   has_many :users, through: :shopping_items
 
-  enum status: {open: 0, locked: 1, finished: 2}
+  enum status: {open: 0, locked: 1, finished: 2}, _suffix: :status
 
   def total_cost
     self.shopping_items.map(&:price).sum
@@ -11,5 +11,9 @@ class ShoppingList < ApplicationRecord
 
   def total_cost_for(user)
     self.shopping_items.where(user: user).map(&:price).sum
+  end
+
+  def users_names
+    self.users.map(&:name).join(', ')
   end
 end

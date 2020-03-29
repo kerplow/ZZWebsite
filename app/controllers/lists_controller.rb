@@ -14,9 +14,11 @@ class ListsController < ApplicationController
       if @list.save
         format.html { redirect_to @list, notice: 'List was successfully created.' }
         format.json { render :show, status: :created, location: @list }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @list.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -31,9 +33,11 @@ class ListsController < ApplicationController
       if @list.update(list_params)
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
         format.json { render :show, status: :ok, location: @list }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @list.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -45,6 +49,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

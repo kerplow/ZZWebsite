@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200217123010) do
+ActiveRecord::Schema.define(version: 20200328162458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20200217123010) do
     t.integer  "parent_id"
     t.integer  "user_id"
     t.boolean  "has_pricetag", default: false
+    t.string   "subject"
     t.index ["parent_type", "parent_id"], name: "index_notes_on_parent_type_and_parent_id", using: :btree
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
@@ -158,6 +159,29 @@ ActiveRecord::Schema.define(version: 20200217123010) do
     t.index ["owner_id"], name: "index_rooms_on_owner_id", using: :btree
   end
 
+  create_table "shopping_items", force: :cascade do |t|
+    t.string   "item"
+    t.float    "price"
+    t.integer  "user_id"
+    t.integer  "shopping_list_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "amount",           default: 1
+    t.index ["shopping_list_id"], name: "index_shopping_items_on_shopping_list_id", using: :btree
+    t.index ["user_id"], name: "index_shopping_items_on_user_id", using: :btree
+  end
+
+  create_table "shopping_lists", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "planned_time"
+    t.string   "description"
+    t.integer  "user_id"
+    t.integer  "status",       default: 0, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_shopping_lists_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -212,4 +236,6 @@ ActiveRecord::Schema.define(version: 20200217123010) do
   add_foreign_key "room_tasks", "rooms"
   add_foreign_key "rooms", "users", column: "current_tenant_id"
   add_foreign_key "rooms", "users", column: "owner_id"
+  add_foreign_key "shopping_items", "shopping_lists"
+  add_foreign_key "shopping_items", "users"
 end

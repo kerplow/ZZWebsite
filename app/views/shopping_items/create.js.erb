@@ -1,0 +1,16 @@
+function refreshshopping_itemForm(innerHTML) {
+    const newshopping_itemForm = $('#new-shopping_item-form-<%= @shopping_list.id %>');
+    newshopping_itemForm.replaceWith(innerHTML);
+};
+
+function addshopping_item(shopping_itemHTML) {
+    $('#new-shopping_item-form-<%= @shopping_list.id %>').remove()
+    $('#shopping_list-shopping_items-<%= @shopping_list.id %> ').append(shopping_itemHTML);
+    $('#new-shopping_item-button-<%= @shopping_list.id %>').show()
+};
+
+<% if @shopping_item.errors.any? %>
+  refreshshopping_itemForm('<%= j render partial: "shopping_items/form", locals: {shopping_list: @shopping_list, shopping_item: @shopping_item} %>');
+<% else %>
+  addshopping_item('<%= j render partial: "shopping_items/shopping_item", locals: {shopping_item: @shopping_item, container: true} %>');
+<% end %>

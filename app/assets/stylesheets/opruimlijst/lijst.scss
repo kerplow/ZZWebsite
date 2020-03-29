@@ -35,7 +35,7 @@
   height: 320px;
   width: 100%;
   display: grid;
-  grid-template-columns: [header] 3fr repeat(5, [task] 2fr );
+  grid-template-columns: [header] 2fr repeat(5, [task] 2fr );
   grid-template-rows: [task-names] 3fr repeat(3, [week] 2fr );
   gap: 0px 0px;
 

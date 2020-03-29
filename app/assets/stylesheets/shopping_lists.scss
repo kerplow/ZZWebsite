@@ -1,3 +1,36 @@
 // Place all the styles related to the shopping_lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.shopping_list {
+  background-image: image_url('lined-paper.png');
+  border: 10px;
+  margin: 5px;
+  padding: 5px;
+  height: fit-content;
+
+  .shopping_item {
+    width: 100%;
+  }
+
+  .shopping_item-info {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  }
+
+  .shopping_item-name {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .shopping_item-price {
+    width: 2rem;
+  }
+}
+
+.new-shopping_item-button {
+  display: block;
+}

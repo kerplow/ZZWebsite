@@ -1,0 +1,20 @@
+<% container = true unless defined? container %>
+<% if container %><div class="shopping_item voting-container" id="shopping_item-<%= shopping_item.id %>" ><% end %>
+  <div class="voteable shopping_item-info">
+    <div class="shopping_item-name">
+      <div class="amount"><%= shopping_item.amount %></div>
+      <div class="item"><%= shopping_item.item %></div>
+    </div>
+    <div class="shopping_item-price">
+      <div class="price"><%= shopping_item.price %>€</div>
+    </div>
+  </div>
+  <% if policy(shopping_item).update? %>
+    <%= link_to shopping_list_shopping_item_path(shopping_item.shopping_list, shopping_item), method: :patch, remote: true , class: 'delete-button' do %>
+      <%= fa_icon "edit-alt" %>
+    <% end %>
+    <%= link_to shopping_list_shopping_item_path(shopping_item.shopping_list, shopping_item), method: :delete, remote: true, data: {confirm: 'Sure?'} , class: 'delete-button' do %>
+      <%= fa_icon "trash-alt" %>
+    <% end %>
+  <% end %>
+<% if container %></div><% end %>

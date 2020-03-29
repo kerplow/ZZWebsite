@@ -1,13 +1,16 @@
-<%= render partial: 'layouts/sidebar' %>
+<%#= render partial: 'layouts/sidebar' %>
 <%= render partial: 'layouts/ridebar' %>
 <%= javascript_include_tag "pages/lists.js" %>
 <h4 class='text-center'>Info-food-(memes)</h4>
-<%= link_to "new shopping list", new_shopping_list_path, id: "new-list-button", remote: true %>
 <div class="row">
-  <div class="col-xs-12 col-sm-10 offset-sm-1">
+  <div class="col-md-12 col-lg-6 col-xl-8">
+    <%= render 'components/coronabord', notes: @corona_info %>
+  </div>
+  <div class="shopping_lists col-md-12 col-lg-6 col-xl-4">
+    <%= link_to "new shopping list", new_shopping_list_path, id: "new-shopping_list-button", remote: true %>
+    <div class="new-shopping_list"></div>
     <div class="row">
-      <%= render @shopping_lists %>
-      <div class="new-list"></div>
+      <%= render @shopping_lists, container: true %>
     </div>
   </div>
 </div>

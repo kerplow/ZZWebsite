@@ -1,0 +1,1 @@
+$('#new-shopping_item-button-<%= @shopping_list.id %>').hide().after('<%= j render("shopping_items/form", shopping_list: @shopping_list, shopping_item: @shopping_list.shopping_items.build ) %>');

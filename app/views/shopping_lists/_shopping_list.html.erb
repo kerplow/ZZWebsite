@@ -1,0 +1,23 @@
+<% container = true unless defined? container %>
+<% if container %>
+  <div id="shopping_list-<%= shopping_list.id %>" class="shopping_list col-xl-12">
+<% end %>
+<h3 class="text-center shopping_list-name"><%= shopping_list.name %></h3>
+<div class="shopping_list-shopper">by: <%= shopping_list.user.first_name %></div>
+<div class="shopping_list-planned_time">At: <%= shopping_list.planned_time.strftime('%d-%h: %Hh') %></div>
+<div class="shopping_list-people">people: <%= shopping_list.users_names %></div>
+<div class="shopping_list-description">extra info: <%= shopping_list.description %></div>
+<p>---------</p>
+<div class="shopping_list-items">
+  <div class="shopping_list-shopping_items" id="shopping_list-shopping_items-<%= shopping_list.id%>">
+    <%= render shopping_list.shopping_items, container: true %>
+  </div>
+  <% if policy(shopping_list.shopping_items.build).create? %>
+    <%= link_to("+", new_shopping_list_shopping_item_path(shopping_list), remote: true, class: "new-shopping_item-button", id: "new-shopping_item-button-#{shopping_list.id}") %>
+  <% end %>
+</div>
+<%= shopping_list if Rails.env.development? %>
+<% if container %>
+  </div>
+<% end %>
+

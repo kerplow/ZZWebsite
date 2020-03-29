@@ -4,6 +4,7 @@
     <%= link_to 'x', '#', on_click: 'closeNoteForm()' %>
     <%= f.input "name", placeholder: 'name', label: false %>
     <%= f.input "contents", placeholder: 'contents', label: false %>
+    <%= f.input :subject, placeholder: 'subject', label: false  %>
     <%= f.input :is_public, label: "public?", label_html: { class: 'no-color' }, wrapper_html: {style: 'display:inline-block'} %>
     <%#= f.label 'pricetag?' %>
     <%#= f.input :has_pricetag, as: :boolean, html: { onclick: 'togglePricetag()' } %>
