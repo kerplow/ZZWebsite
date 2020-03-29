@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200328162458) do
+ActiveRecord::Schema.define(version: 20200329185419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # These are custom enum types that must be created before they can be used in the schema definition
+  create_enum "house_statuses", ["housemate", "subrenter", "old_housemate", "house_pet"]
 
   create_table "cleaning_tasks", force: :cascade do |t|
     t.string   "name"
@@ -183,8 +186,8 @@ ActiveRecord::Schema.define(version: 20200328162458) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "",          null: false
+    t.string   "encrypted_password",     default: "",          null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -193,10 +196,10 @@ ActiveRecord::Schema.define(version: 20200328162458) do
     t.string   "nickname"
     t.text     "bio"
     t.string   "phone_number"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.boolean  "admin",                  default: false
-    t.integer  "house_status",           default: 0
+    t.enum     "house_status",           default: "house_pet",              as: "house_statuses"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

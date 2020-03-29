@@ -8,9 +8,9 @@ class User < ApplicationRecord
 
   validates :nickname, uniqueness: { scope: [:first_name, :last_name] }
   validates :email, uniqueness: true
-  validates_uniqueness_of :phone_number
+  validates_uniqueness_of :phone_number, allow_blank: true, allow_nil: true
 
-  HOUSE_STATUS = {housemate: 0, subrenter: 1, old_housemate: 2, guest: 3}
+  HOUSE_STATUS = {housemate: 'housemate', subrenter: 'subrenter', old_housemate: 'old_housemate', house_pet: 'house_pet'}
 
   enum house_status: HOUSE_STATUS
 
@@ -28,6 +28,14 @@ class User < ApplicationRecord
   after_update -> { self.room&.touch }
 
   validate :room_check
+
+  def room_id=(id)
+    self.room = Room.find(id)
+  end
+
+  def room_id
+    self.room&.id
+  end
 
   def room_check
     case house_status

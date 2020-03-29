@@ -19,6 +19,8 @@ gem 'faker'
 # voting on lists/
 gem 'acts_as_votable', '~> 0.12.0'
 
+gem 'activerecord-pg_enum'
+
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

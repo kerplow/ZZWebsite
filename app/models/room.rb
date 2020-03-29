@@ -13,4 +13,8 @@ class Room < ApplicationRecord
   def update_tenant_name
     self.update( tenant_name: current_tenant ? current_tenant.first_name : owner ? owner.first_name : self.tenant_name )
   end
+
+  def location_plus
+    "(#{tenant_name})#{location}"
+  end
 end
