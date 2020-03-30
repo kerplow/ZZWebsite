@@ -1,5 +1,5 @@
 class ShoppingList < ApplicationRecord
-  has_many :shopping_items
+  has_many :shopping_items, dependent: :destroy
   has_many :users, through: :shopping_items
 
   belongs_to :user

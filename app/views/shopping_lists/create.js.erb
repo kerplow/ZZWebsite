@@ -12,5 +12,5 @@ function addShoppingList(shoppinglistHTML) {
 <% if @shopping_list.errors.any? %>
   refreshForm('<%= j render partial: "shopping_lists/form", shopping_list: @shopping_list %>');
 <% else %>
-  addShoppingList('<%= j render partial: "shopping_lists/shopping_list", locals: {shopping_list: @shopping_list} %>');
+  addShoppingList('<%= j render partial: "shopping_lists/shopping_list", locals: {shopping_list: @shopping_list, container: true} %>');
 <% end %>

@@ -4,6 +4,7 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
+    @corona = params[:corona]
   end
 
   def create
@@ -23,6 +24,7 @@ class NotesController < ApplicationController
   end
 
   def edit
+    @corona = params[:corona]
     respond_to do |format|
       format.js
     end
@@ -62,6 +64,6 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:name, :contents)
+    params.require(:note).permit(:name, :contents, :is_public, :subject)
   end
 end

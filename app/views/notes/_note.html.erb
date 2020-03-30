@@ -15,7 +15,7 @@
     <% if user_signed_in? %>
       <div class="note-links">
         <% if policy(note).update? %>
-          <%= link_to "edit note", edit_note_path(note), remote: true, class: 'note-update-button' %>
+          <%= link_to "edit note", edit_note_path(note, corona: @corona), remote: true, class: 'note-update-button' %>
         <% end %>
         <% if policy(note).destroy? %>
           <%= link_to "X", note, remote: true, method: :delete, class: 'note-delete-button pin' %>

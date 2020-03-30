@@ -10,7 +10,7 @@ function addNote(noteHTML) {
 };
 
 <% if @note.errors.any? %>
-  refreshForm('<%= j render partial: "notes/form", note: @note , container: true %>');
+  refreshForm('<%= j render partial: "notes/form", locals: { container: true, note: @note} %>');
 <% else %>
-  addNote('<%= j render partial: "notes/note", container: true, note: @note %>');
+  addNote('<%= j render partial: "notes/note", locals: { container: true, note: @note} %>');
 <% end %>

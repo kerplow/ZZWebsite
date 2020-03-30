@@ -1,1 +1,1 @@
-$('#new-option-button-<%= @option.list.id %>').hide().after('<%= j render("options/form", list: @option.list, option: @option ) %>');
+document.getElementById('option-<%= @option.id %>').innerHTML = '<%= j render("options/form", list: @option.list, option: @option ) %>'

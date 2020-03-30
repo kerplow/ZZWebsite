@@ -49,6 +49,7 @@ class PagesController < ApplicationController
   def corona
     @shopping_lists = policy_scope ShoppingList.order(planned_time: :desc)
     @corona_info = Note.corona
+    @corona = true
   end
 
   private
