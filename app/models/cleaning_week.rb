@@ -9,7 +9,7 @@ class CleaningWeek < ApplicationRecord
   after_initialize :check_if_full_week
 
   def self.full
-    self.includes(:cleaning_tasks, room_tasks: :rooms)
+    self.includes(:cleaning_tasks, room_tasks: :room)
   end
 
   def self.for_date(date)
@@ -48,11 +48,11 @@ class CleaningWeek < ApplicationRecord
   end
 
   def next_week
-    @full ?  self.class.full.for_date(week_dates.max + 1.days) : self.class.for_date(week_dates.max + 1.days)
+    @full ? self.class.full.for_date(week_dates.max + 1.days) : self.class.for_date(week_dates.max + 1.days)
   end
 
   def previous_week
-    @full ?  self.class.full.for_date(week_dates.min - 1.days) : self.class.for_date(week_dates.min - 1.days)
+    @full ? self.class.full.for_date(week_dates.min - 1.days) : self.class.for_date(week_dates.min - 1.days)
   end
 
   def date_string

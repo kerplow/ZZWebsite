@@ -17,9 +17,9 @@ class ListPolicy < ApplicationPolicy
     def resolve
       return scope.only_public unless user
       if user.admin?
-        scope.all
+        scope.includes(:options)
       else
-        scope.includes(:options).where(options: { list: { allowed_voters: user } })
+        scope.includes(:options)#.where(options: { list: { allowed_voters: user } })
       end
     end
   end

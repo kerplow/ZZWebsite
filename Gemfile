@@ -16,8 +16,6 @@ gem 'devise'
 gem 'pundit'
 # Use faker to db for testing:
 gem 'faker'
-# voting on lists/
-gem 'acts_as_votable', '~> 0.12.0'
 
 gem 'activerecord-pg_enum'
 

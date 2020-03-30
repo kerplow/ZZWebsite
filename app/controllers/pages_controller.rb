@@ -55,9 +55,9 @@ class PagesController < ApplicationController
 
   def set_opruimlijst
     @active_tasks = CleaningTask.active
-    @cleaning_week = params[:cleaning_week] ? CleaningWeek.for_week(params[:cleaning_week]) : CleaningWeek.for_date(Date.today)
-    @next_week = @cleaning_week.next_week
-    @previous_week = @cleaning_week.previous_week
+    @cleaning_week = params[:cleaning_week] ? CleaningWeek.full.for_week(params[:cleaning_week]) : CleaningWeek.full.for_date(Date.today)
+    @next_week = @cleaning_week.next_week.full
+    @previous_week = @cleaning_week.previous_week.full
   end
 
   def scope_noteboard

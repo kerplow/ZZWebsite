@@ -1,5 +1,5 @@
 <% if @unvoted %>
-  unVote('<%= @html_id %>', '<%= @model.cached_votes_score %>')
+  unVote('<%= @html_id %>', '<%= @model.vote_total %>')
 <% else %>
-  downVote('<%= @html_id %>', '<%= @model.cached_votes_score %>')
+  downVote('<%= @html_id %>', '<%= @model.vote_total %>')
 <% end %>

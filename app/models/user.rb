@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  acts_as_voter
-
   validates :nickname, uniqueness: { scope: [:first_name, :last_name] }
   validates :email, uniqueness: true
   validates_uniqueness_of :phone_number, allow_blank: true, allow_nil: true
@@ -30,7 +28,7 @@ class User < ApplicationRecord
   validate :room_check
 
   def room_id=(id)
-    self.room = Room.find(id)
+    self.room = id.blank? ? nil : Room.find(id)
   end
 
   def room_id

@@ -2,20 +2,24 @@ class VotesController < ApplicationController
   before_action :set_and_authorize_model
 
   def upvote
-    if current_user.voted_up_on?(@model)
-      @model.unliked_by current_user
+    if @model.voters.include?(current_user.id)
+      @model.un_liked_by(current_user)
+      @model.save
       @unvoted = true
     else
       @model.liked_by current_user
+      @model.save
     end
   end
 
   def downvote
-    if current_user.voted_down_on?(@model)
-      @model.undisliked_by current_user
+    if @model.down_voters.include?(current_user.id)
+      @model.un_disliked_by current_user
+      @model.save
       @unvoted = true
     else
       @model.disliked_by current_user
+      @model.save
     end
   end
 

@@ -5,7 +5,7 @@
   <div class="list-description"><%= list.description %></div>
   <div class="list-items">
     <div class="list-options" id="list-options-<%= list.id%>">
-      <%= render list.options, container: true %>
+      <%= render list.options.sort_by(&:vote_total).reverse, container: true %>
     </div>
     <% if policy(list.options.build).create? %>
       <%= link_to("+", new_list_option_path(list), remote: true, class: "new-option-button", id: "new-option-button-#{list.id}") %>

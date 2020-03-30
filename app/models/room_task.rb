@@ -2,7 +2,7 @@ class RoomTask < ApplicationRecord
   belongs_to :cleaning_task
   belongs_to :room
   belongs_to :week, class_name: 'CleaningWeek', foreign_key: :cleaning_week_id
-  has_one :user, through: :room, source: :current_tenant
+  has_one :user, through: :room, source: :current_tenant, inverse_of: :room_tasks
 
   enum cleaning_task: Hash[CleaningTask.active.pluck(:name, :id).map! { |name, id| [name.underscore.gsub(' ','_'), id] }], _suffix: :task
 

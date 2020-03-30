@@ -1,5 +1,4 @@
 class List < ApplicationRecord
-  acts_as_votable
 
   belongs_to :user
   belongs_to :list
@@ -13,6 +12,6 @@ class List < ApplicationRecord
   # scope :with_options, -> { includes(:options) }
 
   def winner
-    options.order(cached_votes_score: :desc).first
+    options.sort_by(&:vote_total).first
   end
 end

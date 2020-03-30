@@ -1,11 +1,11 @@
-<div class="vote-total"><%= record.cached_votes_score %></div>
+<div class="vote-total"><%= record.vote_total %></div>
 <div class="votes">
-  <div class="upvote <%= current_user.voted_up_on?(record) ? 'voted' : nil %>">
+  <div class="upvote <%= record.voters.include?(current_user.id) ? 'voted' : nil %>">
     <%= link_to upvote_path(voteable: record.class.name, id: record.id), remote: true, method: :post do %>
       <%= fa_icon "arrow-circle-up" %>
     <% end %>
   </div>
-  <div class="downvote <%= current_user.voted_down_on?(record) ? 'voted' : nil %>">
+  <div class="downvote <%= record.down_voters.include?(current_user.id) ? 'voted' : nil %>">
     <%= link_to downvote_path(voteable: record.class.name, id: record.id), remote: true, method: :post do %>
       <%= fa_icon "arrow-circle-down" %>
     <% end %>
