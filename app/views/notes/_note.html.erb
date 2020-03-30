@@ -18,7 +18,7 @@
           <%= link_to "edit note", edit_note_path(note, corona: @corona), remote: true, class: 'note-update-button' %>
         <% end %>
         <% if policy(note).destroy? %>
-          <%= link_to "X", note, remote: true, method: :delete, class: 'note-delete-button pin' %>
+          <%= link_to "X", note, remote: true, method: :delete, class: 'note-delete-button pin', data: {confirm: 'Sure?'} %>
         <% end %>
       </div>
     <% end %>

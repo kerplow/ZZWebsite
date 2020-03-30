@@ -20,3 +20,8 @@
 //= stub 'pages/home'
 //= stub 'pages/tikkie'
 //= stub 'pages/lists'
+
+function closeForm(form_id) {
+  console.log(this)
+  document.getElementById(form_id).innerHTML = ''
+}

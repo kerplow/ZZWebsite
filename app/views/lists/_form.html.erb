@@ -3,7 +3,7 @@
 <%= simple_form_for(@list, remote: true, authenticity_token: true, html: { id: 'list-form' }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
+  <%= link_to 'x', '#', on_click: 'closeForm("list-form")' %>
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :description %>

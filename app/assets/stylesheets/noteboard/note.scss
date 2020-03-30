@@ -10,12 +10,13 @@
 }
 
 .pin {
+  background-image: image_url('pin.jpg');
   position: absolute;
   top: 2px;
   right: 2px;
   transition: transform 0.2s ease;
 
   &:hover {
-    transform: translate(50%, -50%)
+    transform: translate(30%, -30%)
   }
 }

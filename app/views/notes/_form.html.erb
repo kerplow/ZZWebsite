@@ -1,7 +1,7 @@
 <% container = true unless defined? container %>
 <% if container %><div id="new-note"><% end %>
   <%= simple_form_for(note, remote: true, authenticity_token: true) do |f| %>
-    <%= link_to 'x', '#', on_click: 'closeNoteForm()' %>
+    <%= link_to 'x', '#', on_click: 'closeForm("new-note-form")' %>
     <%= f.input "name", placeholder: 'name', label: false %>
     <%= f.input "contents", placeholder: 'contents', label: false %>
     <% if @corona %>
@@ -16,8 +16,3 @@
     <%= f.button :submit, style: 'display:inline-block; position:absolute; right:0px' %>
   <% end %>
 <% if container %></div><% end %>
-<script>
-  function closeNoteForm {
-    document.getElementById('new-note-form').innerHTML = ''
-  }
-</script>
