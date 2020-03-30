@@ -10,7 +10,7 @@ function addlist(listHTML) {
 };
 
 <% if @list.errors.any? %>
-  refreshForm('<%= j render partial: "lists/form", list: @list, container: true %>');
+  refreshForm('<%= j render partial: "lists/form", locals: { container: true, list: @list} %>');
 <% else %>
-  addlist('<%= j render partial: "lists/list", list: @list, container: true %>');
+  addlist('<%= j render partial: "lists/list", locals: { container: true, list: @list} %>');
 <% end %>

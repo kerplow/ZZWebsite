@@ -1,10 +1,10 @@
 function refreshOptionForm(innerHTML) {
-    const newoptionForm = $('#new-option-form-<%= @list.id %>');
+    const newoptionForm = $('#option-form-<%= @list.id %>');
     newoptionForm.replaceWith(innerHTML);
 };
 
 function addOption(optionHTML) {
-    $('#new-option-form-<%= @list.id %>').remove()
+    $('#option-form-<%= @list.id %>').remove()
     $('#list-options-<%= @list.id %> ').append(optionHTML);
     $('#new-option-button-<%= @list.id %>').show()
 };

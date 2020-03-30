@@ -1,7 +1,6 @@
 class List < ApplicationRecord
 
   belongs_to :user
-  belongs_to :list
   has_many :options
 
   validates :title, presence: true

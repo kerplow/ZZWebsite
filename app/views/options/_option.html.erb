@@ -5,8 +5,13 @@
   <% end %>
   <div class="voteable option-name">
     <%= option.name %>
-    <%= link_to url: list_option_path(option.list, option), method: :delete, remote: true, data: {confirm: 'Sure?'} , class: 'delete-button' do %>
-      <%= fa_icon "trash-alt" %>
+    <% if policy(option).update? %>
+    <%= link_to edit_list_option_path(option.list, option), method: :get, remote: true , class: 'delete-button' do %>
+      <%= fa_icon "edit" %>
     <% end %>
+    <%= link_to list_option_path(option.list, option), method: :delete, remote: true, data: {confirm: 'Sure?'} , class: 'delete-button' do %>
+      <%= fa_icon "trash" %>
+    <% end %>
+  <% end %>
   </div>
 <% if container %></div><% end %>

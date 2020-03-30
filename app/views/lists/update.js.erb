@@ -1,0 +1,2 @@
+document.getElementById('list-<%= @list.id %>').innerHTML = '<%= j render "lists/list", container: false, list: @list %>'
+$('#list-form').remove()

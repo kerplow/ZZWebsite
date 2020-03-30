@@ -8,6 +8,9 @@
 <div class="shopping_list-people">people: <%= shopping_list.users_names %></div>
 <div class="shopping_list-description">extra info: <%= shopping_list.description %></div>
 <%#= link_to('declare totals'), new_shopping_list_totals_url(shopping_list), remote: true, id: "shopping_list-total-button" %>
+<%= link_to url: shopping_list_path(shopping_list), method: :delete, remote: true, data: {confirm: 'Sure?'} , class: 'delete-button' do %>
+  <%= fa_icon "trash" %>
+<% end %>
 <p>---------</p>
 <div class="shopping_list-items">
   <div class="shopping_list-shopping_items" id="shopping_list-shopping_items-<%= shopping_list.id%>">

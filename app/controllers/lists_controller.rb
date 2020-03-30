@@ -3,12 +3,16 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @list.user = current_user
+    authorize @list
   end
 
   # POST /lists
   # POST /lists.json
   def create
     @list = List.new(list_params)
+    @list.user = current_user
+    authorize @list
 
     respond_to do |format|
       if @list.save
@@ -31,6 +35,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
+        authorize @list
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
         format.json { render :show, status: :ok, location: @list }
         format.js

@@ -1,7 +1,15 @@
 <% container = true unless defined? container %>
-<% if container %><div id="list-<%= list.id %>"><% end %>
-<div id="list-<%= list.id %>" class="list col-sm-12 col-md-6 col-lg-4 col-xl-3">
+<% if container %><div id="list-<%= list.id %>" class="list col-sm-12 col-md-6 col-lg-4 col-xl-3"><% end %>
+<div class="list-contents">
   <h3 class="text-center list-title"><%= list.title %></h3>
+  <% if policy(list).update? %>
+    <%= link_to edit_list_path(list), method: :get, remote: true , class: 'delete-button' do %>
+      <%= fa_icon "edit" %>
+    <% end %>
+    <%= link_to list_path(list), method: :delete, remote: true, data: {confirm: 'Sure?'} , class: 'delete-button' do %>
+      <%= fa_icon "trash" %>
+    <% end %>
+  <% end %>
   <div class="list-description"><%= list.description %></div>
   <div class="list-items">
     <div class="list-options" id="list-options-<%= list.id%>">

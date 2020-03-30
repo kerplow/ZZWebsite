@@ -2,13 +2,17 @@
 <%= render partial: 'layouts/ridebar' %>
 <%= javascript_include_tag "pages/lists.js" %>
 <h4 class='text-center'>list your bullshit, poll your house</h4>
-<% if policy(List).create? %>
-  <%= link_to "new list", new_list_path, id: "new-list-button", remote: true %>
-<% end %>
+  <% if policy(List).create? %>
+    <div class="text-center">
+      <%= link_to "new list", new_list_path, id: "new-list-button", remote: true %>
+    </div>
+  <% end %>
 <div class="row">
   <div class="col-xs-12 col-sm-10 offset-sm-1">
-    <div class="row">
-      <%= render @lists %>
+    <div class="lists">
+      <div class="row">
+        <%= render @lists, container: true %>
+      </div>
       <div class="new-list"></div>
     </div>
   </div>

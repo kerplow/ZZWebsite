@@ -4,7 +4,9 @@ class OptionsController < ApplicationController
   before_action :set_option, only: [:update, :edit, :destroy]
 
   def create
-    @option = @list.options.create(option_params)
+    @option = @list.options.build(option_params)
+    @option.user = current_user
+    @option.save
   end
 
   def new
