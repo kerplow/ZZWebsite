@@ -3,12 +3,12 @@
   <div id="cleaning-roster" class="align-content-center">
     <div class="cleaning-table">
       <div class='row-header cell'>week</div>
-      <% @active_tasks.each do |task| %>
+      <% @active_tasks.sort_by(&:id).each do |task| %>
         <div class='cell'><button type='button' data-toggle='tooltip' title='<%= task.description %>' class='col-header' ><%= task.name %></button></div>
       <% end %>
       <% [@previous_week, @cleaning_week, @next_week].each_with_index do |week, index| %>
         <div class='row-header cell'><%= "#{index == 1 ? '--' : '  '}#{week.date_string}#{index == 1 ? '--' : '  '}" %></div>
-        <% week.room_tasks.each do |room_task| %>
+        <% week.room_tasks.sort_by(&:cleaning_task_id).each do |room_task| %>
           <%= render 'opruimlijst/room_task', room_task: room_task %>
         <% end %>
       <% end %>

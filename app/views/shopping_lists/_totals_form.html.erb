@@ -1,0 +1,6 @@
+<%= simple_form_for :totals, url: shopping_list_totals_url(shopping_list) do |f| %>
+  <% shopping_list.users_names.each do |user| %>
+    <%= f.input user, as: :float %>
+  <% end %>
+  <%= f.submit 'ok' %>
+<% end %>

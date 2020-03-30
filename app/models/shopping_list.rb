@@ -1,9 +1,11 @@
 class ShoppingList < ApplicationRecord
   has_many :shopping_items
-  belongs_to :user
   has_many :users, through: :shopping_items
 
+  belongs_to :user
+
   enum status: {open: 0, locked: 1, finished: 2}, _suffix: :status
+  serialize :user_totals, Hash
 
   def total_cost
     self.shopping_items.map(&:price).sum

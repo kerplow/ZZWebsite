@@ -13,25 +13,25 @@
   <div id="cleaning-roster" class="align-content-center">
     <div class="cleaning-table">
       <div class='row-header cell'>week</div>
-      <% @active_tasks.each do |task| %>
+      <% @active_tasks.sort_by(&:id).each do |task| %>
         <div class='cell'><button type='button' data-toggle='tooltip' title='<%= task.description %>' class='col-header' ><%= task.name %></button></div>
       <% end %>
       <div class='row-header cell'><%= "  #{@previous_week.date_string}  " %></div>
-      <% @previous_week.room_tasks.each do |room_task| %>
+      <% @previous_week.room_tasks.sort_by(&:cleaning_task_id).each do |room_task| %>
         <div class='cell'><div class="cell-contents draggable room-task">
           <div class="task-who"><%= room_task.who %></div>
           <div class="drag-space task-drag"></div>
         </div></div>
       <% end %>
       <div class='row-header cell'><%= "--#{@cleaning_week.date_string}--" %></div>
-      <% @cleaning_week.room_tasks.each do |room_task| %>
+      <% @cleaning_week.room_tasks.sort_by(&:cleaning_task_id).each do |room_task| %>
         <div class='cell'><div class="cell-contents draggable room-task">
           <div class="task-who"><%= room_task.who %></div>
           <div class="drag-space task-drag"></div>
         </div></div>
       <% end %>
       <div class='row-header cell'><%= "  #{@next_week.date_string}  " %></div>
-      <% @next_week.room_tasks.each do |room_task| %>
+      <% @next_week.room_tasks.sort_by(&:cleaning_task_id).each do |room_task| %>
         <div class='cell'><div class="cell-contents draggable room-task">
           <div class="task-who"><%= room_task.who %></div>
           <div class="drag-space task-drag"></div>
