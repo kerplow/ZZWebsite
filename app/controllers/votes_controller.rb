@@ -4,22 +4,22 @@ class VotesController < ApplicationController
   def upvote
     if @model.voters.include?(current_user.id)
       @model.un_liked_by(current_user)
-      @model.save
+      p @model.errors.full_messages
       @unvoted = true
     else
       @model.liked_by current_user
-      @model.save
+      p @model.errors.full_messages
     end
   end
 
   def downvote
     if @model.down_voters.include?(current_user.id)
       @model.un_disliked_by current_user
-      @model.save
+      p @model.errors.full_messages
       @unvoted = true
     else
       @model.disliked_by current_user
-      @model.save
+      p @model.errors.full_messages
     end
   end
 

@@ -7,7 +7,7 @@
   </div>
   <div class="note-body">
     <p class="note-contents">
-      <%= note.contents %>
+      <pre><%= note.contents %></pre>
     </p>
     <%# if note.has_pricetag? %>
       <%#= render partial: 'pricetags/show', locals: { pricetag: note.pricetag } %>

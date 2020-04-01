@@ -14,19 +14,23 @@ class Option < ApplicationRecord
   def liked_by(user)
     self.voters << user.id
     self.down_voters.delete(user.id)
+    self.save!
   end
 
   def un_liked_by(user)
     self.voters.delete(user.id)
+    self.save!
   end
 
   def disliked_by(user)
     self.down_voters << user.id
     self.voters.delete(user.id)
+    self.save!
   end
 
   def un_disliked_by(user)
     self.down_voters.delete(user.id)
+    self.save!
   end
 
   def vote_total
